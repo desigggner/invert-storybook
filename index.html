@@ -490,6 +490,12 @@
       margin-bottom: 24px;
     }
 
+    .content-scroll > section,
+    .hub-overview {
+      content-visibility: auto;
+      contain-intrinsic-size: 900px;
+    }
+
     .content-card {
       background: var(--bg-card);
       border-radius: 24px;
@@ -2349,6 +2355,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .checkbox-demo-check-icon {
+      width: 13px;
+      height: 10px;
+      display: block;
     }
 
     .checkbox-demo--checked .checkbox-demo-box {
@@ -5639,6 +5651,8 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
+      content-visibility: auto;
+      contain-intrinsic-size: 240px;
     }
 
     .icon-preview {
@@ -13486,7 +13500,9 @@
         <div class="checkbox-demo" id="checkbox-demo" role="checkbox" aria-checked="false" aria-disabled="false">
           <span class="checkbox-demo-box">
             <span class="checkbox-demo-check">
-              <img src="../x/icon.svg" alt="" width="13" height="10">
+              <svg class="checkbox-demo-check-icon" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M1.5 5.5L4.5 8.5L11.5 1.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </span>
           </span>
           <span class="checkbox-demo-label">Получать уведомления</span>
@@ -14392,6 +14408,7 @@
       var renderedIconsCount = 0;
       var iconsPageSize = 30;
       var iconsLoadObserver = null;
+      var hubSearchDebounceTimer = null;
       var sectionCategories = {
         "section-intro": "intro",
         "section-accessibility": "accessibility",
@@ -14688,6 +14705,12 @@
         if (sectionId === "section-icons" || sectionId === "section-intro" || sectionId === "section-accessibility") {
           detailHeader.classList.add("search-hidden");
         }
+        if (sectionId !== "section-icons" && iconsGrid) {
+          iconsGrid.innerHTML = "";
+          renderedIcons = [];
+          renderedIconsCount = 0;
+          updateIconsLoadSentinel();
+        }
         document.body.classList.toggle("icons-sticky-tools", sectionId === "section-icons");
         if (detailBackBtn) {
           var isRootSection = sectionId === "section-intro" || sectionId === "section-accessibility" || sectionId === "section-icons";
@@ -14767,11 +14790,15 @@
 
       if (hubSearchInput) {
         hubSearchInput.addEventListener("input", function () {
-          if (document.body.classList.contains("detail-root-mode") && window.location.hash === "#section-icons") {
-            renderIconsCatalog(hubSearchInput.value);
-            return;
-          }
-          renderHubCards();
+          if (hubSearchDebounceTimer) clearTimeout(hubSearchDebounceTimer);
+          hubSearchDebounceTimer = setTimeout(function () {
+            hubSearchDebounceTimer = null;
+            if (document.body.classList.contains("detail-root-mode") && window.location.hash === "#section-icons") {
+              renderIconsCatalog(hubSearchInput.value);
+              return;
+            }
+            renderHubCards();
+          }, 120);
         });
       }
 
@@ -14834,19 +14861,6 @@
             var blob = new Blob([preparedSvg], { type: "image/svg+xml;charset=utf-8" });
             triggerFileDownloadFromBlob(blob, filename);
           }).catch(function () {
-            try {
-              var xhr = new XMLHttpRequest();
-              xhr.open("GET", href, false);
-              xhr.send(null);
-              if (((xhr.status >= 200 && xhr.status < 300) || xhr.status === 0) && xhr.responseText) {
-                var fallbackPrepared = applyIconColorForDownload(xhr.responseText, exportColor, exportSize);
-                var fallbackBlob = new Blob([fallbackPrepared], { type: "image/svg+xml;charset=utf-8" });
-                triggerFileDownloadFromBlob(fallbackBlob, filename);
-                return;
-              }
-            } catch (e) {
-              // ignore and use direct fallback
-            }
             fetch(href).then(function (res) {
               if (!res.ok) throw new Error("download-failed-fallback");
               return res.blob();
@@ -14908,10 +14922,6 @@
       }
 
       updateSearchContextLabel();
-
-      if (iconsGrid) {
-        renderIconsCatalog("");
-      }
 
       var bottomsheetVariant = document.getElementById("bottomsheet-variant");
       var bottomsheetShell = document.getElementById("bottomsheet-live-shell");

@@ -3601,6 +3601,7 @@
       backdrop-filter: blur(18px) saturate(1.15);
       -webkit-backdrop-filter: blur(18px) saturate(1.15);
       box-shadow: 0 0 2px rgba(0,0,0,0.1), 0 1px 8px rgba(0,0,0,0.12);
+      overflow: hidden;
     }
 
     .tabbar-liquid--hug .tabbar-liquid-item {
@@ -3657,10 +3658,6 @@
       max-width: 52px;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-
-    .tabbar-liquid--hug .tabbar-liquid-item {
-      margin-right: -10px;
     }
 
     .tabbar-liquid-search {
@@ -6635,6 +6632,12 @@
       margin-left: 0;
     }
 
+    .icons-sticky-tools .hub-tools {
+      position: sticky;
+      top: 8px;
+      z-index: 70;
+    }
+
     .content-scroll {
       overflow: visible;
       padding: 0;
@@ -6658,6 +6661,10 @@
       .hub-tools {
         min-width: 0;
         width: 100%;
+      }
+
+      .icons-sticky-tools .hub-tools {
+        top: 8px;
       }
 
       .hub-tools .search-wrap {
@@ -6726,6 +6733,10 @@
         gap: 8px;
         flex-direction: column;
         align-items: stretch;
+      }
+
+      .icons-sticky-tools .hub-tools {
+        top: 8px;
       }
 
       .hub-tools .search-wrap,
@@ -6941,7 +6952,7 @@
   <div class="auth-gate" id="auth-gate" role="dialog" aria-modal="true" aria-labelledby="auth-gate-title">
     <div class="auth-gate-card">
       <div class="auth-gate-brand">
-        <img class="auth-gate-logo" id="auth-gate-logo" src="favicon.svg" alt="Invert StoryBook">
+        <img class="auth-gate-logo" id="auth-gate-logo" src="frame-28.svg" alt="Invert StoryBook">
         <p class="auth-gate-title" id="auth-gate-title">InvertStoryBook</p>
       </div>
       <form class="auth-gate-form" id="auth-gate-form" autocomplete="off">
@@ -7111,11 +7122,6 @@
                 <li>Interactive контролы визуально различимы в default/pressed/disabled.</li>
                 <li>Success/Warning/Error используют semantic токены + текст статуса.</li>
               </ul>
-              <div class="a11y-mini-row">
-                <span class="a11y-chip a11y-chip--ok">Success</span>
-                <span class="a11y-chip a11y-chip--warn">Warning</span>
-                <span class="a11y-chip a11y-chip--danger">Error</span>
-              </div>
             </article>
             <article class="a11y-example a11y-example--bad">
               <h5>Inaccessible examples</h5>
@@ -12229,9 +12235,9 @@
     <section id="section-accordion">
       <h2>Accordion</h2>
       <p class="note">
-        <strong>Что это:</strong> Компонент раскрывающихся блоков, где виден только заголовок, а контент открывается по действию.<br>
-        <strong>Зачем:</strong> Снижает визуальный шум и помогает пользователю сканировать длинные экраны по принципу progressive disclosure.<br>
-        <strong>Когда и как использовать:</strong> Применяй для вторичной информации (FAQ, фильтры, характеристики). По UX держи закрытым по умолчанию, если контент не критичен для первого шага.
+        <strong>Что это:</strong> Компонент для сворачивания и раскрытия контента по секциям.<br>
+        <strong>Зачем:</strong> Уменьшает визуальную перегрузку и помогает показывать только нужную информацию в моменте.<br>
+        <strong>Когда и как использовать:</strong> Используй для FAQ, фильтров, характеристик и длинных настроек, когда часть данных второстепенная.
       </p>
       <div class="accordion-doc">
         <div class="accordion-card" data-open="false">
@@ -12271,9 +12277,9 @@
         </span>
       </div>
       <p class="note">
-        <strong>Что это:</strong> Модальная нижняя шторка для задач в текущем контексте без полного перехода на новый экран.<br>
-        <strong>Зачем:</strong> Ускоряет сценарии выбора/подтверждения и сохраняет ощущение контекста основного экрана.<br>
-        <strong>Когда и как использовать:</strong> Используй для коротких потоков (выбор, фильтры, действия). Для сложных многошаговых процессов лучше полноценный экран.
+        <strong>Что это:</strong> Выезжающая снизу панель для быстрых действий и выбора без ухода с текущего экрана.<br>
+        <strong>Зачем:</strong> Сохраняет контекст пользователя и ускоряет выполнение сценария.<br>
+        <strong>Когда и как использовать:</strong> Подходит для выбора, подтверждения, фильтрации и коротких многошаговых действий.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -12336,9 +12342,9 @@
     <section id="section-actionbar">
       <h2>Action bar</h2>
       <p class="note">
-        <strong>Что это:</strong> Нижняя панель быстрых действий для текущего экрана/режима.<br>
-        <strong>Зачем:</strong> Держит ключевые действия в зоне большого пальца и уменьшает количество шагов до действия.<br>
-        <strong>Когда и как использовать:</strong> Применяй для 1-3 приоритетных действий. Не перегружай вторичными кнопками, чтобы не снижать читаемость.
+        <strong>Что это:</strong> Панель с основными действиями в одном блоке (primary/secondary).<br>
+        <strong>Зачем:</strong> Собирает ключевые кнопки в предсказуемой зоне и снижает вероятность ошибок.<br>
+        <strong>Когда и как использовать:</strong> Используй в карточках, формах, экранах подтверждения и внизу сценариев с двумя-тремя действиями.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -12408,9 +12414,9 @@
     <section id="section-snackbar">
       <h2>Snackbar</h2>
       <p class="note">
-        <strong>Что это:</strong> Неблокирующее короткое уведомление о результате действия.<br>
-        <strong>Зачем:</strong> Даёт быструю обратную связь без прерывания текущего потока пользователя.<br>
-        <strong>Когда и как использовать:</strong> Используй для success/error/info после действий. Не применяй для критичных ошибок, требующих немедленного решения.
+        <strong>Что это:</strong> Краткое уведомление о результате действия.<br>
+        <strong>Зачем:</strong> Даёт быстрый фидбек без прерывания пользовательского потока.<br>
+        <strong>Когда и как использовать:</strong> Показывай после сохранения, удаления, отправки или ошибки, когда не нужен модальный диалог.
       </p>
       <div class="variant-controls">
         <div class="variant-row variant-row--full">
@@ -12448,9 +12454,9 @@
     <section id="section-avatar">
       <h2>Avatar</h2>
       <p class="note">
-        <strong>Что это:</strong> Представление пользователя: фото, инициалы, иконка или placeholder.<br>
-        <strong>Зачем:</strong> Улучшает узнаваемость участников и повышает ориентирование в списках и чатах.<br>
-        <strong>Когда и как использовать:</strong> Фото — при наличии; инициалы/placeholder — как fallback. Форма и размер должны быть консистентны в рамках одного сценария.
+        <strong>Что это:</strong> Блок отображения пользователя в виде фото, инициалов или плейсхолдера.<br>
+        <strong>Зачем:</strong> Помогает идентифицировать аккаунт и усиливает персонализацию интерфейса.<br>
+        <strong>Когда и как использовать:</strong> Используй в профиле, списках чатов, комментариях и заголовках экранов.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -12504,9 +12510,9 @@
     <section id="section-avatar-add-remove">
       <h2>Add/Remove avatar</h2>
       <p class="note">
-        <strong>Что это:</strong> Профильный avatar-control для загрузки и удаления фотографии пользователя.<br>
-        <strong>Зачем:</strong> Делает изменение аватара очевидным и быстрым в одном месте интерфейса.<br>
-        <strong>Когда и как использовать:</strong> Используй в профиле/онбординге. В состоянии add открывай file picker, в state change давай удаление с понятным подтверждением при необходимости.
+        <strong>Что это:</strong> Контрол загрузки и удаления аватара в одном компоненте.<br>
+        <strong>Зачем:</strong> Делает изменение фото профиля понятным и быстрым.<br>
+        <strong>Когда и как использовать:</strong> Используй в настройках профиля: в состоянии add открывай выбор файла, в remove подтверждай удаление.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -12561,9 +12567,9 @@
     <section id="section-button">
       <h2>Button</h2>
       <p class="note">
-        <strong>Что это:</strong> Базовый CTA-компонент для инициирования действий пользователем.<br>
-        <strong>Зачем:</strong> Формирует визуальную иерархию действий: primary, secondary, danger и т.д.<br>
-        <strong>Когда и как использовать:</strong> На экране должен быть один главный primary action. Danger применяй только для разрушительных операций.
+        <strong>Что это:</strong> Базовая кнопка запуска действия.<br>
+        <strong>Зачем:</strong> Формирует понятную точку взаимодействия и визуальную иерархию действий.<br>
+        <strong>Когда и как использовать:</strong> Используй для целевых действий: отправить, сохранить, продолжить, подтвердить.
       </p>
       <div class="variant-controls">
         <div class="variant-row variant-row--full">
@@ -12628,9 +12634,9 @@
     <section id="section-button-stack">
       <h2>Button Stack</h2>
       <p class="note">
-        <strong>Что это:</strong> Компоновка группы кнопок (вертикально/горизонтально) с приоритизацией действий.<br>
-        <strong>Зачем:</strong> Помогает структурировать primary/secondary действия без визуального конфликта.<br>
-        <strong>Когда и как использовать:</strong> Используй в формах/confirm-сценариях. Primary ставь первым по логике завершения пользовательской задачи.
+        <strong>Что это:</strong> Стек кнопок для компактного размещения нескольких действий в одном блоке.<br>
+        <strong>Зачем:</strong> Оптимизирует пространство и сохраняет читаемость действий на разных размерах экрана.<br>
+        <strong>Когда и как использовать:</strong> Используй в диалогах, футерах и мобильных сценариях, где кнопки идут друг под другом или в ряд с адаптацией.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -12682,9 +12688,9 @@
     <section id="section-card">
       <h2>Card</h2>
       <p class="note">
-        <strong>Что это:</strong> Контейнер контента с самостоятельной смысловой единицей (товар, профиль, событие).<br>
-        <strong>Зачем:</strong> Повышает сканируемость, отделяет блоки и упрощает композицию интерфейса.<br>
-        <strong>Когда и как использовать:</strong> Применяй для повторяющихся сущностей. Не превращай card в перегруженный mini-screen.
+        <strong>Что это:</strong> Контейнер для связанной информации и действий.<br>
+        <strong>Зачем:</strong> Структурирует контент и облегчает сканирование интерфейса.<br>
+        <strong>Когда и как использовать:</strong> Подходит для списков сущностей, превью, блоков аналитики и контента с локальными действиями.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -12720,9 +12726,9 @@
     <section id="section-card-stack">
       <h2>Card Stack</h2>
       <p class="note">
-        <strong>Что это:</strong> Стек карточек для сравнений, свайп-сценариев или визуального акцента на последовательности.<br>
-        <strong>Зачем:</strong> Показывает иерархию/глубину контента и поддерживает сценарии перебора элементов.<br>
-        <strong>Когда и как использовать:</strong> Используй, когда важен порядок и контекст предыдущей/следующей карточки. Не применяй в плотных табличных списках.
+        <strong>Что это:</strong> Группа карточек с визуальной иерархией слоёв.<br>
+        <strong>Зачем:</strong> Показывает связанный набор объектов и акцент на активном элементе.<br>
+        <strong>Когда и как использовать:</strong> Используй для подборок, историй, шаблонов и сценариев со свайпом между карточками.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -12767,9 +12773,9 @@
     <section id="section-search">
       <h2>Search</h2>
       <p class="note">
-        <strong>Что это:</strong> Поле поиска для фильтрации/поиска сущностей в списке или каталоге.<br>
-        <strong>Зачем:</strong> Сокращает путь до нужного контента и повышает эффективность навигации.<br>
-        <strong>Когда и как использовать:</strong> Показывай, когда список достаточно длинный. Добавляй debounce и ясный empty-state при отсутствии результатов.
+        <strong>Что это:</strong> Поле поиска для фильтрации и быстрого доступа к сущностям.<br>
+        <strong>Зачем:</strong> Сокращает путь к нужному результату в больших списках.<br>
+        <strong>Когда и как использовать:</strong> Используй на экранах каталога, истории, компонентов и иконок, где элементов много.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -12814,12 +12820,12 @@
         <div class="search-demo search-demo--icon-brand" id="search-demo">
           <div class="search-demo-field">
             <div class="search-demo-icon">
-              <img src="../logo.svg" alt="" width="20" height="21" class="search-icon-brand">
-              <img src="../search.svg" alt="" width="20" height="20" class="search-icon-loupe">
+              <img src="brand.svg" alt="" width="20" height="21" class="search-icon-brand">
+              <img src="lope.svg" alt="" width="20" height="20" class="search-icon-loupe">
             </div>
             <input type="search" class="search-demo-input" id="search-input" placeholder="label" autocomplete="off">
             <button type="button" class="search-demo-filter" aria-label="Фильтры">
-              <img src="../settings.svg" alt="" width="16" height="16">
+              <img src="filters.svg" alt="" width="16" height="16">
             </button>
           </div>
         </div>
@@ -12843,9 +12849,9 @@
     <section id="section-input">
       <h2>Input</h2>
       <p class="note">
-        <strong>Что это:</strong> Базовое текстовое поле ввода с label/helper и состояниями валидации.<br>
-        <strong>Зачем:</strong> Унифицирует ввод данных и снижает ошибки за счёт предсказуемого поведения поля.<br>
-        <strong>Когда и как использовать:</strong> Используй для свободного текста. Label должен объяснять смысл поля, helper — формат/ограничения, error — как исправить.
+        <strong>Что это:</strong> Базовое текстовое поле ввода.<br>
+        <strong>Зачем:</strong> Даёт предсказуемый паттерн ввода и снижает ошибки в формах.<br>
+        <strong>Когда и как использовать:</strong> Используй для имени, описания, комментария и других свободных текстовых данных.
       </p>
       <div class="variant-controls">
         <div class="variant-row variant-row--full">
@@ -12912,9 +12918,9 @@
     <section id="section-select">
       <h2>Select</h2>
       <p class="note">
-        <strong>Что это:</strong> Поле выбора одного значения из списка опций (dropdown/select).<br>
-        <strong>Зачем:</strong> Уменьшает ошибки ввода, когда допустимые значения заранее известны.<br>
-        <strong>Когда и как использовать:</strong> Используй вместо текстового ввода для ограниченных наборов. Для длинных списков добавляй поиск внутри списка.
+        <strong>Что это:</strong> Компонент выбора одного значения из списка вариантов.<br>
+        <strong>Зачем:</strong> Снижает вариативность ввода и упрощает принятие решения.<br>
+        <strong>Когда и как использовать:</strong> Подходит для статусов, ролей, фильтров, категорий и настроек с фиксированным набором значений.
       </p>
       <div class="variant-controls">
         <div class="variant-row variant-row--full">
@@ -12990,9 +12996,9 @@
     <section id="section-skeleton">
       <h2>Skeleton</h2>
       <p class="note">
-        <strong>Что это:</strong> Временный placeholder для контента в состоянии загрузки.<br>
-        <strong>Зачем:</strong> Снижает perceived latency и предотвращает layout shift при подгрузке данных.<br>
-        <strong>Когда и как использовать:</strong> Показывай форму будущего контента 1:1. Убирай skeleton сразу после готовности данных, без длинных задержек.
+        <strong>Что это:</strong> Скелетон-заглушка формы будущего контента.<br>
+        <strong>Зачем:</strong> Снижает ощущение ожидания и помогает понять, что загрузка идёт.<br>
+        <strong>Когда и как использовать:</strong> Используй при сетевых запросах дольше короткой паузы, повторяя форму реального контента.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13048,9 +13054,9 @@
     <section id="section-tags">
       <h2>Tags</h2>
       <p class="note">
-        <strong>Что это:</strong> Компактные метки для статусов, категорий и выбранных фильтров.<br>
-        <strong>Зачем:</strong> Ускоряют сканирование информации и визуально кодируют состояние сущности.<br>
-        <strong>Когда и как использовать:</strong> Применяй короткие тексты. Цвет должен отражать смысл (нейтрально/успех/внимание/ошибка), а не только декоративность.
+        <strong>Что это:</strong> Компактные теги для статусов, категорий и выбранных фильтров.<br>
+        <strong>Зачем:</strong> Ускоряют сканирование и дают быстрый контекст по объекту.<br>
+        <strong>Когда и как использовать:</strong> Используй в списках, карточках и фильтрах, когда нужно показать короткий статус или выбор.
       </p>
       <div class="variant-controls">
         <div class="variant-row variant-row--full">
@@ -13116,9 +13122,9 @@
     <section id="section-tabs">
       <h2>Tabs</h2>
       <p class="note">
-        <strong>Что это:</strong> Горизонтальные вкладки для переключения между связанными разделами в одном контексте.<br>
-        <strong>Зачем:</strong> Позволяют быстро менять контент без потери контекста текущего экрана.<br>
-        <strong>Когда и как использовать:</strong> Подходят для 2-6 разделов. Если вкладок больше, используй scrollable tabs или другой паттерн навигации.
+        <strong>Что это:</strong> Табы для переключения между связанными разделами на одном экране.<br>
+        <strong>Зачем:</strong> Помогают быстро менять контекст без переходов между страницами.<br>
+        <strong>Когда и как использовать:</strong> Используй для 2–5 разделов с равной важностью и короткими названиями.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13186,9 +13192,9 @@
         <span class="section-tag">Liquid Glass</span>
       </div>
       <p class="note">
-        <strong>Что это:</strong> Нижняя навигационная панель приложения в стиле Liquid Glass.<br>
-        <strong>Зачем:</strong> Дает быстрый доступ к ключевым разделам и формирует стабильный каркас навигации.<br>
-        <strong>Когда и как использовать:</strong> Используй как постоянную первичную навигацию (обычно 3-5 пунктов). Не дублируй те же переходы в других зонах экрана.
+        <strong>Что это:</strong> Нижняя навигационная панель для основных разделов приложения.<br>
+        <strong>Зачем:</strong> Даёт постоянный быстрый доступ к ключевым разделам.<br>
+        <strong>Когда и как использовать:</strong> Используй как основную навигацию с 3–5 пунктами и стабильным составом вкладок.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13250,9 +13256,9 @@
         </span>
       </div>
       <p class="note">
-        <strong>Что это:</strong> Бинарный переключатель on/off в iOS-подобной визуальной модели.<br>
-        <strong>Зачем:</strong> Самый быстрый и понятный контроль для включения/выключения настройки.<br>
-        <strong>Когда и как использовать:</strong> Применяй только для мгновенно применяемых бинарных опций. Не используй там, где нужно подтверждение.
+        <strong>Что это:</strong> Переключатель состояния в формате on/off.<br>
+        <strong>Зачем:</strong> Позволяет мгновенно включать и отключать настройку.<br>
+        <strong>Когда и как использовать:</strong> Используй для бинарных параметров: уведомления, темы, разрешения, автосинхронизация.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13298,9 +13304,9 @@
     <section id="section-bubble-chat">
       <h2>Bubble chat</h2>
       <p class="note">
-        <strong>Что это:</strong> Сообщение чата в формате bubble с вариантами reply, image и позицией в группе сообщений.<br>
-        <strong>Зачем:</strong> Формирует читаемую структуру диалога и визуально отделяет свои/чужие сообщения.<br>
-        <strong>Когда и как использовать:</strong> Используй группировку top/center/bottom для последовательных сообщений одного автора, чтобы уменьшить визуальный шум.
+        <strong>Что это:</strong> Сообщение в чате в формате входящей/исходящей пузырьковой реплики.<br>
+        <strong>Зачем:</strong> Повышает читаемость диалога и разделяет стороны общения.<br>
+        <strong>Когда и как использовать:</strong> Используй в мессенджерах и саппорт-чатах для текстовых и коротких мультимедийных сообщений.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13385,9 +13391,9 @@
         <span class="section-tag">Liquid Glass</span>
       </div>
       <p class="note">
-        <strong>Что это:</strong> Поле набора сообщения с действиями вложения, отправки и reply-контекстом.<br>
-        <strong>Зачем:</strong> Сокращает путь до отправки сообщения и поддерживает чатовые сценарии без лишних экранов.<br>
-        <strong>Когда и как использовать:</strong> Переходи в multiline по мере роста текста, показывай reply-контекст только пока пользователь отвечает.
+        <strong>Что это:</strong> Поле ввода сообщения с действиями вложения и отправки.<br>
+        <strong>Зачем:</strong> Собирает ключевые действия чата в одном понятном контроле.<br>
+        <strong>Когда и как использовать:</strong> Используй в нижней части чата; поддерживай multiline при росте текста и ясный статус отправки.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13455,9 +13461,9 @@
     <section id="section-checkbox">
       <h2>Checkbox</h2>
       <p class="note">
-        <strong>Что это:</strong> Контрол множественного выбора для независимых опций.<br>
-        <strong>Зачем:</strong> Явно показывает, что пользователь может выбрать несколько пунктов одновременно.<br>
-        <strong>Когда и как использовать:</strong> Используй в фильтрах и настройках. Для взаимоисключающих вариантов применяй radio, а не checkbox.
+        <strong>Что это:</strong> Контрол множественного выбора независимых пунктов.<br>
+        <strong>Зачем:</strong> Позволяет выбрать несколько опций одновременно.<br>
+        <strong>Когда и как использовать:</strong> Используй в фильтрах, согласиях и настройках, где возможны несколько активных значений.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13506,8 +13512,8 @@
       <h2>Radio</h2>
       <p class="note">
         <strong>Что это:</strong> Контрол выбора одного варианта из группы.<br>
-        <strong>Зачем:</strong> Гарантирует взаимоисключающий выбор и делает его очевидным пользователю.<br>
-        <strong>Когда и как использовать:</strong> Используй, когда число вариантов ограничено и все варианты должны быть видимы одновременно.
+        <strong>Зачем:</strong> Исключает конфликт выбора и делает решение однозначным.<br>
+        <strong>Когда и как использовать:</strong> Используй когда нужно выбрать только один вариант: тариф, способ доставки, тип отображения.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13553,9 +13559,9 @@
     <section id="section-date-input">
       <h2>Date input</h2>
       <p class="note">
-        <strong>Что это:</strong> Поле выбора даты с лейблом и триггером календаря.<br>
-        <strong>Зачем:</strong> Снижает ошибки формата даты и ускоряет ввод в форме.<br>
-        <strong>Когда и как использовать:</strong> Используй date picker для большинства сценариев. Ручной ввод допускай только при необходимости и с маской/валидацией.
+        <strong>Что это:</strong> Поле выбора даты с маской и вызовом календаря.<br>
+        <strong>Зачем:</strong> Снижает ошибки формата и ускоряет ввод даты.<br>
+        <strong>Когда и как использовать:</strong> Используй для дат рождения, бронирования, дедлайнов; ручной ввод оставляй как дополнительный путь.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13628,9 +13634,9 @@
     <section id="section-phone-input">
       <h2>Phone input</h2>
       <p class="note">
-        <strong>Что это:</strong> Поле ввода телефона с автоопределением страны, маской и флагом.<br>
-        <strong>Зачем:</strong> Уменьшает ошибки ввода и повышает конверсию форм за счёт корректного форматирования номера.<br>
-        <strong>Когда и как использовать:</strong> Используй для регистрации/контактов. Поддерживай автодетект по началу номера и возможность вручную изменить страну.
+        <strong>Что это:</strong> Поле ввода телефона с кодом страны и форматной маской.<br>
+        <strong>Зачем:</strong> Снижает ошибки номера и повышает конверсию форм.<br>
+        <strong>Когда и как использовать:</strong> Используй в регистрации и контактах; поддерживай автоопределение страны и ручную смену кода.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13707,9 +13713,9 @@
     <section id="section-pincode-input">
       <h2>Pincode input</h2>
       <p class="note">
-        <strong>Что это:</strong> Поле ввода PIN/OTP кода фиксированной длины по слотам.<br>
-        <strong>Зачем:</strong> Упрощает ввод одноразовых кодов и улучшает восприятие прогресса заполнения.<br>
-        <strong>Когда и как использовать:</strong> Используй для подтверждения входа/операций. Поддерживай auto-focus, paste и автопереход по слотам.
+        <strong>Что это:</strong> Поле ввода PIN/OTP по символам.<br>
+        <strong>Зачем:</strong> Ускоряет подтверждение и делает прогресс ввода наглядным.<br>
+        <strong>Когда и как использовать:</strong> Используй в авторизации, подтверждении операций и двухфакторной защите.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13759,9 +13765,9 @@
     <section id="section-progress-bar">
       <h2>Progress bar</h2>
       <p class="note">
-        <strong>Что это:</strong> Индикатор прогресса выполнения задачи (linear и segmented варианты).<br>
-        <strong>Зачем:</strong> Снижает неопределённость ожидания и помогает пользователю понимать этап выполнения.<br>
-        <strong>Когда и как использовать:</strong> Linear — для непрерывного прогресса, segmented — для шагов/этапов. Всегда показывай понятный контекст процесса.
+        <strong>Что это:</strong> Индикатор прогресса выполнения процесса.<br>
+        <strong>Зачем:</strong> Снижает неопределённость ожидания и помогает планировать действие.<br>
+        <strong>Когда и как использовать:</strong> Используй для загрузок, этапов и длительных операций, когда важно показать динамику.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13852,9 +13858,9 @@
     <section id="section-icon-swapper">
       <h2>Icon swapper</h2>
       <p class="note">
-        <strong>Что это:</strong> Унифицированный контейнер для переключения иконок по размеру/весу/состоянию.<br>
-        <strong>Зачем:</strong> Централизует работу с иконками и исключает визуальные расхождения между экранами.<br>
-        <strong>Когда и как использовать:</strong> Используй как один источник правды для иконок в кнопках, полях и статусах.
+        <strong>Что это:</strong> Компонент переключения одной иконки на другую по состоянию.<br>
+        <strong>Зачем:</strong> Делает состояние действия визуально очевидным без текста.<br>
+        <strong>Когда и как использовать:</strong> Используй для избранного, лайка, скрыть/показать, переключения режимов и состояний.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13897,9 +13903,9 @@
     <section id="section-loader">
       <h2>Loader</h2>
       <p class="note">
-        <strong>Что это:</strong> Индикатор фоновой загрузки без конкретного процента выполнения.<br>
-        <strong>Зачем:</strong> Показывает, что система работает, и уменьшает ощущение зависания интерфейса.<br>
-        <strong>Когда и как использовать:</strong> Используй для коротких операций. Для длительных задач предпочтителен progress bar с явным прогрессом.
+        <strong>Что это:</strong> Индикатор фоновой или блокирующей загрузки.<br>
+        <strong>Зачем:</strong> Показывает, что система обрабатывает действие, и снижает повторные клики.<br>
+        <strong>Когда и как использовать:</strong> Используй при коротких запросах и в точках ожидания, где ещё нет готового контента.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -13945,9 +13951,9 @@
         </span>
       </div>
       <p class="note">
-        <strong>Что это:</strong> Верхний toolbar экрана с навигацией, заголовком и действиями.<br>
-        <strong>Зачем:</strong> Формирует стабильный каркас экрана и улучшает ориентирование пользователя.<br>
-        <strong>Когда и как использовать:</strong> Поддерживай единый паттерн заголовков и кнопок по всему приложению; не меняй логику навигации от экрана к экрану.
+        <strong>Что это:</strong> Верхняя панель экрана с заголовком и ключевыми действиями.<br>
+        <strong>Зачем:</strong> Создаёт структуру экрана и быстрый доступ к базовым операциям.<br>
+        <strong>Когда и как использовать:</strong> Используй на основных экранах приложения для навигации, названия раздела и действий.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -14067,9 +14073,9 @@
         </span>
       </div>
       <p class="note">
-        <strong>Что это:</strong> Шапка для bottom sheet с grabber, заголовком и действиями.<br>
-        <strong>Зачем:</strong> Дает пользователю ясный контекст шторки и явные точки управления закрытием/действиями.<br>
-        <strong>Когда и как использовать:</strong> Используй в модальных и полуэкранных sheet; оставляй заголовок коротким и действия ограничивай по приоритету.
+        <strong>Что это:</strong> Верхняя панель внутри bottom sheet с заголовком и действиями.<br>
+        <strong>Зачем:</strong> Упрощает ориентацию в контексте модальной панели.<br>
+        <strong>Когда и как использовать:</strong> Используй в sheet-сценариях с несколькими шагами, подтверждением или дополнительными действиями.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -14171,9 +14177,9 @@
         <span class="section-tag">Liquid Glass</span>
       </div>
       <p class="note">
-        <strong>Что это:</strong> Segmented control (liquid glass) для быстрого переключения взаимоисключающих режимов.<br>
-        <strong>Зачем:</strong> Даёт более компактную альтернативу tabs для небольшого числа вариантов в одном контексте.<br>
-        <strong>Когда и как использовать:</strong> Используй для 2-5 коротких опций. Подписи должны быть краткими и однозначными.
+        <strong>Что это:</strong> Сегментированный переключатель режимов в одном контроле.<br>
+        <strong>Зачем:</strong> Быстро переключает взаимно исключающие варианты без смены экрана.<br>
+        <strong>Когда и как использовать:</strong> Используй для смены режима отображения, фильтра или типа данных при 2–5 опциях.
       </p>
       <div class="variant-controls">
         <div class="variant-row">
@@ -14354,7 +14360,7 @@
         var logo = document.getElementById("header-logo");
         if (logo) logo.src = theme === "dark" ? "logo-dark.svg" : "logo-light.svg";
         var gateLogo = document.getElementById("auth-gate-logo");
-        if (gateLogo) gateLogo.src = "favicon.svg";
+        if (gateLogo) gateLogo.src = "frame-28.svg";
       }
       document.addEventListener("DOMContentLoaded", function () {
         setTheme(getTheme());
@@ -14384,7 +14390,7 @@
       var allIcons = Array.isArray(window.INVERT_ICONS) ? window.INVERT_ICONS.slice() : [];
       var renderedIcons = [];
       var renderedIconsCount = 0;
-      var iconsPageSize = 120;
+      var iconsPageSize = 30;
       var iconsLoadObserver = null;
       var sectionCategories = {
         "section-intro": "intro",
@@ -14679,9 +14685,10 @@
         hubOverview.classList.add("search-hidden");
         detailScroll.classList.remove("search-hidden");
         detailHeader.classList.remove("search-hidden");
-        if (sectionId === "section-icons") {
+        if (sectionId === "section-icons" || sectionId === "section-intro" || sectionId === "section-accessibility") {
           detailHeader.classList.add("search-hidden");
         }
+        document.body.classList.toggle("icons-sticky-tools", sectionId === "section-icons");
         if (detailBackBtn) {
           var isRootSection = sectionId === "section-intro" || sectionId === "section-accessibility" || sectionId === "section-icons";
           detailBackBtn.classList.toggle("search-hidden", isRootSection);
@@ -14704,6 +14711,7 @@
         if (detailBackBtn) detailBackBtn.classList.remove("search-hidden");
         document.body.classList.remove("detail-root-mode");
         document.body.classList.remove("root-hide-search");
+        document.body.classList.remove("icons-sticky-tools");
         hubOverview.classList.remove("search-hidden");
         document.body.classList.remove("detail-mode");
         updateSearchContextLabel();

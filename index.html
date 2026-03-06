@@ -822,9 +822,9 @@
     }
 
     .intro-overview-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
+      width: 128px;
+      height: 128px;
+      border-radius: 26px;
       margin: 0 0 10px;
       display: inline-flex;
       align-items: center;
@@ -836,8 +836,8 @@
     }
 
     .intro-overview-icon img {
-      width: 34px;
-      height: 34px;
+      width: 128px;
+      height: 128px;
       display: block;
       transform: translateZ(12px);
       filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
@@ -880,6 +880,30 @@
     #section-intro .a11y-chip {
       border: 0;
       background: var(--bg-card);
+    }
+
+    .intro-quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 6px;
+    }
+
+    .intro-quick-btn {
+      height: 32px;
+      border-radius: 999px;
+      border: none;
+      background: var(--demo-bg);
+      color: var(--text-primary);
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 600;
+      padding: 0 12px;
+      cursor: pointer;
+    }
+
+    .intro-quick-btn:hover {
+      background: var(--surface-card, #ffffff);
     }
 
     #section-intro .a11y-highlights,
@@ -6987,6 +7011,11 @@
           Она объединяет правила интерфейса, визуальные стили и набор компонентов,
           чтобы команда могла создавать единый, понятный и предсказуемый пользовательский опыт.
         </p>
+        <div class="intro-quick-actions">
+          <button type="button" class="intro-quick-btn" data-tab-target="components">Flow</button>
+          <button type="button" class="intro-quick-btn" data-tab-target="basics">Дизайн-система</button>
+          <button type="button" class="intro-quick-btn" data-tab-target="icons">Иконки</button>
+        </div>
         <div class="a11y-mini-row">
           <span class="a11y-chip">Базовые стили</span>
           <span class="a11y-chip">UI-компоненты</span>
@@ -13206,13 +13235,6 @@
           </select>
         </div>
         <div class="variant-row">
-          <label for="tabbar-minimized">minimized</label>
-          <select id="tabbar-minimized">
-            <option value="no" selected>no</option>
-            <option value="yes">yes</option>
-          </select>
-        </div>
-        <div class="variant-row">
           <label for="tabbar-active-tab">active tab</label>
           <select id="tabbar-active-tab"></select>
         </div>
@@ -13236,7 +13258,7 @@
         <table class="spec-table">
           <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
-            <tr><td>API</td><td>items, activeIndex, separateSearch, minimized</td></tr>
+            <tr><td>API</td><td>items, activeIndex, separateSearch</td></tr>
             <tr><td>Состояния</td><td>active/inactive, pressed</td></tr>
             <tr><td>Поведение</td><td>switch root sections, optional separate search action</td></tr>
             <tr><td>Layout</td><td>safe area bottom + фиксированная высота</td></tr>
@@ -14420,6 +14442,20 @@
         return filename.replace(/\.svg$/i, "");
       }
 
+      function getSearchContextText(tab) {
+        if (tab === "basics") return "Поиск по основам";
+        if (tab === "components") return "Поиск по компонентам";
+        if (tab === "icons") return "Поиск по иконкам";
+        return "Поиск";
+      }
+
+      function updateSearchContextLabel() {
+        if (!hubSearchInput) return;
+        var text = getSearchContextText(activeHubTab);
+        hubSearchInput.placeholder = text;
+        hubSearchInput.setAttribute("aria-label", text);
+      }
+
       function renderIconsCatalog(query) {
         if (!iconsGrid) return;
         var q = (query || "").trim().toLowerCase();
@@ -14621,6 +14657,7 @@
         document.body.classList.remove("root-hide-search");
         hubOverview.classList.remove("search-hidden");
         document.body.classList.remove("detail-mode");
+        updateSearchContextLabel();
         history.replaceState(null, "", "#");
       }
 
@@ -14649,6 +14686,7 @@
           var button = target.closest(".hub-tab");
           if (!button) return;
           activeHubTab = button.getAttribute("data-tab") || "intro";
+          updateSearchContextLabel();
           hubTabs.querySelectorAll(".hub-tab").forEach(function (tab) {
             tab.classList.toggle("active", tab === button);
           });
@@ -14736,11 +14774,22 @@
         detailBackBtn.addEventListener("click", openOverview);
       }
 
+      document.querySelectorAll(".intro-quick-btn").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var tabTarget = button.getAttribute("data-tab-target");
+          if (!tabTarget || !hubTabs) return;
+          var tabButton = hubTabs.querySelector('[data-tab="' + tabTarget + '"]');
+          if (!tabButton) return;
+          tabButton.click();
+        });
+      });
+
       var initialHash = (window.location.hash || "").replace("#", "");
       if (initialHash && document.getElementById(initialHash)) {
         openDetail(initialHash);
         if (initialHash === "section-icons") {
           activeHubTab = "icons";
+          updateSearchContextLabel();
           if (hubTabs) {
             var iconsBtn = hubTabs.querySelector('[data-tab="icons"]');
             if (iconsBtn) hubTabs.querySelectorAll(".hub-tab").forEach(function (tab) { tab.classList.toggle("active", tab === iconsBtn); });
@@ -14757,6 +14806,8 @@
         }
         activeHubTab = "intro";
       }
+
+      updateSearchContextLabel();
 
       if (iconsGrid) {
         renderIconsCatalog("");

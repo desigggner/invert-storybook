@@ -953,7 +953,28 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
       transition: height 0.28s ease-out;
+    }
+
+    .bottomsheet-shell--compact {
+      width: 363px;
+      border-radius: 34px;
+      box-shadow: 0 15px 75px rgba(0, 0, 0, 0.18);
+      background:
+        linear-gradient(90deg, rgba(245, 245, 245, 0.6) 0%, rgba(245, 245, 245, 0.6) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(246, 246, 246, 0.9) 100%);
+      backdrop-filter: blur(40px) saturate(1.08);
+      -webkit-backdrop-filter: blur(40px) saturate(1.08);
+    }
+
+    .bottomsheet-shell--full {
+      width: 375px;
+      border-radius: 38px 38px 0 0;
+      box-shadow: 0 15px 75px rgba(0, 0, 0, 0.18);
+      background: #F8F8F8;
     }
 
     .bottomsheet-header {
@@ -986,17 +1007,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #5E5E5E;
     }
 
     .bottomsheet-circle-btn--left {
-      background: var(--comp-circle-left);
+      background: #D9D9D9;
     }
 
     .bottomsheet-circle-btn--right {
       background: #0DC267;
+      color: #FFFFFF;
     }
 
-    .bottomsheet-circle-btn img {
+    .bottomsheet-circle-btn svg {
       width: 24px;
       height: 24px;
       display: block;
@@ -1016,6 +1039,7 @@
       padding: 16px;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 16px;
       box-sizing: border-box;
       transition: height 0.28s ease-out;
@@ -1024,8 +1048,9 @@
     .bottomsheet-swapper {
       width: 343px;
       flex: 1 0 0;
-      background: var(--comp-bg-alt);
-      border-radius: 24px;
+      background: #BED2C1;
+      border: 1px dashed #0DC267;
+      border-radius: 0;
     }
 
     .bottomsheet-actions {
@@ -1037,7 +1062,7 @@
 
     .bottomsheet-btn {
       width: 100%;
-      height: 52px;
+      height: 48px;
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -1055,8 +1080,52 @@
     }
 
     .bottomsheet-btn--secondary {
-      background: var(--comp-btn-sec-bg);
-      color: var(--comp-btn-sec-color);
+      background: #BED2C1;
+      color: #0EA658;
+    }
+
+    .bottomsheet-home-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 8px;
+      transform: translateX(-50%);
+      width: 139px;
+      height: 5px;
+      border-radius: 100px;
+      background: #111111;
+      z-index: 2;
+    }
+
+    [data-theme="dark"] .bottomsheet-shell--compact {
+      background:
+        linear-gradient(90deg, rgba(33, 33, 33, 0.78) 0%, rgba(33, 33, 33, 0.78) 100%),
+        linear-gradient(180deg, rgba(36, 36, 36, 0.82) 0%, rgba(18, 18, 18, 0.86) 100%);
+    }
+
+    [data-theme="dark"] .bottomsheet-shell--full {
+      background: #1A1A1A;
+    }
+
+    [data-theme="dark"] .bottomsheet-title {
+      color: #F8F8F8;
+    }
+
+    [data-theme="dark"] .bottomsheet-circle-btn--left {
+      background: #2E2E2E;
+      color: #BEBEBE;
+    }
+
+    [data-theme="dark"] .bottomsheet-swapper {
+      background: rgba(13, 194, 103, 0.2);
+    }
+
+    [data-theme="dark"] .bottomsheet-btn--secondary {
+      background: rgba(13, 194, 103, 0.2);
+      color: #4ADE80;
+    }
+
+    [data-theme="dark"] .bottomsheet-home-indicator {
+      background: #F5F5F5;
     }
 
     .snackbar-doc {
@@ -9862,16 +9931,23 @@
       </div>
       <div class="bottomsheet-doc">
         <div class="bottomsheet-phone" id="bottomsheet-live">
-          <div class="bottomsheet-shell" id="bottomsheet-live-shell">
+          <div class="bottomsheet-shell bottomsheet-shell--compact" id="bottomsheet-live-shell">
             <div class="bottomsheet-header">
               <div class="bottomsheet-grabber"></div>
               <div class="bottomsheet-toolbar">
                 <div class="bottomsheet-circle-btn bottomsheet-circle-btn--left">
-                  <img src="bottomsheet-close.svg" alt="Close">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
                 </div>
                 <div class="bottomsheet-title">Title</div>
                 <div class="bottomsheet-circle-btn bottomsheet-circle-btn--right">
-                  <img src="bottomsheet-acorn.svg" alt="Acorn">
+                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M27 14V16C27 22.625 16 27 16 30C16 27 5 22.625 5 16V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 7H22C23.5913 7 25.1174 7.63214 26.2426 8.75736C27.3679 9.88258 28 11.4087 28 13C28 13.2652 27.8946 13.5196 27.7071 13.7071C27.5196 13.8946 27.2652 14 27 14H5C4.73478 14 4.48043 13.8946 4.29289 13.7071C4.10536 13.5196 4 13.2652 4 13C4 11.4087 4.63214 9.88258 5.75736 8.75736C6.88258 7.63214 8.4087 7 10 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 7V6C16 4.93913 16.4214 3.92172 17.1716 3.17157C17.9217 2.42143 18.9391 2 20 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
                 </div>
               </div>
             </div>
@@ -9882,6 +9958,7 @@
                 <div class="bottomsheet-btn bottomsheet-btn--secondary">Button</div>
               </div>
             </div>
+            <div class="bottomsheet-home-indicator"></div>
           </div>
         </div>
       </div>

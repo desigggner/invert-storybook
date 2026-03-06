@@ -5623,84 +5623,117 @@
     }
 
     .icons-count {
-      font-size: 13px;
-      line-height: 18px;
+      font-size: 14px;
+      line-height: 20px;
       color: var(--text-secondary);
     }
 
     .icons-grid {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .icon-item {
-      border-radius: 14px;
-      background: var(--demo-bg);
-      border: 1px solid var(--spec-border);
-      padding: 10px;
-      min-height: 126px;
+      border-radius: 20px;
+      background: var(--bg-card);
+      border: 0;
+      padding: 16px;
+      height: 312px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
     }
 
     .icon-preview {
-      border-radius: 10px;
-      background: var(--surface-soft, rgba(0, 0, 0, 0.03));
-      min-height: 58px;
+      border-radius: 16px;
+      background: var(--demo-bg);
+      border: 1px solid var(--spec-border);
+      min-height: 178px;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 12px;
     }
 
     [data-theme="dark"] .icon-preview {
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--demo-bg);
     }
 
     .icon-preview img {
       display: block;
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
       object-fit: contain;
     }
 
     .icon-name {
       margin: 0;
-      font-size: 12px;
-      line-height: 16px;
-      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 500;
       color: var(--text-primary);
+      text-align: center;
       word-break: break-word;
-      min-height: 32px;
+      min-height: 44px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    .icon-actions {
+    .icon-controls {
       margin-top: auto;
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 56px;
+      gap: 10px;
       align-items: center;
-      justify-content: flex-end;
+    }
+
+    .icon-size-select {
+      width: 100%;
+      height: 48px;
+      border-radius: 16px;
+      border: 1px solid var(--spec-border);
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+      font-size: 18px;
+      line-height: 24px;
+      padding: 0 40px 0 16px;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='12' viewBox='0 0 18 12' fill='none'%3E%3Cpath d='M2 2L9 9L16 2' stroke='%23ABABAB' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 18px 12px;
     }
 
     .icon-download {
-      height: 28px;
-      border-radius: 999px;
-      border: 1px solid var(--spec-border);
-      background: var(--bg-card);
-      color: var(--text-primary);
-      font-size: 12px;
-      line-height: 16px;
-      font-weight: 600;
-      padding: 0 10px;
+      width: 56px;
+      height: 48px;
+      border-radius: 16px;
+      border: none;
+      background: #0DC267;
+      color: #ffffff;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.12s ease-out, filter 0.16s ease-out;
+    }
+
+    .icon-download img {
+      width: 24px;
+      height: 24px;
+      display: block;
     }
 
     .icon-download:hover {
-      border-color: #0DC267;
-      color: #0DC267;
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .icon-download:active {
+      transform: translateY(0);
     }
 
     .hub-grid {
@@ -6565,6 +6598,10 @@
 
     .detail-mode:not(.detail-root-mode) .hub-tabs,
     .detail-mode:not(.detail-root-mode) .hub-tools .search-wrap {
+      display: none;
+    }
+
+    .root-hide-search .hub-tools .search-wrap {
       display: none;
     }
 
@@ -14294,7 +14331,6 @@
       var detailTitle = document.getElementById("detail-title");
       var detailBackBtn = document.getElementById("detail-back-btn");
       var iconsGrid = document.getElementById("icons-grid");
-      var iconsSize = document.getElementById("icons-size");
       var iconsCount = document.getElementById("icons-count");
       var activeHubTab = "intro";
       var hubItems = [];
@@ -14336,7 +14372,7 @@
       function renderIconsCatalog(query) {
         if (!iconsGrid) return;
         var q = (query || "").trim().toLowerCase();
-        var size = iconsSize ? iconsSize.value : "24";
+        var defaultSize = "32";
         renderedIcons = allIcons.filter(function (filename) {
           return !q || getIconName(filename).toLowerCase().indexOf(q) !== -1;
         });
@@ -14347,12 +14383,20 @@
           var safePath = "icons/" + safeFile;
           return (
             '<article class="icon-item">' +
-              '<div class="icon-preview">' +
-                '<img src="' + safePath + '" alt="' + safeName + '" loading="lazy" style="width:' + size + 'px;height:' + size + 'px;">' +
-              '</div>' +
               '<p class="icon-name">' + safeName + '</p>' +
-              '<div class="icon-actions">' +
-                '<a class="icon-download" href="' + safePath + '" download="' + safeFile + '">Скачать</a>' +
+              '<div class="icon-preview">' +
+                '<img class="icon-preview-img" src="' + safePath + '" alt="' + safeName + '" loading="lazy" style="width:' + defaultSize + 'px;height:' + defaultSize + 'px;">' +
+              '</div>' +
+              '<div class="icon-controls">' +
+                '<select class="icon-size-select" aria-label="Размер иконки">' +
+                  '<option value="32" selected>32 px</option>' +
+                  '<option value="24">24 px</option>' +
+                  '<option value="20">20 px</option>' +
+                  '<option value="16">16 px</option>' +
+                '</select>' +
+                '<a class="icon-download" href="' + safePath + '" download="' + safeFile + '" aria-label="Скачать ' + safeName + '">' +
+                  '<img src="icon-download.svg" alt="">' +
+                '</a>' +
               '</div>' +
             '</article>'
           );
@@ -14506,6 +14550,8 @@
           var isRootSection = sectionId === "section-intro" || sectionId === "section-accessibility" || sectionId === "section-icons";
           detailBackBtn.classList.toggle("search-hidden", isRootSection);
           document.body.classList.toggle("detail-root-mode", isRootSection);
+          var hideSearchForRoot = sectionId === "section-intro" || sectionId === "section-accessibility";
+          document.body.classList.toggle("root-hide-search", hideSearchForRoot);
         }
         document.body.classList.add("detail-mode");
         window.scrollTo({ top: 0, behavior: "auto" });
@@ -14521,6 +14567,7 @@
         detailHeader.classList.add("search-hidden");
         if (detailBackBtn) detailBackBtn.classList.remove("search-hidden");
         document.body.classList.remove("detail-root-mode");
+        document.body.classList.remove("root-hide-search");
         hubOverview.classList.remove("search-hidden");
         document.body.classList.remove("detail-mode");
         history.replaceState(null, "", "#");
@@ -14582,9 +14629,18 @@
         });
       }
 
-      if (iconsSize) {
-        iconsSize.addEventListener("change", function () {
-          renderIconsCatalog(hubSearchInput ? hubSearchInput.value : "");
+      if (iconsGrid) {
+        iconsGrid.addEventListener("change", function (event) {
+          var target = event.target;
+          if (!(target instanceof HTMLSelectElement)) return;
+          if (!target.classList.contains("icon-size-select")) return;
+          var card = target.closest(".icon-item");
+          if (!card) return;
+          var icon = card.querySelector(".icon-preview-img");
+          if (!icon) return;
+          var size = target.value || "32";
+          icon.style.width = size + "px";
+          icon.style.height = size + "px";
         });
       }
 

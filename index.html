@@ -2,6 +2,7 @@
 <html lang="ru" data-theme="light">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Invert StoryBook</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
@@ -5640,6 +5641,101 @@
 
       .theme-toggle {
         width: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .app-body {
+        padding: 14px 12px 12px;
+      }
+
+      .hub-header {
+        margin-bottom: 16px;
+      }
+
+      .hub-brand {
+        gap: 8px;
+      }
+
+      .hub-brand-title {
+        font-size: 20px;
+      }
+
+      .hub-avatar {
+        width: 40px;
+        height: 40px;
+      }
+
+      .content-top-bar {
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      .hub-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+      }
+
+      .hub-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .hub-tab {
+        flex: 0 0 auto;
+        min-height: 38px;
+        padding: 8px 14px;
+        white-space: nowrap;
+      }
+
+      .hub-tools {
+        width: 100%;
+        min-width: 0;
+        gap: 8px;
+      }
+
+      .hub-tools .search-wrap,
+      .theme-toggle {
+        width: 100%;
+      }
+
+      .theme-toggle {
+        min-height: 40px;
+        font-size: 14px;
+      }
+
+      .hub-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .hub-card {
+        border-radius: 18px;
+        padding: 16px;
+        min-height: 190px;
+      }
+
+      .hub-card-preview {
+        min-height: 112px;
+      }
+
+      .detail-header {
+        margin-bottom: 12px;
+      }
+
+      .detail-title {
+        font-size: 20px;
+        line-height: 26px;
+      }
+
+      .intro-block,
+      .content section,
+      .content-card {
+        border-radius: 18px;
+        padding: 16px;
       }
     }
   </style>
@@ -12882,7 +12978,7 @@
         if (!bottomsheetShell || !bottomsheetBody) return;
         var v = bottomsheetVariant && bottomsheetVariant.value === "full";
         bottomsheetShell.style.height = v ? "812px" : "451px";
-        bottomsheetBody.style.height = v ? "706px" : "348px";
+        bottomsheetBody.style.height = v ? "698px" : "348px";
         bottomsheetShell.classList.toggle("bottomsheet-shell--full", v);
         bottomsheetShell.classList.toggle("bottomsheet-shell--compact", !v);
         var swapper = bottomsheetBody.querySelector(".bottomsheet-swapper");

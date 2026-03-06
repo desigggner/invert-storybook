@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Invert Design System — Radius &amp; Spacing tokens</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f5;
+      color: #111827;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+
+    h2 {
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    p {
+      margin: 0 0 16px;
+      max-width: 720px;
+      line-height: 1.5;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 960px;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+      margin-bottom: 16px;
+    }
+
+    thead {
+      background: #f9fafb;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      font-size: 14px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    th {
+      font-weight: 600;
+      color: #4b5563;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .token-name {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13px;
+      color: #111827;
+    }
+
+    .code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13px;
+    }
+
+    .note {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Invert Design System — Radius &amp; Spacing tokens</h1>
+    <p>Страница сгенерирована из Mode 1.tokens 2.json и отражает все токены радиусов, отступов, spacing и gap.</p>
+  </header>
+
+  <section>
+    <h2>radius</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Путь токена</th>
+          <th>Тип</th>
+          <th>Значение</th>
+          <th>Alias</th>
+          <th>Описание</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="token-name">radius/avatar/radius</td>
+          <td class="code">number</td>
+          <td class="code">{radius.circle}</td>
+          <td class="code">—</td>
+          <td class="code">—</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/bottomsheet/radius</td>
+          <td class="code">number</td>
+          <td class="code">{radius.xl}</td>
+          <td class="code">—</td>
+          <td class="code">—</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/button/radius</td>
+          <td class="code">number</td>
+          <td class="code">{radius.m}</td>
+          <td class="code">—</td>
+          <td class="code">—</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/card/radius</td>
+          <td class="code">number</td>
+          <td class="code">{radius.l}</td>
+          <td class="code">—</td>
+          <td class="code">—</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/chat/message/radius</td>
+          <td class="code">number</td>
+          <td class="code">{radius.l}</td>
+          <td class="code">—</td>
+          <td class="code">—</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/circle</td>
+          <td class="code">number</td>
+          <td class="code">0.5</td>
+          <td class="code">—</td>
+          <td class="code">аватары</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/full</td>
+          <td class="code">number</td>
+          <td class="code">999</td>
+          <td class="code">—</td>
+          <td class="code">круг/пилюля</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/input/radius</td>
+          <td class="code">number</td>
+          <td class="code">{radius.m}</td>
+          <td class="code">—</td>
+          <td class="code">—</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/l</td>
+          <td class="code">number</td>
+          <td class="code">16</td>
+          <td class="code">—</td>
+          <td class="code">карточки, большие блоки</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/m</td>
+          <td class="code">number</td>
+          <td class="code">12</td>
+          <td class="code">—</td>
+          <td class="code">основные кнопки, поля, теги</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/modal/radius</td>
+          <td class="code">number</td>
+          <td class="code">{radius.xl}</td>
+          <td class="code">—</td>
+          <td class="code">—</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/s</td>
+          <td class="code">number</td>
+          <td class="code">8</td>
+          <td class="code">—</td>
+          <td class="code">инпуты, маленькие кнопки, бейджи</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/tag/radius</td>
+          <td class="code">number</td>
+          <td class="code">{radius.m}</td>
+          <td class="code">—</td>
+          <td class="code">—</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/xl</td>
+          <td class="code">number</td>
+          <td class="code">24</td>
+          <td class="code">—</td>
+          <td class="code">крупные контейнеры, таббар, bottom-sheet</td>
+        </tr>
+
+        <tr>
+          <td class="token-name">radius/xs</td>
+          <td class="code">number</td>
+          <td class="code">4</td>
+          <td class="code">—</td>
+          <td class="code">микроконтролы, бордеры внутри, мелкие элементы</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

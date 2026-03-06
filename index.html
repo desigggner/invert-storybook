@@ -90,8 +90,8 @@
       --comp-grabber: #6b7280;
       --comp-circle-left: #374151;
       --comp-phone-bg: #111111;
-      --snackbar-default-bg: #0D1115;
-      --snackbar-default-text: #FFFFFF;
+      --snackbar-default-bg: #F8F8F8;
+      --snackbar-default-text: #111111;
       --avatar-letters-bg: #1e3d2a;
       --avatar-icon-bg: #1e3d2a;
       --avatar-icon-color: #4ade80;
@@ -1527,6 +1527,12 @@
     }
 
     .avatar-addremove-action svg {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+
+    .avatar-ar-action-icon-img {
       width: 16px;
       height: 16px;
       display: block;
@@ -9861,11 +9867,11 @@
               <div class="bottomsheet-grabber"></div>
               <div class="bottomsheet-toolbar">
                 <div class="bottomsheet-circle-btn bottomsheet-circle-btn--left">
-                  <img src=".figma-assets/0af1d11c0c71363dd04c300e51ee6f47065544c7.svg" alt="Close">
+                  <img src="bottomsheet-close.svg" alt="Close">
                 </div>
                 <div class="bottomsheet-title">Title</div>
                 <div class="bottomsheet-circle-btn bottomsheet-circle-btn--right">
-                  <img src=".figma-assets/de0d4708e289116553c32f0e2b61b64baf017f4b.svg" alt="Acorn">
+                  <img src="bottomsheet-acorn.svg" alt="Acorn">
                 </div>
               </div>
             </div>
@@ -10099,10 +10105,9 @@
               <img id="avatar-ar-img" alt="" hidden>
             </div>
             <button type="button" class="avatar-addremove-action avatar-addremove-action--add" id="avatar-ar-action" aria-label="Добавить аватарку">
-              <svg id="avatar-ar-action-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                <path d="M8 3V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
+              <span id="avatar-ar-action-icon" aria-hidden="true">
+                <img class="avatar-ar-action-icon-img" src="icon-swapper.svg" alt="">
+              </span>
             </button>
             <input type="file" id="avatar-ar-file" accept="image/*" hidden>
           </div>
@@ -11938,6 +11943,8 @@
       var avatarArObjectUrl = null;
       var avatarArHasCustomImage = false;
       var defaultAvatarArSrc = ".figma-assets/abc10c9f1a60e18581af7919629dd66f7b7376fe.png";
+      var avatarArAddIconSrc = "icon-swapper.svg";
+      var avatarArRemoveIconSrc = "icon-swapper-1.svg";
 
       function clearAvatarArCustomImage() {
         avatarArHasCustomImage = false;
@@ -11964,17 +11971,10 @@
 
         if (showImage) {
           avatarArImg.src = avatarArHasCustomImage && avatarArObjectUrl ? avatarArObjectUrl : defaultAvatarArSrc;
-          avatarArActionIcon.innerHTML =
-            '<path d="M5 6H11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>' +
-            '<path d="M4.5 6.5V11C4.5 12.1 5.4 13 6.5 13H9.5C10.6 13 11.5 12.1 11.5 11V6.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>' +
-            '<path d="M6.5 4.5H9.5L10 5.5H6L6.5 4.5Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>' +
-            '<path d="M7.2 8V10.9" stroke="currentColor" stroke-width="1.05" stroke-linecap="round"/>' +
-            '<path d="M8.8 8V10.9" stroke="currentColor" stroke-width="1.05" stroke-linecap="round"/>';
+          avatarArActionIcon.innerHTML = '<img class="avatar-ar-action-icon-img" src="' + avatarArRemoveIconSrc + '" alt="">';
         } else {
           avatarArImg.removeAttribute("src");
-          avatarArActionIcon.innerHTML =
-            '<path d="M8 3V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>' +
-            '<path d="M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>';
+          avatarArActionIcon.innerHTML = '<img class="avatar-ar-action-icon-img" src="' + avatarArAddIconSrc + '" alt="">';
         }
 
         if (animate) {
@@ -11985,6 +11985,11 @@
         }
       }
 
+      function openAvatarArPicker() {
+        if (!avatarArState || !avatarArFile) return;
+        if (avatarArState.value === "add") avatarArFile.click();
+      }
+
       if (avatarArSize) avatarArSize.addEventListener("change", function () { renderAvatarAddRemove(true); });
       if (avatarArState) avatarArState.addEventListener("change", function () {
         if (avatarArState.value === "add") clearAvatarArCustomImage();
@@ -11993,13 +11998,14 @@
       if (avatarArAction) avatarArAction.addEventListener("click", function () {
         if (!avatarArState || !avatarArFile) return;
         if (avatarArState.value === "add") {
-          avatarArFile.click();
+          openAvatarArPicker();
           return;
         }
         clearAvatarArCustomImage();
         avatarArState.value = "add";
         renderAvatarAddRemove(true);
       });
+      if (avatarArLive) avatarArLive.addEventListener("click", function () { openAvatarArPicker(); });
       if (avatarArFile) avatarArFile.addEventListener("change", function () {
         var file = avatarArFile.files && avatarArFile.files[0];
         if (!file) return;

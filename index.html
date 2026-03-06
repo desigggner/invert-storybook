@@ -3655,23 +3655,8 @@
       text-overflow: ellipsis;
     }
 
-    .tabbar-liquid--minimized .tabbar-liquid-item {
-      width: 40px;
-      height: 40px;
-      min-height: 40px;
-      margin-right: 0;
-      padding: 0;
-      border-radius: 100px;
-      gap: 0;
-      flex: 0 0 auto;
-    }
-
     .tabbar-liquid--hug .tabbar-liquid-item {
       margin-right: -10px;
-    }
-
-    .tabbar-liquid--minimized .tabbar-liquid-label {
-      display: none;
     }
 
     .tabbar-liquid-search {
@@ -3688,11 +3673,6 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-    }
-
-    .tabbar-liquid-search--minimized {
-      width: 40px;
-      height: 40px;
     }
 
     [data-theme="dark"] .tabbar-liquid,
@@ -15754,7 +15734,6 @@
     document.addEventListener("DOMContentLoaded", function () {
       var tabbarTabsCount = document.getElementById("tabbar-tabs-count");
       var tabbarSeparateSearch = document.getElementById("tabbar-separate-search");
-      var tabbarMinimized = document.getElementById("tabbar-minimized");
       var tabbarActiveTab = document.getElementById("tabbar-active-tab");
       var tabbarWrap = document.getElementById("tabbar-liquid-wrap");
       var tabbar = document.getElementById("tabbar-liquid");
@@ -15801,10 +15780,9 @@
       }
 
       function renderTabbar(animate) {
-        if (!tabbar || !tabbarWrap || !tabbarTabsCount || !tabbarSeparateSearch || !tabbarMinimized || !tabbarActiveTab || !tabbarSearch) return;
+        if (!tabbar || !tabbarWrap || !tabbarTabsCount || !tabbarSeparateSearch || !tabbarActiveTab || !tabbarSearch) return;
         var count = getTabbarCount();
         var separateSearch = tabbarSeparateSearch.value === "yes";
-        var minimized = tabbarMinimized.value === "yes";
         if (tabbarActiveIndex > count - 1) tabbarActiveIndex = count - 1;
         if (tabbarActiveIndex < 0) tabbarActiveIndex = 0;
         var active = tabbarActiveIndex + 1;
@@ -15817,22 +15795,20 @@
         if (count >= 4) tabItemWidth = "auto";
 
         tabbar.className = "tabbar-liquid";
-        tabbar.classList.toggle("tabbar-liquid--minimized", minimized);
-        tabbar.classList.toggle("tabbar-liquid--fill", !minimized && count >= 4);
-        tabbar.classList.toggle("tabbar-liquid--hug", !minimized && count < 4);
+        tabbar.classList.toggle("tabbar-liquid--fill", count >= 4);
+        tabbar.classList.toggle("tabbar-liquid--hug", count < 4);
         tabbar.style.setProperty("--tabbar-count", String(count));
         tabbar.style.setProperty("--tab-item-width", tabItemWidth);
-        tabbar.style.setProperty("--tabbar-height", minimized ? "58px" : "62px");
-        tabbar.style.width = minimized ? "40px" : tabbarWidth;
-        tabbar.style.padding = minimized ? "0" : "0 5px";
+        tabbar.style.setProperty("--tabbar-height", "62px");
+        tabbar.style.width = tabbarWidth;
+        tabbar.style.padding = "0 5px";
         tabbarSearch.style.display = separateSearch ? "inline-flex" : "none";
-        tabbarSearch.classList.toggle("tabbar-liquid-search--minimized", minimized);
         tabbarWrap.style.justifyContent = "center";
         tabbarActiveTab.value = String(active);
 
         tabbar.innerHTML = "";
-        var start = minimized ? active : 1;
-        var end = minimized ? active : count;
+        var start = 1;
+        var end = count;
         for (var i = start; i <= end; i += 1) {
           var btn = document.createElement("button");
           btn.type = "button";
@@ -15867,7 +15843,6 @@
 
       if (tabbarTabsCount) tabbarTabsCount.addEventListener("change", function () { syncTabbarActiveOptions(); renderTabbar(true); });
       if (tabbarSeparateSearch) tabbarSeparateSearch.addEventListener("change", function () { renderTabbar(true); });
-      if (tabbarMinimized) tabbarMinimized.addEventListener("change", function () { renderTabbar(true); });
       if (tabbarActiveTab) tabbarActiveTab.addEventListener("change", function () { syncTabbarStateFromControls(); renderTabbar(true); });
       document.addEventListener("storybook-theme-change", function () { renderTabbar(false); });
 

@@ -3374,11 +3374,10 @@
     }
 
     .message-input-phone {
-      width: min(100%, 434px);
+      width: min(100%, 402px);
       margin: 0 auto;
-      border-radius: 18px;
-      background: #0E0E0E;
-      padding: 8px 16px 16px;
+      background: transparent;
+      padding: 0;
     }
 
     .message-input-toolbar {
@@ -3387,7 +3386,8 @@
       display: flex;
       align-items: flex-end;
       gap: 12px;
-      padding-top: 4px;
+      padding: 4px 16px 16px;
+      box-sizing: border-box;
       transition: opacity 0.16s ease-out, transform 0.16s ease-out;
     }
 
@@ -3550,6 +3550,12 @@
     }
 
     .message-input-send svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .message-input-send img {
       width: 16px;
       height: 16px;
       display: block;
@@ -3570,7 +3576,41 @@
     }
 
     [data-theme="light"] .message-input-phone {
-      background: #111111;
+      background: transparent;
+    }
+
+    [data-theme="light"] .message-input-plus {
+      border-color: rgba(17,17,17,0.14);
+      background: linear-gradient(180deg, rgba(247,247,247,0.98) 0%, rgba(242,242,242,0.98) 100%);
+      color: #2D2D2D;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.92), 0 4px 12px rgba(0,0,0,0.07);
+    }
+
+    [data-theme="light"] .message-input-field {
+      border-color: rgba(17,17,17,0.12);
+      background:
+        radial-gradient(80% 120% at 20% 0%, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.42) 55%, rgba(255,255,255,0.25) 100%),
+        linear-gradient(180deg, rgba(247,247,247,0.96) 0%, rgba(243,243,243,0.96) 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.92),
+        inset 0 -6px 18px rgba(0,0,0,0.04),
+        0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    [data-theme="light"] .message-input-control {
+      color: #111111;
+    }
+
+    [data-theme="light"] .message-input-control::placeholder {
+      color: #A8A8A8;
+    }
+
+    [data-theme="light"] .message-input-reply-title {
+      color: #1F1F1F;
+    }
+
+    [data-theme="light"] .message-input-reply-caption {
+      color: #6D6D6D;
     }
 
     @media (max-width: 720px) {
@@ -3578,9 +3618,8 @@
         padding: 16px;
       }
 
-      .message-input-phone {
-        border-radius: 14px;
-        padding: 8px 10px 12px;
+      .message-input-toolbar {
+        padding: 4px 0 12px;
       }
     }
 
@@ -10447,46 +10486,37 @@
       </p>
       <div class="variant-controls">
         <div class="variant-row">
-          <label for="skeleton-shape">shape</label>
-          <select id="skeleton-shape">
-            <option value="line" selected>line</option>
-            <option value="circle">circle</option>
-            <option value="card">card</option>
-          </select>
-        </div>
-        <div class="variant-row">
-          <label for="skeleton-size">size</label>
-          <select id="skeleton-size">
-            <option value="m" selected>m</option>
-            <option value="s">s</option>
-            <option value="xs">xs</option>
-          </select>
-        </div>
-        <div class="variant-row">
           <label for="skeleton-animated">animated</label>
           <select id="skeleton-animated">
-            <option value="yes" selected>yes</option>
-            <option value="no">no</option>
+            <option value="no" selected>no</option>
+            <option value="yes">yes</option>
           </select>
         </div>
       </div>
       <div class="skeleton-doc">
         <div class="skeleton-panel">
-          <div class="skeleton-demo-unit" id="skeleton-demo-unit"></div>
+          <div class="skeleton-catalog-row">
+            <div class="skeleton-demo-unit"></div>
+            <div class="skeleton-demo-unit skeleton-demo-unit--r8"></div>
+            <div class="skeleton-demo-unit skeleton-demo-unit--r12"></div>
+            <div class="skeleton-demo-unit skeleton-demo-unit--r16"></div>
+            <div class="skeleton-demo-unit skeleton-demo-unit--r24"></div>
+            <div class="skeleton-demo-unit skeleton-demo-unit--circle"></div>
+          </div>
         </div>
         <div class="skeleton-loading-card" id="skeleton-loading-card">
           <div class="skeleton-placeholder" id="skeleton-placeholder">
             <div class="skeleton-row">
-              <div class="skeleton-demo-unit skeleton-demo-unit--circle"></div>
+              <div class="skeleton-demo-unit skeleton-demo-unit--circle" style="width:40px;height:40px;"></div>
               <div class="skeleton-col">
-                <div class="skeleton-demo-unit" style="height:14px;width:72%;"></div>
-                <div class="skeleton-demo-unit" style="height:12px;width:48%;"></div>
+                <div class="skeleton-demo-unit" style="width:72%;height:14px;border-radius:8px;"></div>
+                <div class="skeleton-demo-unit" style="width:48%;height:12px;border-radius:8px;"></div>
               </div>
             </div>
             <div class="skeleton-demo-unit skeleton-demo-unit--card"></div>
             <div class="skeleton-row">
-              <div class="skeleton-demo-unit" style="height:12px;width:44%;"></div>
-              <div class="skeleton-demo-unit" style="height:12px;width:28%;"></div>
+              <div class="skeleton-demo-unit" style="width:44%;height:12px;border-radius:8px;"></div>
+              <div class="skeleton-demo-unit" style="width:28%;height:12px;border-radius:8px;"></div>
             </div>
           </div>
           <div class="skeleton-content" id="skeleton-content">
@@ -10503,9 +10533,9 @@
         <table class="spec-table">
           <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
           <tbody>
-            <tr><td>API</td><td>shape(line|circle|card), size, animated</td></tr>
+            <tr><td>API</td><td>borderRadius(4/8/12/16/24/circle), animated</td></tr>
             <tr><td>Поведение</td><td>shimmer/pulse, stop animation когда контент готов</td></tr>
-            <tr><td>Layout</td><td>размеры совпадают с целевым контентом</td></tr>
+            <tr><td>Layout</td><td>базовый skeleton: 96×96; shape через radius токены</td></tr>
             <tr><td>A11y</td><td>считать декоративным, скрывать от screen reader</td></tr>
             <tr><td>Flutter</td><td>ShaderMask/AnimatedContainer или пакет skeletonizer</td></tr>
           </tbody>
@@ -10901,9 +10931,7 @@
                 <textarea class="message-input-control" id="message-input-control" rows="1" placeholder="Сообщение"></textarea>
               </div>
               <button type="button" class="message-input-send" id="message-input-send" aria-label="Отправить сообщение">
-                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                  <path d="M14.2 2.2L7.15 13.8L5.8 9.55L1.55 8.2L13.2 1.15C13.63 0.89 14.11 1.37 13.85 1.8L14.2 2.2Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <img src="send.svg" alt="" aria-hidden="true">
               </button>
             </div>
           </div>
@@ -12448,10 +12476,8 @@
       updateSelectDemo(false);
     });
     document.addEventListener("DOMContentLoaded", function () {
-      var skeletonShape = document.getElementById("skeleton-shape");
-      var skeletonSize = document.getElementById("skeleton-size");
       var skeletonAnimated = document.getElementById("skeleton-animated");
-      var skeletonUnit = document.getElementById("skeleton-demo-unit");
+      var skeletonDoc = document.querySelector("#section-skeleton .skeleton-doc");
       var skeletonCard = document.getElementById("skeleton-loading-card");
       var skeletonPlaceholder = document.getElementById("skeleton-placeholder");
       var skeletonContent = document.getElementById("skeleton-content");
@@ -12459,53 +12485,17 @@
       var loadingTimer = null;
 
       function applySkeletonControls(animate) {
-        if (!skeletonUnit) return;
-        var shape = (skeletonShape && skeletonShape.value) || "line";
-        var size = (skeletonSize && skeletonSize.value) || "m";
+        if (!skeletonDoc) return;
         var animated = ((skeletonAnimated && skeletonAnimated.value) || "yes") === "yes";
+        skeletonDoc.classList.toggle("skeleton-doc--animated", animated);
 
-        var sizeMap = {
-          m: { line: { w: 200, h: 16, r: 8 }, circle: 40, card: { h: 88 } },
-          s: { line: { w: 160, h: 14, r: 8 }, circle: 32, card: { h: 72 } },
-          xs: { line: { w: 120, h: 12, r: 6 }, circle: 24, card: { h: 56 } }
-        };
-        var conf = sizeMap[size] || sizeMap.m;
-
-        skeletonUnit.className = "skeleton-demo-unit";
-        if (shape === "circle") {
-          skeletonUnit.classList.add("skeleton-demo-unit--circle");
-          skeletonUnit.style.setProperty("--skeleton-circle", conf.circle + "px");
-          skeletonUnit.style.removeProperty("--skeleton-width");
-          skeletonUnit.style.removeProperty("--skeleton-height");
-          skeletonUnit.style.removeProperty("--skeleton-radius");
-        } else if (shape === "card") {
-          skeletonUnit.classList.add("skeleton-demo-unit--card");
-          skeletonUnit.style.setProperty("height", conf.card.h + "px");
-          skeletonUnit.style.removeProperty("--skeleton-width");
-          skeletonUnit.style.removeProperty("--skeleton-height");
-          skeletonUnit.style.removeProperty("--skeleton-radius");
-        } else {
-          skeletonUnit.style.removeProperty("height");
-          skeletonUnit.style.setProperty("--skeleton-width", conf.line.w + "px");
-          skeletonUnit.style.setProperty("--skeleton-height", conf.line.h + "px");
-          skeletonUnit.style.setProperty("--skeleton-radius", conf.line.r + "px");
-        }
-
-        skeletonUnit.classList.toggle("skeleton-demo-unit--paused", !animated);
-
-        if (skeletonCard) {
-          skeletonCard.querySelectorAll(".skeleton-demo-unit").forEach(function (el) {
-            el.classList.toggle("skeleton-demo-unit--paused", !animated);
-          });
-        }
-
-        if (animate && skeletonUnit) {
-          skeletonUnit.style.transform = "translateY(2px)";
-          skeletonUnit.style.opacity = "0.7";
+        if (animate && skeletonDoc) {
+          skeletonDoc.style.transform = "translateY(2px)";
+          skeletonDoc.style.opacity = "0.7";
           setTimeout(function () {
-            if (!skeletonUnit) return;
-            skeletonUnit.style.transform = "";
-            skeletonUnit.style.opacity = "";
+            if (!skeletonDoc) return;
+            skeletonDoc.style.transform = "";
+            skeletonDoc.style.opacity = "";
           }, 160);
         }
       }
@@ -12521,8 +12511,6 @@
         }, 2000);
       }
 
-      if (skeletonShape) skeletonShape.addEventListener("change", function () { applySkeletonControls(true); });
-      if (skeletonSize) skeletonSize.addEventListener("change", function () { applySkeletonControls(true); });
       if (skeletonAnimated) skeletonAnimated.addEventListener("change", function () { applySkeletonControls(true); });
       if (skeletonReloadBtn) skeletonReloadBtn.addEventListener("click", runSkeletonLoading);
       document.addEventListener("storybook-theme-change", function () { applySkeletonControls(false); });

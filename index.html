@@ -1994,6 +1994,10 @@
       border-color: #E2E2E2;
     }
 
+    .search-demo--disabled .search-demo-filter {
+      display: none;
+    }
+
     .search-demo-icon {
       width: 20px;
       height: 20px;
@@ -12177,23 +12181,51 @@
     document.addEventListener("DOMContentLoaded", function () {
       var searchDemo = document.getElementById("search-demo");
       var searchInput = document.getElementById("search-input");
+      var searchFilled = document.getElementById("search-filled");
+      var searchSize = document.getElementById("search-size");
       var searchIconVariant = document.getElementById("search-icon-variant");
       var searchState = document.getElementById("search-state");
       function updateSearchDemo() {
         if (!searchDemo) return;
+        var filled = (searchFilled && searchFilled.value) || "no";
+        var size = (searchSize && searchSize.value) || "m";
         var iconVariant = (searchIconVariant && searchIconVariant.value) || "brand";
         var state = (searchState && searchState.value) || "default";
         searchDemo.className = "search-demo";
+        searchDemo.classList.add("search-demo--size-" + size);
         searchDemo.classList.add("search-demo--icon-" + iconVariant);
+        if (filled === "yes") {
+          searchDemo.classList.add("search-demo--filled");
+        }
         if (state === "focused") {
           searchDemo.classList.add("search-demo--focused");
         } else if (state === "disabled") {
           searchDemo.classList.add("search-demo--disabled");
         }
         if (searchInput) {
+          var isFilled = filled === "yes";
+          if (state === "focused" && !isFilled) {
+            searchInput.value = "label";
+          } else {
+            searchInput.value = isFilled ? "content" : "";
+          }
+          searchInput.placeholder = "label";
           searchInput.disabled = state === "disabled";
+          searchInput.readOnly = state === "disabled";
+          if (state === "focused" && state !== "disabled") {
+            requestAnimationFrame(function () {
+              if (!searchInput) return;
+              searchInput.focus();
+              var caretPos = searchInput.value.length;
+              try { searchInput.setSelectionRange(caretPos, caretPos); } catch (e) {}
+            });
+          } else {
+            searchInput.blur();
+          }
         }
       }
+      if (searchFilled) searchFilled.addEventListener("change", updateSearchDemo);
+      if (searchSize) searchSize.addEventListener("change", updateSearchDemo);
       if (searchIconVariant) searchIconVariant.addEventListener("change", updateSearchDemo);
       if (searchState) searchState.addEventListener("change", updateSearchDemo);
       if (searchInput) {

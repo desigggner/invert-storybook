@@ -818,7 +818,7 @@
       border: 0;
       background: var(--bg-card);
       border-radius: 16px;
-      padding: 14px;
+      padding: 24px;
     }
 
     .intro-overview-icon {
@@ -869,7 +869,7 @@
       border: 0;
       background: var(--demo-bg);
       border-radius: 14px;
-      padding: 12px;
+      padding: 24px;
       min-height: 92px;
       display: flex;
       flex-direction: column;
@@ -890,20 +890,24 @@
     }
 
     .intro-quick-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       height: 32px;
       border-radius: 999px;
       border: none;
-      background: var(--demo-bg);
-      color: var(--text-primary);
+      background: #0DC267;
+      color: #ffffff;
       font-size: 13px;
       line-height: 18px;
       font-weight: 600;
       padding: 0 12px;
       cursor: pointer;
+      text-decoration: none;
     }
 
     .intro-quick-btn:hover {
-      background: var(--surface-card, #ffffff);
+      background: #0ab25f;
     }
 
     #section-intro .a11y-highlights,
@@ -941,7 +945,7 @@
       border: 0;
       background: var(--bg-card);
       border-radius: 16px;
-      padding: 14px;
+      padding: 24px;
     }
 
     #section-accessibility .a11y-card,
@@ -949,7 +953,7 @@
       border: 0;
       background: var(--demo-bg);
       border-radius: 14px;
-      padding: 12px;
+      padding: 24px;
     }
 
     #section-accessibility .a11y-example--good,
@@ -5623,6 +5627,12 @@
       gap: 16px;
     }
 
+    .icons-load-sentinel {
+      margin-top: 10px;
+      min-height: 1px;
+      width: 100%;
+    }
+
     .icon-item {
       border-radius: 24px;
       background: var(--surface-card, #ffffff);
@@ -6979,7 +6989,6 @@
     </div>
     <div class="content-scroll search-hidden" id="detail-scroll">
     <section class="intro-block" id="section-intro">
-      <h2>Введение</h2>
 
       <div class="a11y-subsection" style="margin-bottom:12px;">
         <div class="intro-overview-icon" aria-hidden="true">
@@ -6992,9 +7001,8 @@
           чтобы команда могла создавать единый, понятный и предсказуемый пользовательский опыт.
         </p>
         <div class="intro-quick-actions">
-          <button type="button" class="intro-quick-btn" data-tab-target="components">Flow</button>
-          <button type="button" class="intro-quick-btn" data-tab-target="basics">Дизайн-система</button>
-          <button type="button" class="intro-quick-btn" data-tab-target="icons">Иконки</button>
+          <a class="intro-quick-btn" href="https://www.figma.com/design/aHT592FnfHz2cuSqO9a0iU/Invert-Design-System?node-id=15-18522&t=3LMucjS3OzpWaFMD-1" target="_blank" rel="noopener noreferrer">Flow</a>
+          <a class="intro-quick-btn" href="https://www.figma.com/design/aHT592FnfHz2cuSqO9a0iU/Invert-Design-System?node-id=0-1&t=3LMucjS3OzpWaFMD-1" target="_blank" rel="noopener noreferrer">Дизайн-система</a>
         </div>
         <div class="a11y-mini-row">
           <span class="a11y-chip">Базовые стили</span>
@@ -7330,6 +7338,7 @@
     <section id="section-icons">
       <h2>Icons</h2>
       <div class="icons-grid" id="icons-grid"></div>
+      <div class="icons-load-sentinel search-hidden" id="icons-load-sentinel" aria-hidden="true"></div>
     </section>
     <section id="section-palette">
       <h2>Palette page</h2>
@@ -14385,10 +14394,14 @@
       var detailTitle = document.getElementById("detail-title");
       var detailBackBtn = document.getElementById("detail-back-btn");
       var iconsGrid = document.getElementById("icons-grid");
+      var iconsLoadSentinel = document.getElementById("icons-load-sentinel");
       var activeHubTab = "intro";
       var hubItems = [];
       var allIcons = Array.isArray(window.INVERT_ICONS) ? window.INVERT_ICONS.slice() : [];
       var renderedIcons = [];
+      var renderedIconsCount = 0;
+      var iconsPageSize = 120;
+      var iconsLoadObserver = null;
       var sectionCategories = {
         "section-intro": "intro",
         "section-accessibility": "accessibility",
@@ -14422,6 +14435,109 @@
         return filename.replace(/\.svg$/i, "");
       }
 
+      function getIconCardMarkup(filename) {
+        var defaultSize = "32";
+        var iconName = getIconName(filename);
+        var safeName = escapeHtml(iconName);
+        var safeFile = escapeHtml(filename);
+        var safePath = "icons/" + safeFile;
+        return (
+          '<article class="icon-item">' +
+            '<p class="icon-name">' + safeName + '</p>' +
+            '<div class="icon-preview">' +
+              '<img class="icon-preview-img" src="' + safePath + '" alt="' + safeName + '" loading="lazy" style="width:' + defaultSize + 'px;height:' + defaultSize + 'px;">' +
+            '</div>' +
+            '<div class="icon-controls">' +
+              '<select class="icon-size-select" aria-label="Размер иконки">' +
+                '<option value="32" selected>32 px</option>' +
+                '<option value="24">24 px</option>' +
+                '<option value="20">20 px</option>' +
+                '<option value="16">16 px</option>' +
+              '</select>' +
+              '<button type="button" class="icon-download" data-href="' + safePath + '" data-filename="' + safeFile + '" aria-label="Скачать ' + safeName + '">' +
+                '<img src="icon-download.svg" alt="">' +
+              '</button>' +
+            '</div>' +
+          '</article>'
+        );
+      }
+
+      function updateIconsLoadSentinel() {
+        if (!iconsLoadSentinel) return;
+        var hasMore = renderedIconsCount < renderedIcons.length;
+        iconsLoadSentinel.classList.toggle("search-hidden", !hasMore);
+      }
+
+      function themeIconColorHex() {
+        return document.documentElement.getAttribute("data-theme") === "dark" ? "#FFFFFF" : "#000000";
+      }
+
+      function applyIconColorForDownload(svgText, colorHex, sizePx) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(svgText, "image/svg+xml");
+        var svg = doc.documentElement;
+        if (!svg || svg.nodeName.toLowerCase() !== "svg") return svgText;
+
+        svg.setAttribute("width", String(sizePx));
+        svg.setAttribute("height", String(sizePx));
+        svg.setAttribute("color", colorHex);
+
+        var nodes = svg.querySelectorAll("*");
+        nodes.forEach(function (node) {
+          var fill = node.getAttribute("fill");
+          if (fill && fill.toLowerCase() !== "none") {
+            node.setAttribute("fill", colorHex);
+          }
+          var stroke = node.getAttribute("stroke");
+          if (stroke && stroke.toLowerCase() !== "none") {
+            node.setAttribute("stroke", colorHex);
+          }
+          var style = node.getAttribute("style");
+          if (style) {
+            var nextStyle = style
+              .replace(/fill\s*:\s*(?!none\b)[^;]+/gi, "fill:" + colorHex)
+              .replace(/stroke\s*:\s*(?!none\b)[^;]+/gi, "stroke:" + colorHex);
+            node.setAttribute("style", nextStyle);
+          }
+        });
+
+        var serializer = new XMLSerializer();
+        return serializer.serializeToString(svg);
+      }
+
+      function triggerFileDownloadFromBlob(blob, filename) {
+        var blobUrl = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(blobUrl); }, 1500);
+      }
+
+      function triggerDirectDownload(href, filename) {
+        var a = document.createElement("a");
+        a.href = href;
+        a.download = filename;
+        a.rel = "noopener";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+
+      function appendIconsBatch() {
+        if (!iconsGrid) return;
+        if (renderedIconsCount >= renderedIcons.length) {
+          updateIconsLoadSentinel();
+          return;
+        }
+        var nextSlice = renderedIcons.slice(renderedIconsCount, renderedIconsCount + iconsPageSize);
+        renderedIconsCount += nextSlice.length;
+        iconsGrid.insertAdjacentHTML("beforeend", nextSlice.map(getIconCardMarkup).join(""));
+        updateIconsLoadSentinel();
+      }
+
       function getSearchContextText(tab) {
         if (tab === "basics") return "Поиск по основам";
         if (tab === "components") return "Поиск по компонентам";
@@ -14439,38 +14555,17 @@
       function renderIconsCatalog(query) {
         if (!iconsGrid) return;
         var q = (query || "").trim().toLowerCase();
-        var defaultSize = "32";
         renderedIcons = allIcons.filter(function (filename) {
           return !q || getIconName(filename).toLowerCase().indexOf(q) !== -1;
         });
-        iconsGrid.innerHTML = renderedIcons.map(function (filename) {
-          var iconName = getIconName(filename);
-          var safeName = escapeHtml(iconName);
-          var safeFile = escapeHtml(filename);
-          var safePath = "icons/" + safeFile;
-          return (
-            '<article class="icon-item">' +
-              '<p class="icon-name">' + safeName + '</p>' +
-              '<div class="icon-preview">' +
-                '<img class="icon-preview-img" src="' + safePath + '" alt="' + safeName + '" loading="lazy" style="width:' + defaultSize + 'px;height:' + defaultSize + 'px;">' +
-              '</div>' +
-              '<div class="icon-controls">' +
-                '<select class="icon-size-select" aria-label="Размер иконки">' +
-                  '<option value="32" selected>32 px</option>' +
-                  '<option value="24">24 px</option>' +
-                  '<option value="20">20 px</option>' +
-                  '<option value="16">16 px</option>' +
-                '</select>' +
-                '<a class="icon-download" href="' + safePath + '" download="' + safeFile + '" aria-label="Скачать ' + safeName + '">' +
-                  '<img src="icon-download.svg" alt="">' +
-                '</a>' +
-              '</div>' +
-            '</article>'
-          );
-        }).join("");
+        renderedIconsCount = 0;
+        iconsGrid.innerHTML = "";
         if (!renderedIcons.length) {
           iconsGrid.innerHTML = '<article class="icon-item"><p class="icon-name">Иконки не найдены</p></article>';
+          updateIconsLoadSentinel();
+          return;
         }
+        appendIconsBatch();
       }
 
       function getPreviewMarkup(item) {
@@ -14699,6 +14794,30 @@
       }
 
       if (iconsGrid) {
+        if ("IntersectionObserver" in window && iconsLoadSentinel) {
+          iconsLoadObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              if (!document.body.classList.contains("detail-root-mode")) return;
+              if (window.location.hash !== "#section-icons") return;
+              appendIconsBatch();
+            });
+          }, {
+            root: null,
+            rootMargin: "640px 0px 640px 0px",
+            threshold: 0.01
+          });
+          iconsLoadObserver.observe(iconsLoadSentinel);
+        } else {
+          window.addEventListener("scroll", function () {
+            if (!document.body.classList.contains("detail-root-mode")) return;
+            if (window.location.hash !== "#section-icons") return;
+            if (!iconsLoadSentinel || iconsLoadSentinel.classList.contains("search-hidden")) return;
+            var rect = iconsLoadSentinel.getBoundingClientRect();
+            if (rect.top <= window.innerHeight + 640) appendIconsBatch();
+          }, { passive: true });
+        }
+
         iconsGrid.addEventListener("change", function (event) {
           var target = event.target;
           if (!(target instanceof HTMLSelectElement)) return;
@@ -14716,25 +14835,44 @@
           var target = event.target;
           if (!(target instanceof Element)) return;
           var link = target.closest(".icon-download");
-          if (!(link instanceof HTMLAnchorElement)) return;
-          event.preventDefault();
-          var href = link.getAttribute("href");
+          if (!(link instanceof HTMLButtonElement)) return;
+          var href = link.getAttribute("data-href");
           if (!href) return;
-          var filename = link.getAttribute("download") || (href.split("/").pop() || "icon.svg");
+          var filename = link.getAttribute("data-filename") || (href.split("/").pop() || "icon.svg");
+          var card = link.closest(".icon-item");
+          var sizeSelect = card ? card.querySelector(".icon-size-select") : null;
+          var size = parseInt(sizeSelect && sizeSelect.value ? sizeSelect.value : "32", 10);
+          var exportSize = isNaN(size) ? 32 : size;
+          var exportColor = themeIconColorHex();
           fetch(href).then(function (res) {
             if (!res.ok) throw new Error("download-failed");
-            return res.blob();
-          }).then(function (blob) {
-            var blobUrl = URL.createObjectURL(blob);
-            var a = document.createElement("a");
-            a.href = blobUrl;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            setTimeout(function () { URL.revokeObjectURL(blobUrl); }, 1500);
+            return res.text();
+          }).then(function (svgText) {
+            var preparedSvg = applyIconColorForDownload(svgText, exportColor, exportSize);
+            var blob = new Blob([preparedSvg], { type: "image/svg+xml;charset=utf-8" });
+            triggerFileDownloadFromBlob(blob, filename);
           }).catch(function () {
-            // Не открываем SVG во вкладке, если загрузка не удалась.
+            try {
+              var xhr = new XMLHttpRequest();
+              xhr.open("GET", href, false);
+              xhr.send(null);
+              if (((xhr.status >= 200 && xhr.status < 300) || xhr.status === 0) && xhr.responseText) {
+                var fallbackPrepared = applyIconColorForDownload(xhr.responseText, exportColor, exportSize);
+                var fallbackBlob = new Blob([fallbackPrepared], { type: "image/svg+xml;charset=utf-8" });
+                triggerFileDownloadFromBlob(fallbackBlob, filename);
+                return;
+              }
+            } catch (e) {
+              // ignore and use direct fallback
+            }
+            fetch(href).then(function (res) {
+              if (!res.ok) throw new Error("download-failed-fallback");
+              return res.blob();
+            }).then(function (blob) {
+              triggerFileDownloadFromBlob(blob, filename);
+            }).catch(function () {
+              // fail silently to avoid opening icon in a new page
+            });
           });
         });
       }

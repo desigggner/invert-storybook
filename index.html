@@ -613,6 +613,406 @@
       line-height: 1.5;
     }
 
+    .a11y-page {
+      display: grid;
+      gap: 16px;
+    }
+
+    .a11y-anchor-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .a11y-anchor {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--spec-border);
+      background: var(--demo-bg);
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 500;
+    }
+
+    .a11y-hero {
+      border: 1px solid var(--spec-border);
+      border-radius: 20px;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(13, 194, 103, 0.07) 0%, rgba(13, 194, 103, 0.02) 100%);
+    }
+
+    .a11y-hero h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 28px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .a11y-hero p {
+      margin: 0;
+      max-width: 820px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .a11y-highlights,
+    .a11y-grid,
+    .a11y-compare,
+    .a11y-checklist-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .a11y-highlights {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .a11y-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .a11y-card {
+      border: 1px solid var(--spec-border);
+      border-radius: 16px;
+      padding: 14px;
+      background: var(--demo-bg);
+    }
+
+    .a11y-card h4 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .a11y-card p {
+      margin: 0;
+      max-width: none;
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 18px;
+    }
+
+    .a11y-subsection {
+      border: 1px solid var(--spec-border);
+      border-radius: 20px;
+      padding: 16px;
+      background: var(--bg-card);
+    }
+
+    .a11y-subsection h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .a11y-subsection > p {
+      margin: 0 0 12px;
+      max-width: 860px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .a11y-compare {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .a11y-example {
+      border-radius: 14px;
+      padding: 12px;
+      border: 1px solid var(--spec-border);
+      background: var(--demo-bg);
+    }
+
+    .a11y-example h5 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .a11y-example ul,
+    .a11y-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 18px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .a11y-example--good {
+      border-color: rgba(13, 194, 103, 0.5);
+      background: rgba(13, 194, 103, 0.08);
+    }
+
+    .a11y-example--bad {
+      border-color: rgba(255, 77, 58, 0.45);
+      background: rgba(255, 77, 58, 0.08);
+    }
+
+    .a11y-checklist-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .a11y-mini-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      color: var(--text-secondary);
+      font-size: 12px;
+      line-height: 16px;
+      flex-wrap: wrap;
+    }
+
+    .a11y-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 24px;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid var(--spec-border);
+      background: var(--bg-card);
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .a11y-chip--ok {
+      border-color: rgba(13, 194, 103, 0.55);
+      color: #0DC267;
+    }
+
+    .a11y-chip--warn {
+      border-color: rgba(247, 208, 68, 0.55);
+      color: #D9A900;
+    }
+
+    .a11y-chip--danger {
+      border-color: rgba(255, 77, 58, 0.55);
+      color: #FF4D3A;
+    }
+
+    #section-intro {
+      padding: 24px 0;
+      background: transparent;
+      border-radius: 0;
+    }
+
+    #section-intro .a11y-subsection {
+      border: 0;
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .intro-overview-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      margin: 0 0 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(245, 245, 245, 0.86));
+      box-shadow: 0 10px 24px rgba(24, 24, 24, 0.14), 0 1px 0 rgba(255, 255, 255, 0.55) inset;
+      transform-style: preserve-3d;
+      animation: intro-icon-3d 4.8s ease-in-out infinite;
+    }
+
+    .intro-overview-icon img {
+      width: 34px;
+      height: 34px;
+      display: block;
+      transform: translateZ(12px);
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+    }
+
+    [data-theme="dark"] .intro-overview-icon {
+      background: linear-gradient(150deg, rgba(30, 32, 36, 0.96), rgba(18, 19, 22, 0.9));
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.44), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+    }
+
+    @keyframes intro-icon-3d {
+      0%, 100% { transform: perspective(420px) rotateX(0deg) rotateY(0deg) translateY(0px); }
+      25% { transform: perspective(420px) rotateX(6deg) rotateY(-8deg) translateY(-2px); }
+      50% { transform: perspective(420px) rotateX(-4deg) rotateY(9deg) translateY(1px); }
+      75% { transform: perspective(420px) rotateX(5deg) rotateY(4deg) translateY(-1px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .intro-overview-icon {
+        animation: none;
+      }
+    }
+
+    #section-intro .a11y-subsection + .a11y-subsection {
+      margin-top: 12px;
+    }
+
+    #section-intro .a11y-card {
+      border: 0;
+      background: var(--demo-bg);
+      border-radius: 14px;
+      padding: 12px;
+      min-height: 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 6px;
+    }
+
+    #section-intro .a11y-chip {
+      border: 0;
+      background: var(--bg-card);
+    }
+
+    #section-intro .a11y-highlights,
+    #section-intro .a11y-grid {
+      gap: 10px;
+    }
+
+    #section-intro .a11y-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    #section-intro .a11y-highlights {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    #section-accessibility {
+      padding: 24px 0;
+      background: transparent;
+      border-radius: 0;
+    }
+
+    #section-accessibility .a11y-page {
+      gap: 12px;
+    }
+
+    #section-accessibility .a11y-anchor {
+      border: 0;
+      background: var(--bg-card);
+    }
+
+    #section-accessibility .a11y-hero,
+    #section-accessibility .a11y-subsection {
+      border: 0;
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    #section-accessibility .a11y-card,
+    #section-accessibility .a11y-example {
+      border: 0;
+      background: var(--demo-bg);
+      border-radius: 14px;
+      padding: 12px;
+    }
+
+    #section-accessibility .a11y-example--good,
+    #section-accessibility .a11y-example--bad {
+      border: 0;
+      background: var(--demo-bg);
+    }
+
+    #section-accessibility .a11y-chip {
+      border: 0;
+      background: var(--bg-card);
+    }
+
+    #section-accessibility .a11y-highlights,
+    #section-accessibility .a11y-grid,
+    #section-accessibility .a11y-compare,
+    #section-accessibility .a11y-checklist-grid {
+      gap: 10px;
+    }
+
+    #section-accessibility .a11y-subsection + .a11y-subsection {
+      margin-top: 12px;
+    }
+
+    @media (max-width: 1080px) {
+      #section-intro .a11y-highlights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #section-intro .a11y-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #section-accessibility .a11y-highlights,
+      #section-accessibility .a11y-grid,
+      #section-accessibility .a11y-compare,
+      #section-accessibility .a11y-checklist-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      #section-intro {
+        padding: 16px 0;
+      }
+
+      #section-accessibility {
+        padding: 16px 0;
+      }
+
+      #section-intro .a11y-highlights,
+      #section-intro .a11y-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      #section-accessibility .a11y-highlights,
+      #section-accessibility .a11y-grid,
+      #section-accessibility .a11y-compare,
+      #section-accessibility .a11y-checklist-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .a11y-highlights,
+      .a11y-checklist-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .a11y-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .a11y-highlights,
+      .a11y-grid,
+      .a11y-compare,
+      .a11y-checklist-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .a11y-subsection {
+        padding: 14px;
+      }
+    }
+
     h2 {
       margin-top: 32px;
       margin-bottom: 12px;
@@ -5062,9 +5462,9 @@
 
     .content-top-bar {
       position: static;
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
-      justify-content: space-between;
       gap: 16px;
       margin-bottom: 24px;
       pointer-events: auto;
@@ -5077,17 +5477,18 @@
       align-items: center;
       gap: 8px;
       flex-wrap: wrap;
+      min-width: 0;
     }
 
     .hub-tab {
-      min-height: 44px;
+      min-height: 56px;
       border-radius: 999px;
       border: none;
-      padding: 10px 18px;
+      padding: 0 20px;
       background: var(--surface-card, #ffffff);
       color: var(--text-secondary);
       font-size: 14px;
-      line-height: 20px;
+      line-height: 22px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -5114,13 +5515,14 @@
       gap: 12px;
       min-width: 420px;
       justify-content: flex-end;
+      justify-self: end;
     }
 
     .hub-tools .search-wrap {
       max-width: none;
       width: 330px;
-      padding: 0 12px;
-      min-height: 44px;
+      padding: 0 16px;
+      min-height: 56px;
       border-radius: 999px;
       background: var(--surface-card, #ffffff);
       border: none;
@@ -5131,7 +5533,7 @@
 
     .hub-tools .search-input {
       height: 100%;
-      padding: 0 0 0 28px;
+      padding: 0 0 0 32px;
       border: none;
       border-radius: 0;
       background-color: transparent;
@@ -5150,40 +5552,51 @@
     }
 
     .theme-toggle {
-      min-height: 44px;
-      width: 200px;
-      padding: 10px 52px 10px 12px;
+      min-height: 56px;
+      width: 236px;
+      padding: 12px 88px 12px 16px;
       background: var(--surface-card, #ffffff);
       color: var(--text-primary);
       font-size: 16px;
       line-height: 22px;
       font-weight: 400;
+      letter-spacing: -0.01em;
     }
 
     .theme-toggle::before {
-      width: 40px;
-      height: 24px;
+      width: 64px;
+      height: 28px;
       right: 12px;
-      background: rgba(60, 60, 67, 0.3);
+      border-radius: 999px;
+      background: rgba(120, 120, 128, 0.32);
+      transform: translateY(-50%);
     }
 
     .theme-toggle::after {
-      width: 24px;
+      width: 39px;
       height: 24px;
-      right: 28px;
+      right: 35px;
+      border-radius: 999px;
       background: #ffffff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+      transform: translateY(-50%);
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
     }
 
     [data-theme="dark"] .theme-toggle::before {
-      background: rgba(245, 245, 245, 0.22);
+      background: #34C759;
     }
 
     [data-theme="dark"] .theme-toggle::after {
       background: #ffffff;
+      transform: translate(21px, -50%);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
     }
 
     .theme-label {
       margin-right: 0;
+      font-size: 16px;
+      line-height: 24px;
     }
 
     .hub-overview {
@@ -5191,6 +5604,103 @@
       background: transparent !important;
       border-radius: 0 !important;
       padding: 0 !important;
+    }
+
+    .icons-catalog {
+      margin-top: 12px;
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 14px;
+    }
+
+    .icons-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .icons-count {
+      font-size: 13px;
+      line-height: 18px;
+      color: var(--text-secondary);
+    }
+
+    .icons-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .icon-item {
+      border-radius: 14px;
+      background: var(--demo-bg);
+      border: 1px solid var(--spec-border);
+      padding: 10px;
+      min-height: 126px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .icon-preview {
+      border-radius: 10px;
+      background: var(--surface-soft, rgba(0, 0, 0, 0.03));
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    [data-theme="dark"] .icon-preview {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .icon-preview img {
+      display: block;
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .icon-name {
+      margin: 0;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      word-break: break-word;
+      min-height: 32px;
+    }
+
+    .icon-actions {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .icon-download {
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid var(--spec-border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 600;
+      padding: 0 10px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-download:hover {
+      border-color: #0DC267;
+      color: #0DC267;
     }
 
     .hub-grid {
@@ -6053,8 +6563,8 @@
       display: none;
     }
 
-    .detail-mode .hub-tabs,
-    .detail-mode .hub-tools .search-wrap {
+    .detail-mode:not(.detail-root-mode) .hub-tabs,
+    .detail-mode:not(.detail-root-mode) .hub-tools .search-wrap {
       display: none;
     }
 
@@ -6083,6 +6593,7 @@
       }
 
       .content-top-bar {
+        display: flex;
         flex-direction: column;
         align-items: stretch;
       }
@@ -6098,6 +6609,10 @@
 
       .theme-toggle {
         width: auto;
+      }
+
+      .icons-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
     }
 
@@ -6163,6 +6678,14 @@
 
       .hub-tools .search-wrap {
         flex-shrink: 1;
+      }
+
+      .icons-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .icons-catalog {
+        padding: 12px;
       }
 
       .theme-toggle {
@@ -6350,11 +6873,11 @@
     </div>
     <div class="content-top-bar">
       <div class="hub-tabs" id="hub-tabs">
-        <button type="button" class="hub-tab active" data-tab="all">Все <span class="hub-tab-count" id="hub-count-all">0</span></button>
+        <button type="button" class="hub-tab active" data-tab="intro">Введение</button>
+        <button type="button" class="hub-tab" data-tab="basics">Основы <span class="hub-tab-count" id="hub-count-basics">0</span></button>
         <button type="button" class="hub-tab" data-tab="components">Компоненты <span class="hub-tab-count" id="hub-count-components">0</span></button>
-        <button type="button" class="hub-tab" data-tab="colors">Цвета <span class="hub-tab-count" id="hub-count-colors">0</span></button>
-        <button type="button" class="hub-tab" data-tab="tokens">Токены <span class="hub-tab-count" id="hub-count-tokens">0</span></button>
-        <button type="button" class="hub-tab" data-tab="radius">Радиусы <span class="hub-tab-count" id="hub-count-radius">0</span></button>
+        <button type="button" class="hub-tab" data-tab="accessibility">Доступность</button>
+        <button type="button" class="hub-tab" data-tab="icons">Иконки <span class="hub-tab-count" id="hub-count-icons">0</span></button>
       </div>
       <div class="hub-tools">
         <div class="search-wrap">
@@ -6375,38 +6898,364 @@
       <h1 class="detail-title" id="detail-title"></h1>
     </div>
     <div class="content-scroll search-hidden" id="detail-scroll">
-    <div class="intro-block" id="section-intro">
-      <h2>О чём этот сайт</h2>
-      <p>
-        Это документация дизайн‑системы Invert в виде мини‑сторибука:
-        один сайт, где собраны основы (цвета, типографика, отступы, радиусы) и компоненты интерфейса
-        с примерами и точными характеристиками.
-      </p>
-      <p><strong>Зачем он нужен</strong></p>
-      <ul>
-        <li>Единый референс для дизайнеров и разработчиков: как выглядят токены и компоненты, какие у них размеры, цвета и стили.</li>
-        <li>Быстрая проверка: открыл раздел — увидел палитру, типографику или кнопки без необходимости лезть в Figma.</li>
-        <li>Основа для внедрения: все значения (HEX, радиусы, отступы, шрифты) можно брать отсюда при вёрстке и в коде.</li>
-      </ul>
-      <p><strong>Как устроен сайт</strong></p>
-      <p>
-        В боковом меню — разделы по категориям. <strong>Colors</strong>: базовая палитра и семантические цвета (Day/Night).
-        <strong>Radius &amp; Spacing</strong>: токены скруглений и отступов. <strong>Typography</strong>: пресеты (h1, body, caption и др.)
-        и платформенные токены (Android, iOS). <strong>Components</strong>: Accordion, Bottom Sheet, Snackbar и варианты action bar —
-        у каждого блока есть живой пример и таблица характеристик (размеры, цвета, шрифты).
-      </p>
-      <p>
-        Используйте разделы как справочник: выбирайте нужный пункт в меню и ориентируйтесь на примеры и спецификации для переноса дизайна в продукт 1:1.
-      </p>
-      <div class="intro-links">
-        <div class="intro-links-title">Полезные ссылки</div>
-        <a class="intro-link-btn" href="https://www.figma.com/design/aHT592FnfHz2cuSqO9a0iU/Invert-Design-System?node-id=15-18522&t=44Y7IOurrTozRDwU-1" target="_blank" rel="noopener noreferrer">Флоу</a>
-        <a class="intro-link-btn" href="https://www.figma.com/design/aHT592FnfHz2cuSqO9a0iU/Invert-Design-System" target="_blank" rel="noopener noreferrer">Дизайн‑система</a>
-        <a class="intro-link-btn" href="https://www.figma.com/design/Cf7LVRyjgftxuUtH4XkIXW/Phosphor-Icons--Community---Copy-?m=auto&t=p4u24k5Lbizre1Uo-6" target="_blank" rel="noopener noreferrer">Иконки</a>
+    <section class="intro-block" id="section-intro">
+      <h2>Введение</h2>
+
+      <div class="a11y-subsection" style="margin-bottom:12px;">
+        <div class="intro-overview-icon" aria-hidden="true">
+          <img src="frame-28.svg" alt="">
+        </div>
+        <h3 style="margin-top:0;">Обзор</h3>
+        <p>
+          Invert — это дизайн-система для разработки мобильных интерфейсов.
+          Она объединяет правила интерфейса, визуальные стили и набор компонентов,
+          чтобы команда могла создавать единый, понятный и предсказуемый пользовательский опыт.
+        </p>
+        <div class="a11y-mini-row">
+          <span class="a11y-chip">Базовые стили</span>
+          <span class="a11y-chip">UI-компоненты</span>
+          <span class="a11y-chip">Паттерны</span>
+          <span class="a11y-chip">Доступность</span>
+          <span class="a11y-chip">Рекомендации</span>
+        </div>
+        <ul class="a11y-list" style="margin-top:10px;">
+          <li>Ускоряет разработку интерфейсов.</li>
+          <li>Помогает держать единый стиль продукта.</li>
+          <li>Снижает количество ошибок в дизайне и разработке.</li>
+          <li>Упрощает масштабирование продукта.</li>
+        </ul>
       </div>
-    </div>
+
+      <div class="a11y-subsection" style="margin-bottom:12px;">
+        <h3 style="margin-top:0;">Принципы</h3>
+        <div class="a11y-grid">
+          <article class="a11y-card"><h4>Простота</h4><p>Интерфейс понятный и не перегруженный. Пользователь быстро видит, что можно сделать дальше.</p></article>
+          <article class="a11y-card"><h4>Предсказуемость</h4><p>Компоненты и паттерны ведут себя одинаково во всех частях продукта.</p></article>
+          <article class="a11y-card"><h4>Иерархия</h4><p>Важные действия и блоки визуально выделяются и легко считываются.</p></article>
+          <article class="a11y-card"><h4>Доступность</h4><p>Интерфейсы остаются читаемыми, контрастными и удобными для всех пользователей.</p></article>
+          <article class="a11y-card"><h4>Консистентность</h4><p>Одинаковые задачи решаются одинаковыми элементами интерфейса.</p></article>
+        </div>
+      </div>
+
+      <div class="a11y-subsection">
+        <h3 style="margin-top:0;">Как пользоваться системой</h3>
+        <p>Документация разделена на понятные разделы. Используйте её как практический справочник при проектировании и разработке.</p>
+        <div class="a11y-highlights">
+          <article class="a11y-card"><h4>Основы</h4><p>Цвета, типографика, отступы и скругления.</p></article>
+          <article class="a11y-card"><h4>Компоненты</h4><p>Переиспользуемые элементы: кнопки, поля, карточки и другие блоки.</p></article>
+          <article class="a11y-card"><h4>Паттерны</h4><p>Готовые интерфейсные решения для типовых пользовательских сценариев.</p></article>
+          <article class="a11y-card"><h4>Доступность</h4><p>Правила, которые помогают делать интерфейсы удобными и понятными для всех.</p></article>
+        </div>
+      </div>
+      </section>
+    <section id="section-accessibility">
+      <h2>Accessibility</h2>
+      <p class="note">
+        Mobile-only гайд для Invert: как проектировать и реализовывать доступные интерфейсы приложения без потери визуального качества и продуктовой скорости.
+      </p>
+      <div class="a11y-page">
+        <div class="a11y-anchor-row">
+          <a class="a11y-anchor" href="#a11y-hero">Intro</a>
+          <a class="a11y-anchor" href="#a11y-principles">Principles</a>
+          <a class="a11y-anchor" href="#a11y-hierarchy">Hierarchy</a>
+          <a class="a11y-anchor" href="#a11y-contrast">Contrast</a>
+          <a class="a11y-anchor" href="#a11y-typography">Typography</a>
+          <a class="a11y-anchor" href="#a11y-touch">Touch</a>
+          <a class="a11y-anchor" href="#a11y-assistive">Assistive</a>
+          <a class="a11y-anchor" href="#a11y-labels">Labels</a>
+          <a class="a11y-anchor" href="#a11y-images">Images</a>
+          <a class="a11y-anchor" href="#a11y-forms">Forms</a>
+          <a class="a11y-anchor" href="#a11y-motion">Motion</a>
+          <a class="a11y-anchor" href="#a11y-checklist">Checklist</a>
+        </div>
+
+        <div class="a11y-hero" id="a11y-hero">
+          <h3>Accessibility</h3>
+          <p>Этот раздел задаёт мобильные принципы доступности для компонентов и паттернов Invert: читаемость, понятное взаимодействие, контраст и удобные touch-цели в light/dark темах.</p>
+        </div>
+
+        <div class="a11y-highlights">
+          <article class="a11y-card"><h4>Readable content</h4><p>Текст и структура экрана должны быть читаемыми без зума и повторного сканирования интерфейса.</p></article>
+          <article class="a11y-card"><h4>Clear interaction</h4><p>Каждое действие понятно по подписи, состоянию и ожидаемому результату на мобильном экране.</p></article>
+          <article class="a11y-card"><h4>Sufficient contrast</h4><p>Текст, иконки и контролы сохраняют различимость в обоих темах и разных условиях освещения.</p></article>
+          <article class="a11y-card"><h4>Accessible touch targets</h4><p>Нажатия не требуют точного прицеливания: зона касания и отступы безопасны для пальца.</p></article>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-principles">
+          <h3>Core principles</h3>
+          <p>Единая база для дизайна и разработки мобильного UI в Invert.</p>
+          <div class="a11y-grid">
+            <article class="a11y-card"><h4>Clarity</h4><p>Смысл экрана считывается за секунды. Пользователь понимает что можно сделать прямо сейчас.</p></article>
+            <article class="a11y-card"><h4>Readability</h4><p>Размеры текста и интервалы комфортны для чтения в движении. Критичные подписи не уходят в мелкий кегль.</p></article>
+            <article class="a11y-card"><h4>Contrast</h4><p>Ключевые элементы заметны на фоне, а статусы не теряются при смене темы.</p></article>
+            <article class="a11y-card"><h4>Touch comfort</h4><p>Кнопки и интерактивные элементы доступны без ошибочных нажатий в плотных сценариях.</p></article>
+            <article class="a11y-card"><h4>Predictable behavior</h4><p>Одинаковые действия ведут к одинаковому результату: состояния и переходы консистентны.</p></article>
+            <article class="a11y-card"><h4>Assistive support</h4><p>Экран можно пройти ассистивными технологиями без потери контекста и состояния.</p></article>
+          </div>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-hierarchy">
+          <h3>Visual hierarchy</h3>
+          <p>Разделяй primary и secondary действия, группируй связанные блоки и используй контраст/spacing для приоритета, чтобы не перегружать экран.</p>
+          <div class="a11y-compare">
+            <article class="a11y-example a11y-example--good">
+              <h5>Good</h5>
+              <ul>
+                <li>Primary CTA внизу экрана, secondary — текстовой кнопкой рядом.</li>
+                <li>Блоки «профиль», «платежи», «безопасность» разделены отступами.</li>
+                <li>Один доминирующий акцентный цвет на ключевом действии.</li>
+              </ul>
+            </article>
+            <article class="a11y-example a11y-example--bad">
+              <h5>Bad</h5>
+              <ul>
+                <li>Несколько одинаково ярких кнопок конкурируют за внимание.</li>
+                <li>Карточки сливаются: нет ритма и визуальных групп.</li>
+                <li>Критичные действия спрятаны среди второстепенных.</li>
+              </ul>
+            </article>
+          </div>
+          <ul class="a11y-list">
+            <li>Один экран — одна главная задача.</li>
+            <li>Secondary действия визуально спокойнее primary.</li>
+            <li>Сложные сценарии разбивай на шаги или секции.</li>
+          </ul>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-contrast">
+          <h3>Color and contrast</h3>
+          <p>В Invert контраст проверяется для текста, контролов и состояний в light/dark. Цвет не используется как единственный сигнал.</p>
+          <div class="a11y-compare">
+            <article class="a11y-example a11y-example--good">
+              <h5>Accessible examples</h5>
+              <ul>
+                <li>Body текст с устойчивым читаемым контрастом к фону.</li>
+                <li>Большой текст может иметь чуть мягче контраст, но остаётся читаемым.</li>
+                <li>Interactive контролы визуально различимы в default/pressed/disabled.</li>
+                <li>Success/Warning/Error используют semantic токены + текст статуса.</li>
+              </ul>
+              <div class="a11y-mini-row">
+                <span class="a11y-chip a11y-chip--ok">Success</span>
+                <span class="a11y-chip a11y-chip--warn">Warning</span>
+                <span class="a11y-chip a11y-chip--danger">Error</span>
+              </div>
+            </article>
+            <article class="a11y-example a11y-example--bad">
+              <h5>Inaccessible examples</h5>
+              <ul>
+                <li>Серый текст на близком сером фоне.</li>
+                <li>Disabled контрол пропадает и выглядит как «сломанный».</li>
+                <li>Ошибка отмечена только красной линией без текста причины.</li>
+              </ul>
+            </article>
+          </div>
+          <article class="a11y-card">
+            <h4>Contrast checklist</h4>
+            <ul class="a11y-list">
+              <li>Body текст: высокий и стабильный контраст.</li>
+              <li>Large текст: допускается ниже, но без потери читаемости.</li>
+              <li>Контролы: заметны как отдельные интерактивные объекты.</li>
+              <li>Disabled: понятен статус, а не «исчезновение» элемента.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-typography">
+          <h3>Typography and readability</h3>
+          <p>Базовый mobile-текст держи комфортным (обычно от 16px), line-height — свободным, а подписи/helper — читаемыми даже в плотных формах.</p>
+          <div class="a11y-compare">
+            <article class="a11y-example a11y-example--good">
+              <h5>Good text block</h5>
+              <ul>
+                <li>Body: 16px, line-height около 20–22.</li>
+                <li>Заголовки создают иерархию, а не декоративный шум.</li>
+                <li>Поддерживаются увеличенные системные размеры текста.</li>
+              </ul>
+            </article>
+            <article class="a11y-example a11y-example--bad">
+              <h5>Bad text block</h5>
+              <ul>
+                <li>Плотные абзацы без воздуха и длинные строки.</li>
+                <li>Caption используется для важного контента.</li>
+                <li>Иерархия заголовков смешана или случайна.</li>
+              </ul>
+            </article>
+          </div>
+          <ul class="a11y-list">
+            <li>Не прячь важные инструкции в helper/caption.</li>
+            <li>Избегай длинных «стен текста» на одном экране.</li>
+            <li>Проверяй читабельность на compact и large text settings.</li>
+          </ul>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-touch">
+          <h3>Touch targets and spacing</h3>
+          <p>Tap-цели должны быть достаточно крупными, а соседние действия — отделены. Видимый размер и touch-area могут отличаться, но действие должно быть надёжным.</p>
+          <div class="a11y-compare">
+            <article class="a11y-example a11y-example--good">
+              <h5>Good</h5>
+              <ul>
+                <li>Icon button имеет достаточную touch-область и понятную подпись.</li>
+                <li>Bottom sheet actions разделены интервалами.</li>
+                <li>Segmented control не требует «ювелирного» попадания.</li>
+                <li>Критичные действия дублируются кнопкой, не только жестом.</li>
+              </ul>
+            </article>
+            <article class="a11y-example a11y-example--bad">
+              <h5>Bad</h5>
+              <ul>
+                <li>Плотный toolbar с маленькими иконками вплотную.</li>
+                <li>Action row без вертикального ритма и безопасных отступов.</li>
+                <li>Удаление доступно только swipe-жестом.</li>
+              </ul>
+            </article>
+          </div>
+          <ul class="a11y-list">
+            <li>Размер touch area приоритетнее видимого пиктограммы.</li>
+            <li>Между интерактивными элементами нужен «воздух».</li>
+            <li>Icon-only элементы всегда должны иметь понятную цель.</li>
+          </ul>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-assistive">
+          <h3>Screen reader and assistive support</h3>
+          <p>Мобильный интерфейс должен иметь логичный порядок чтения и понятные имена контролов: Search button, Favorite toggle, Show/Hide password, Accordion, Tab bar item, Badge/counter.</p>
+          <ul class="a11y-list">
+            <li>Порядок чтения совпадает с визуальным потоком экрана.</li>
+            <li>Icon-only кнопки получают осмысленные названия действий.</li>
+            <li>Изменения состояний озвучиваются явно: selected, expanded, updated.</li>
+            <li>Toggles/tabs/counters/expandables имеют читаемые состояния.</li>
+            <li>Декоративные элементы не создают шум в озвучке.</li>
+          </ul>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-labels">
+          <h3>Labels, icons and states</h3>
+          <p>Подписи и состояния должны объяснять смысл действий, а не только «украшать» интерфейс.</p>
+          <div class="a11y-compare">
+            <article class="a11y-example a11y-example--good">
+              <h5>Do</h5>
+              <ul>
+                <li>“Edit profile” вместо безымянного карандаша.</li>
+                <li>“Add card” вместо общего “Add”.</li>
+                <li>Status chip с текстом + цветом, не цветом одним.</li>
+                <li>Badge показывает значимую метрику, не декор.</li>
+              </ul>
+            </article>
+            <article class="a11y-example a11y-example--bad">
+              <h5>Don’t</h5>
+              <ul>
+                <li>Одинаковые иконки для разных действий.</li>
+                <li>Неясные названия: “Open”, “Apply”, “Go”.</li>
+                <li>Состояния только цветом без текстового контекста.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-images">
+          <h3>Images and non-text content</h3>
+          <p>Смысловые изображения сопровождаются текстом, декоративные — не отвлекают. Текст внутри картинки не заменяет полноценный контент.</p>
+          <ul class="a11y-list">
+            <li>Avatar: показывай имя пользователя рядом с изображением.</li>
+            <li>Chart card: добавляй краткий текстовый вывод рядом с графиком.</li>
+            <li>Onboarding illustration: дублируй смысл заголовком и описанием.</li>
+            <li>Product image: ключевые параметры указывай текстом.</li>
+            <li>Decorative background: не должен нести критичный смысл.</li>
+          </ul>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-forms">
+          <h3>Forms and validation</h3>
+          <p>Формы в мобильном продукте должны быть однозначными: постоянные label, логичный порядок полей, корректный keyboard type и понятные сообщения об ошибках.</p>
+          <div class="a11y-compare">
+            <article class="a11y-example a11y-example--good">
+              <h5>Good</h5>
+              <ul>
+                <li>Label остаётся видимым, placeholder дополняет, но не заменяет его.</li>
+                <li>Ошибка объясняет как исправить значение.</li>
+                <li>Телефон, email, code получают корректную мобильную клавиатуру.</li>
+              </ul>
+            </article>
+            <article class="a11y-example a11y-example--bad">
+              <h5>Bad</h5>
+              <ul>
+                <li>Поле с placeholder-only подписью.</li>
+                <li>Валидация только красной рамкой без текста.</li>
+                <li>Случайный порядок полей ломает сценарий ввода.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-motion">
+          <h3>Motion and feedback</h3>
+          <p>Анимация помогает ориентироваться, но не перегружает. Feedback всегда дублируется читаемым состоянием.</p>
+          <div class="a11y-grid">
+            <article class="a11y-card"><h4>Subtle motion</h4><p>Короткие переходы между экранами и мягкие state-change анимации.</p></article>
+            <article class="a11y-card"><h4>Excessive motion</h4><p>Длительные, резкие или частые анимации, мешающие задаче пользователя.</p></article>
+            <article class="a11y-card"><h4>Loading state</h4><p>Skeleton/loader + понятный контекст загрузки, а не «пустой экран».</p></article>
+            <article class="a11y-card"><h4>Success feedback</h4><p>Явный текстовый результат + спокойная визуальная индикация.</p></article>
+          </div>
+        </div>
+
+        <div class="a11y-subsection" id="a11y-checklist">
+          <h3>Accessibility checklist</h3>
+          <p>Финальная быстрая проверка перед релизом мобильного экрана.</p>
+          <div class="a11y-checklist-grid">
+            <article class="a11y-card">
+              <h4>Visual</h4>
+              <ul class="a11y-list">
+                <li>Contrast достаточный для чтения.</li>
+                <li>Иерархия экрана очевидна.</li>
+                <li>Текст читается без увеличения.</li>
+                <li>Light/dark обе темы рабочие.</li>
+              </ul>
+            </article>
+            <article class="a11y-card">
+              <h4>Interaction</h4>
+              <ul class="a11y-list">
+                <li>Tap areas достаточного размера.</li>
+                <li>Контролы не слипаются по отступам.</li>
+                <li>Критичные действия не только через жесты.</li>
+              </ul>
+            </article>
+            <article class="a11y-card">
+              <h4>Content</h4>
+              <ul class="a11y-list">
+                <li>Подписи действий конкретные.</li>
+                <li>Иконки понятны без угадывания.</li>
+                <li>Ошибки объясняют исправление.</li>
+                <li>Состояния не только цветом.</li>
+              </ul>
+            </article>
+            <article class="a11y-card">
+              <h4>Assistive support</h4>
+              <ul class="a11y-list">
+                <li>Логичный порядок чтения элементов.</li>
+                <li>Контролы названы по смыслу действия.</li>
+                <li>Декоративные элементы не шумят.</li>
+                <li>Изменения состояния сообщаются ясно.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="section-icons">
+      <h2>Icons</h2>
+      <p class="note">
+        Полная библиотека иконок Invert. Названия соответствуют файлам. Используй поиск сверху, чтобы быстро находить нужную иконку.
+      </p>
+      <div class="icons-catalog">
+        <div class="icons-toolbar">
+          <span class="icons-count" id="icons-count">0 иконок</span>
+        </div>
+        <div class="icons-grid" id="icons-grid"></div>
+      </div>
+    </section>
     <section id="section-palette">
-      <h2>Palette page (из Colors)</h2>
+      <h2>Palette page</h2>
       <p class="note">
         <strong>Что это:</strong> Визуальная палитра цветов дизайн‑системы, разбитая по семействам (серый, зелёный, красный и т.д.).<br>
         <strong>Зачем:</strong> Быстро подобрать оттенок и использовать один и тот же цвет в макетах и коде.<br>
@@ -7516,7 +8365,7 @@
     </section>
 
     <section id="section-base-colors">
-      <h2>Base palette (из Mode 1.tokens.json)</h2>
+      <h2>Base palette</h2>
       <p class="note">
         <strong>Что это:</strong> Справочная таблица всех базовых цветовых токенов с путём, HEX и алиасами.<br>
         <strong>Зачем:</strong> Точно знать значение каждого токена при вёрстке, в переменных CSS или в коде.<br>
@@ -10911,7 +11760,7 @@
 
     <section id="section-typography-android">
       <h2>Typography — Android</h2>
-      <p class="note"><strong>Что это:</strong> Токены шрифтов и размеров для приложений на Android.<br><strong>Зачем:</strong> Одинаковая типографика в вебе и в нативном Android.<br><strong>Как использовать:</strong> Подставляй значения из таблицы в стили или в код мобильного приложения.</p>
+      <p class="note"><strong>Что это:</strong> Токены шрифтов и размеров для приложений на Android.<br><strong>Зачем:</strong> Одинаковая типографика в мобильном приложении на Android.<br><strong>Как использовать:</strong> Подставляй значения из таблицы в стили или в код мобильного приложения.</p>
 
       <h3>font-face</h3>
       <table>
@@ -11110,7 +11959,7 @@
 
     <section id="section-typography-ios">
       <h2>Typography — iOS</h2>
-      <p class="note"><strong>Что это:</strong> Токены шрифтов и размеров для приложений на iOS.<br><strong>Зачем:</strong> Одинаковая типографика в вебе и в нативном iOS.<br><strong>Как использовать:</strong> Подставляй значения из таблицы в стили или в код мобильного приложения.</p>
+      <p class="note"><strong>Что это:</strong> Токены шрифтов и размеров для приложений на iOS.<br><strong>Зачем:</strong> Одинаковая типографика в мобильном приложении на iOS.<br><strong>Как использовать:</strong> Подставляй значения из таблицы в стили или в код мобильного приложения.</p>
 
       <h3>font-face</h3>
       <table>
@@ -11329,9 +12178,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>title, body, defaultExpanded, disabled</td></tr>
             <tr><td>Состояния</td><td>collapsed, expanded, disabled</td></tr>
@@ -11400,9 +12249,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>variant(height), title, actions, dismissible</td></tr>
             <tr><td>Состояния</td><td>collapsed/partial/full, dragging</td></tr>
@@ -11472,9 +12321,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>buttonsCount, showContentSwapper, showHomeIndicator, actions[]</td></tr>
             <tr><td>Состояния</td><td>default, pressed, disabled</td></tr>
@@ -11512,9 +12361,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>type(success|danger|default), text, duration, action(optional)</td></tr>
             <tr><td>Поведение</td><td>auto-dismiss; очередь сообщений; не перекрывать важные CTA</td></tr>
@@ -11568,9 +12417,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>size, shape, mode(image|letters|icon|placeholder)</td></tr>
             <tr><td>Fallback</td><td>image -> letters -> placeholder</td></tr>
@@ -11625,9 +12474,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>size(96|208), state(add|change), imageFile</td></tr>
             <tr><td>Поведение</td><td>tap add -> picker, tap change -> remove/reset</td></tr>
@@ -11692,9 +12541,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>type, size, state, label, leading/trailing icon</td></tr>
             <tr><td>Состояния</td><td>default, pressed, disabled, loading</td></tr>
@@ -11746,9 +12595,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>axis, spacing, primary/secondary buttons</td></tr>
             <tr><td>Layout</td><td>на mobile обычно vertical stack; на wide — horizontal</td></tr>
@@ -11784,9 +12633,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>variant, padding, radius, elevation/border</td></tr>
             <tr><td>Контент</td><td>title, subtitle, media, actions</td></tr>
@@ -11831,9 +12680,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>count, activeIndex, overlap, scale</td></tr>
             <tr><td>Поведение</td><td>swipe/drag/animate between cards</td></tr>
@@ -11907,9 +12756,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>query, placeholder, onChanged, onSubmitted, clearAction</td></tr>
             <tr><td>Состояния</td><td>default, focused, filled, disabled, error</td></tr>
@@ -11976,9 +12825,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>label, value, onChanged, helperText, errorText, size, enabled</td></tr>
             <tr><td>Состояния</td><td>default, focused, filled, error, disabled</td></tr>
@@ -12054,9 +12903,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>label, selectedValue, items, onChanged, helper/error</td></tr>
             <tr><td>Состояния</td><td>default, focused/opened, filled, error, disabled</td></tr>
@@ -12112,9 +12961,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>borderRadius(4/8/12/16/24/circle), animated</td></tr>
             <tr><td>Поведение</td><td>shimmer/pulse, stop animation когда контент готов</td></tr>
@@ -12180,9 +13029,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>label, color, icon, removable(filter mode)</td></tr>
             <tr><td>Состояния</td><td>default, selected, disabled</td></tr>
@@ -12247,9 +13096,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>type, tabs[], activeIndex, onTabChange, icon/counter</td></tr>
             <tr><td>Состояния</td><td>active, inactive, pressed, disabled</td></tr>
@@ -12315,9 +13164,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>items, activeIndex, separateSearch, minimized</td></tr>
             <tr><td>Состояния</td><td>active/inactive, pressed</td></tr>
@@ -12369,9 +13218,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>value(bool), onChanged, showAxLabel</td></tr>
             <tr><td>Состояния</td><td>on, off, disabled</td></tr>
@@ -12453,9 +13302,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>isMine, position, replyType, hasImage, time, status</td></tr>
             <tr><td>Состояния</td><td>only-one/top/center/bottom + mine/other</td></tr>
@@ -12526,9 +13375,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>property(Default/input/more input/reply), text, onSend, onAttach</td></tr>
             <tr><td>Состояния</td><td>empty, typing, multiline, reply</td></tr>
@@ -12576,9 +13425,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>checked, onChanged, state(default/disabled/danger), label</td></tr>
             <tr><td>Состояния</td><td>checked/unchecked, disabled, error(danger)</td></tr>
@@ -12624,9 +13473,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>value, groupValue, onChanged, state</td></tr>
             <tr><td>Состояния</td><td>selected, unselected, disabled, danger</td></tr>
@@ -12699,9 +13548,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>value(DateTime?), onTap/onChanged, filled, state, helper, size</td></tr>
             <tr><td>Состояния</td><td>default, focused, filled, error, disabled</td></tr>
@@ -12778,9 +13627,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>country, value, mask, state, filled, onChanged</td></tr>
             <tr><td>Поведение</td><td>autodetect country by dial code, dynamic mask</td></tr>
@@ -12830,9 +13679,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>length, value, state, size, onCompleted</td></tr>
             <tr><td>Состояния</td><td>default, focused, filled, error</td></tr>
@@ -12923,9 +13772,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>type(progress|segmented), value/currentStep, totalSteps</td></tr>
             <tr><td>Состояния</td><td>determinate, indeterminate</td></tr>
@@ -12968,9 +13817,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>iconName, size, weight/style, color, state</td></tr>
             <tr><td>Поведение</td><td>animated swap при смене состояния</td></tr>
@@ -13010,9 +13859,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>size, color, isAnimating</td></tr>
             <tr><td>Поведение</td><td>continuous rotation, pause on hidden/offstage</td></tr>
@@ -13132,9 +13981,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>style, title, subtitle, leading/trailing actions</td></tr>
             <tr><td>Состояния</td><td>default, compact, large title, back</td></tr>
@@ -13239,9 +14088,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>style, title, subtitle, leadingAction, trailingAction</td></tr>
             <tr><td>Layout</td><td>grabber + header with safe area and stable height</td></tr>
@@ -13303,9 +14152,9 @@
       </div>
       <details class="component-spec spec-accordion">
         <summary>Характеристики</summary>
-        <p class="note">Важно для Flutter-реализации и поддержки UX-консистентности.</p>
+        <p class="note">Коротко и по делу: ниже практические рекомендации, чтобы компонент был удобным и предсказуемым.</p>
         <table class="spec-table">
-          <thead><tr><th>Параметр</th><th>Что важно в Flutter</th></tr></thead>
+          <thead><tr><th>Параметр</th><th>На что обратить внимание</th></tr></thead>
           <tbody>
             <tr><td>API</td><td>mode(icon|label), size, count, stretched, activeIndex</td></tr>
             <tr><td>Состояния</td><td>selected, unselected, pressed</td></tr>
@@ -13321,6 +14170,7 @@
   </main>
   </div>
   <div class="copy-snackbar" id="copy-snackbar">HEX скопирован в буфер обмена</div>
+  <script src="icons-manifest.js"></script>
   <script>
     (function () {
       var AUTH_PASSWORD = "invertapp2026";
@@ -13443,9 +14293,17 @@
       var detailHeader = document.getElementById("detail-header");
       var detailTitle = document.getElementById("detail-title");
       var detailBackBtn = document.getElementById("detail-back-btn");
-      var activeHubTab = "all";
+      var iconsGrid = document.getElementById("icons-grid");
+      var iconsSize = document.getElementById("icons-size");
+      var iconsCount = document.getElementById("icons-count");
+      var activeHubTab = "intro";
       var hubItems = [];
+      var allIcons = Array.isArray(window.INVERT_ICONS) ? window.INVERT_ICONS.slice() : [];
+      var renderedIcons = [];
       var sectionCategories = {
+        "section-intro": "intro",
+        "section-accessibility": "accessibility",
+        "section-icons": "icons",
         "section-palette": "colors",
         "section-base-colors": "colors",
         "section-semantic-colors": "colors",
@@ -13462,6 +14320,51 @@
         return "components";
       }
 
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function getIconName(filename) {
+        return filename.replace(/\.svg$/i, "");
+      }
+
+      function renderIconsCatalog(query) {
+        if (!iconsGrid) return;
+        var q = (query || "").trim().toLowerCase();
+        var size = iconsSize ? iconsSize.value : "24";
+        renderedIcons = allIcons.filter(function (filename) {
+          return !q || getIconName(filename).toLowerCase().indexOf(q) !== -1;
+        });
+        iconsGrid.innerHTML = renderedIcons.map(function (filename) {
+          var iconName = getIconName(filename);
+          var safeName = escapeHtml(iconName);
+          var safeFile = escapeHtml(filename);
+          var safePath = "icons/" + safeFile;
+          return (
+            '<article class="icon-item">' +
+              '<div class="icon-preview">' +
+                '<img src="' + safePath + '" alt="' + safeName + '" loading="lazy" style="width:' + size + 'px;height:' + size + 'px;">' +
+              '</div>' +
+              '<p class="icon-name">' + safeName + '</p>' +
+              '<div class="icon-actions">' +
+                '<a class="icon-download" href="' + safePath + '" download="' + safeFile + '">Скачать</a>' +
+              '</div>' +
+            '</article>'
+          );
+        }).join("");
+        if (!renderedIcons.length) {
+          iconsGrid.innerHTML = '<article class="icon-item"><p class="icon-name">Иконки не найдены</p></article>';
+        }
+        if (iconsCount) {
+          iconsCount.textContent = renderedIcons.length + " иконок";
+        }
+      }
+
       function getPreviewMarkup(item) {
         if (item.category === "colors") {
           return '<div class="mini-preview"><span style="width:168px;height:92px;border-radius:14px;display:inline-block;background:linear-gradient(90deg,#0DC267 0 25%,#F8F8F8 25% 50%,#111111 50% 75%,#BED2C1 75% 100%);"></span></div>';
@@ -13473,6 +14376,12 @@
           return '<div class="mini-preview"><div class="mini-radius"><div class="mini-radius-row"><span class="mini-radius-box r8"></span><span class="mini-radius-box r16"></span><span class="mini-radius-box r24"></span></div><span class="mini-spacing"></span></div></div>';
         }
         switch (item.id) {
+          case "section-intro":
+            return '<div class="mini-preview"><div class="mini-card"><span class="mini-card-line"></span><span class="mini-card-line short"></span><span class="a11y-chip a11y-chip--ok" style="height:22px;font-size:11px;">Обзор и принципы</span></div></div>';
+          case "section-accessibility":
+            return '<div class="mini-preview"><div class="mini-card" style="width:168px;height:92px;justify-content:center;gap:8px;"><span class="a11y-chip a11y-chip--ok" style="height:22px;font-size:11px;">Readable</span><span class="a11y-chip a11y-chip--warn" style="height:22px;font-size:11px;">Contrast</span><span class="a11y-chip a11y-chip--danger" style="height:22px;font-size:11px;">States</span></div></div>';
+          case "section-icons":
+            return '<div class="mini-preview"><div class="mini-icon-swapper"><img src="icons/Acorn.svg" alt="" style="width:18px;height:18px;display:block"></div></div>';
           case "section-accordion":
             return '<div class="mini-preview"><span class="mini-accordion">Section <span style="opacity:.6">⌄</span></span></div>';
           case "section-bottomsheet":
@@ -13537,10 +14446,12 @@
       }
 
       function updateTabCounts() {
-        var counts = { all: hubItems.length, components: 0, colors: 0, tokens: 0, radius: 0 };
+        var counts = { intro: 0, basics: 0, components: 0, accessibility: 0, icons: 0, colors: 0, tokens: 0, radius: 0 };
         hubItems.forEach(function (item) {
           if (counts[item.category] != null) counts[item.category] += 1;
         });
+        counts.icons = allIcons.length;
+        counts.basics = counts.colors + counts.tokens + counts.radius;
         Object.keys(counts).forEach(function (key) {
           var el = document.getElementById("hub-count-" + key);
           if (el) el.textContent = String(counts[key]);
@@ -13552,7 +14463,10 @@
         var query = hubSearchInput ? hubSearchInput.value.trim().toLowerCase() : "";
         hubGrid.innerHTML = "";
         var filtered = hubItems.filter(function (item) {
-          var inTab = activeHubTab === "all" || item.category === activeHubTab;
+          var inTab = item.category === activeHubTab;
+          if (activeHubTab === "basics") {
+            inTab = item.category === "colors" || item.category === "tokens" || item.category === "radius";
+          }
           var inSearch = !query || item.title.toLowerCase().indexOf(query) !== -1;
           return inTab && inSearch;
         });
@@ -13588,6 +14502,11 @@
         hubOverview.classList.add("search-hidden");
         detailScroll.classList.remove("search-hidden");
         detailHeader.classList.remove("search-hidden");
+        if (detailBackBtn) {
+          var isRootSection = sectionId === "section-intro" || sectionId === "section-accessibility" || sectionId === "section-icons";
+          detailBackBtn.classList.toggle("search-hidden", isRootSection);
+          document.body.classList.toggle("detail-root-mode", isRootSection);
+        }
         document.body.classList.add("detail-mode");
         window.scrollTo({ top: 0, behavior: "auto" });
         history.replaceState(null, "", "#" + sectionId);
@@ -13600,6 +14519,8 @@
         });
         detailScroll.classList.add("search-hidden");
         detailHeader.classList.add("search-hidden");
+        if (detailBackBtn) detailBackBtn.classList.remove("search-hidden");
+        document.body.classList.remove("detail-root-mode");
         hubOverview.classList.remove("search-hidden");
         document.body.classList.remove("detail-mode");
         history.replaceState(null, "", "#");
@@ -13610,6 +14531,7 @@
           var id = section.id;
           var titleNode = section.querySelector("h2");
           var title = titleNode ? titleNode.textContent.trim() : id;
+          if (id === "section-intro") title = "Обзор и принципы";
           var category = getCategoryById(id);
           return {
             id: id,
@@ -13628,16 +14550,42 @@
           if (!(target instanceof Element)) return;
           var button = target.closest(".hub-tab");
           if (!button) return;
-          activeHubTab = button.getAttribute("data-tab") || "all";
+          activeHubTab = button.getAttribute("data-tab") || "intro";
           hubTabs.querySelectorAll(".hub-tab").forEach(function (tab) {
             tab.classList.toggle("active", tab === button);
           });
+          if (activeHubTab === "intro") {
+            openDetail("section-intro");
+            return;
+          }
+          if (activeHubTab === "accessibility") {
+            openDetail("section-accessibility");
+            return;
+          }
+          if (activeHubTab === "icons") {
+            openDetail("section-icons");
+            renderIconsCatalog(hubSearchInput ? hubSearchInput.value : "");
+            return;
+          }
+          openOverview();
           renderHubCards();
         });
       }
 
       if (hubSearchInput) {
-        hubSearchInput.addEventListener("input", renderHubCards);
+        hubSearchInput.addEventListener("input", function () {
+          if (document.body.classList.contains("detail-root-mode") && window.location.hash === "#section-icons") {
+            renderIconsCatalog(hubSearchInput.value);
+            return;
+          }
+          renderHubCards();
+        });
+      }
+
+      if (iconsSize) {
+        iconsSize.addEventListener("change", function () {
+          renderIconsCatalog(hubSearchInput ? hubSearchInput.value : "");
+        });
       }
 
       if (hubGrid) {
@@ -13658,8 +14606,27 @@
       var initialHash = (window.location.hash || "").replace("#", "");
       if (initialHash && document.getElementById(initialHash)) {
         openDetail(initialHash);
+        if (initialHash === "section-icons") {
+          activeHubTab = "icons";
+          if (hubTabs) {
+            var iconsBtn = hubTabs.querySelector('[data-tab="icons"]');
+            if (iconsBtn) hubTabs.querySelectorAll(".hub-tab").forEach(function (tab) { tab.classList.toggle("active", tab === iconsBtn); });
+          }
+          renderIconsCatalog(hubSearchInput ? hubSearchInput.value : "");
+        }
       } else {
-        openOverview();
+        openDetail("section-intro");
+        if (hubTabs) {
+          var introBtn = hubTabs.querySelector('[data-tab="intro"]');
+          if (introBtn) {
+            hubTabs.querySelectorAll(".hub-tab").forEach(function (tab) { tab.classList.toggle("active", tab === introBtn); });
+          }
+        }
+        activeHubTab = "intro";
+      }
+
+      if (iconsGrid) {
+        renderIconsCatalog("");
       }
 
       var bottomsheetVariant = document.getElementById("bottomsheet-variant");
@@ -15523,7 +16490,7 @@
       }
 
       if (topBar) {
-        topBar.style.display = "flex";
+        topBar.style.display = "";
         if (!document.body.classList.contains("detail-mode")) {
           topBar.classList.remove("search-hidden");
         }

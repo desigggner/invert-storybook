@@ -11953,6 +11953,8 @@
         var v = bottomsheetVariant && bottomsheetVariant.value === "full";
         bottomsheetShell.style.height = v ? "812px" : "451px";
         bottomsheetBody.style.height = v ? "706px" : "387px";
+        bottomsheetShell.classList.toggle("bottomsheet-shell--full", v);
+        bottomsheetShell.classList.toggle("bottomsheet-shell--compact", !v);
         var swapper = bottomsheetBody.querySelector(".bottomsheet-swapper");
         if (swapper) {
           swapper.style.flex = v ? "0 0 auto" : "";

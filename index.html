@@ -2083,6 +2083,10 @@
       display: none;
     }
 
+    .search-demo--no-filter .search-demo-filter {
+      display: none;
+    }
+
     .search-demo-icon {
       width: 20px;
       height: 20px;
@@ -2172,8 +2176,39 @@
       opacity: 0.5;
     }
 
+    [data-theme="dark"] .search-demo-field {
+      background: #1B1B1B;
+    }
+
+    [data-theme="dark"] .search-demo--filled .search-demo-field {
+      background: #1F1F1F;
+    }
+
+    [data-theme="dark"] .search-demo--focused .search-demo-field {
+      background: #1F1F1F;
+      border-color: #0DC267;
+    }
+
+    [data-theme="dark"] .search-demo--disabled .search-demo-field {
+      background: #1A1A1A;
+      border-color: #2E2E2E;
+    }
+
+    [data-theme="dark"] .search-demo-input {
+      color: #F5F5F5;
+    }
+
+    [data-theme="dark"] .search-demo-input::placeholder {
+      color: #6E6E6E;
+    }
+
+    [data-theme="dark"] .search-demo--disabled .search-demo-input,
+    [data-theme="dark"] .search-demo--disabled .search-demo-input::placeholder {
+      color: #6E6E6E;
+    }
+
     [data-theme="dark"] .search-demo-filter {
-      color: #919191;
+      color: #ABABAB;
     }
 
     .date-input-demo-doc {
@@ -2742,6 +2777,20 @@
       gap: 12px;
       box-sizing: border-box;
       min-height: 180px;
+    }
+
+    .skeleton-placeholder {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 168px;
+    }
+
+    .skeleton-placeholder-btn {
+      margin-top: 18px;
+      width: 172px;
+      height: 34px;
+      border-radius: 10px;
     }
 
     .skeleton-row {
@@ -11493,6 +11542,13 @@
           </select>
         </div>
         <div class="variant-row">
+          <label for="search-filter">filter</label>
+          <select id="search-filter">
+            <option value="yes" selected>yes</option>
+            <option value="no">no</option>
+          </select>
+        </div>
+        <div class="variant-row">
           <label for="search-size">size</label>
           <select id="search-size">
             <option value="m" selected>m</option>
@@ -11715,18 +11771,10 @@
         </div>
         <div class="skeleton-loading-card" id="skeleton-loading-card">
           <div class="skeleton-placeholder" id="skeleton-placeholder">
-            <div class="skeleton-row">
-              <div class="skeleton-demo-unit skeleton-demo-unit--circle" style="width:40px;height:40px;"></div>
-              <div class="skeleton-col">
-                <div class="skeleton-demo-unit" style="width:72%;height:14px;border-radius:8px;"></div>
-                <div class="skeleton-demo-unit" style="width:48%;height:12px;border-radius:8px;"></div>
-              </div>
-            </div>
-            <div class="skeleton-demo-unit skeleton-demo-unit--card"></div>
-            <div class="skeleton-row">
-              <div class="skeleton-demo-unit" style="width:44%;height:12px;border-radius:8px;"></div>
-              <div class="skeleton-demo-unit" style="width:28%;height:12px;border-radius:8px;"></div>
-            </div>
+            <div class="skeleton-demo-unit" style="width:236px;height:22px;border-radius:8px;"></div>
+            <div class="skeleton-demo-unit" style="width:452px;max-width:100%;height:20px;border-radius:8px;"></div>
+            <div class="skeleton-demo-unit" style="width:476px;max-width:100%;height:20px;border-radius:8px;"></div>
+            <div class="skeleton-demo-unit skeleton-placeholder-btn"></div>
           </div>
           <div class="skeleton-content" id="skeleton-content">
             <p class="skeleton-content-title">Карточка загружена</p>
@@ -13269,18 +13317,36 @@
       var avatarArAction = document.getElementById("avatar-ar-action");
       var avatarArActionIcon = document.getElementById("avatar-ar-action-icon");
       var avatarArFile = document.getElementById("avatar-ar-file");
-      var avatarArObjectUrl = null;
+      var avatarArStorageKey = "avatar-ar-custom-image";
+      var avatarArCustomSrc = "";
       var avatarArHasCustomImage = false;
       var defaultAvatarArSrc = ".figma-assets/abc10c9f1a60e18581af7919629dd66f7b7376fe.png";
       var avatarArAddIconSrc = "icon-swapper.svg";
       var avatarArRemoveIconSrc = "icon-swapper-1.svg";
 
+      function readAvatarArStoredImage() {
+        try {
+          var value = localStorage.getItem(avatarArStorageKey);
+          return value || "";
+        } catch (e) {
+          return "";
+        }
+      }
+
+      function writeAvatarArStoredImage(dataUrl) {
+        try {
+          if (dataUrl) {
+            localStorage.setItem(avatarArStorageKey, dataUrl);
+          } else {
+            localStorage.removeItem(avatarArStorageKey);
+          }
+        } catch (e) {}
+      }
+
       function clearAvatarArCustomImage() {
         avatarArHasCustomImage = false;
-        if (avatarArObjectUrl) {
-          URL.revokeObjectURL(avatarArObjectUrl);
-          avatarArObjectUrl = null;
-        }
+        avatarArCustomSrc = "";
+        writeAvatarArStoredImage("");
         if (avatarArFile) avatarArFile.value = "";
       }
 
@@ -13299,7 +13365,7 @@
         avatarArAction.setAttribute("aria-label", isAdd ? "Добавить аватарку" : "Удалить аватарку");
 
         if (showImage) {
-          avatarArImg.src = avatarArHasCustomImage && avatarArObjectUrl ? avatarArObjectUrl : defaultAvatarArSrc;
+          avatarArImg.src = avatarArHasCustomImage && avatarArCustomSrc ? avatarArCustomSrc : defaultAvatarArSrc;
           avatarArActionIcon.innerHTML = '<img class="avatar-ar-action-icon-img" src="' + avatarArRemoveIconSrc + '" alt="">';
         } else {
           avatarArImg.removeAttribute("src");
@@ -13338,13 +13404,25 @@
       if (avatarArFile) avatarArFile.addEventListener("change", function () {
         var file = avatarArFile.files && avatarArFile.files[0];
         if (!file) return;
-        clearAvatarArCustomImage();
-        avatarArObjectUrl = URL.createObjectURL(file);
-        avatarArHasCustomImage = true;
-        if (avatarArState) avatarArState.value = "change";
-        renderAvatarAddRemove(true);
+        var reader = new FileReader();
+        reader.onload = function () {
+          var result = typeof reader.result === "string" ? reader.result : "";
+          if (!result) return;
+          avatarArHasCustomImage = true;
+          avatarArCustomSrc = result;
+          writeAvatarArStoredImage(result);
+          if (avatarArState) avatarArState.value = "change";
+          renderAvatarAddRemove(true);
+        };
+        reader.readAsDataURL(file);
       });
 
+      var storedAvatarArImage = readAvatarArStoredImage();
+      if (storedAvatarArImage) {
+        avatarArHasCustomImage = true;
+        avatarArCustomSrc = storedAvatarArImage;
+        if (avatarArState) avatarArState.value = "change";
+      }
       renderAvatarAddRemove(false);
 
       var actionbarSwapperWrap = document.getElementById("actionbar-swapper-wrap");
@@ -13519,16 +13597,19 @@
       var searchFilled = document.getElementById("search-filled");
       var searchSize = document.getElementById("search-size");
       var searchIconVariant = document.getElementById("search-icon-variant");
+      var searchFilter = document.getElementById("search-filter");
       var searchState = document.getElementById("search-state");
       function updateSearchDemo() {
         if (!searchDemo) return;
         var filled = (searchFilled && searchFilled.value) || "no";
         var size = (searchSize && searchSize.value) || "m";
         var iconVariant = (searchIconVariant && searchIconVariant.value) || "brand";
+        var hasFilter = ((searchFilter && searchFilter.value) || "yes") === "yes";
         var state = (searchState && searchState.value) || "default";
         searchDemo.className = "search-demo";
         searchDemo.classList.add("search-demo--size-" + size);
         searchDemo.classList.add("search-demo--icon-" + iconVariant);
+        searchDemo.classList.toggle("search-demo--no-filter", !hasFilter);
         if (filled === "yes") {
           searchDemo.classList.add("search-demo--filled");
         }
@@ -13562,6 +13643,7 @@
       if (searchFilled) searchFilled.addEventListener("change", updateSearchDemo);
       if (searchSize) searchSize.addEventListener("change", updateSearchDemo);
       if (searchIconVariant) searchIconVariant.addEventListener("change", updateSearchDemo);
+      if (searchFilter) searchFilter.addEventListener("change", updateSearchDemo);
       if (searchState) searchState.addEventListener("change", updateSearchDemo);
       if (searchInput) {
         searchInput.addEventListener("focus", function () {
@@ -13936,7 +14018,7 @@
       function runSkeletonLoading() {
         if (!skeletonPlaceholder || !skeletonContent) return;
         if (loadingTimer) clearTimeout(loadingTimer);
-        skeletonPlaceholder.style.display = "block";
+        skeletonPlaceholder.style.display = "flex";
         skeletonContent.classList.remove("skeleton-content--shown");
         loadingTimer = setTimeout(function () {
           skeletonPlaceholder.style.display = "none";

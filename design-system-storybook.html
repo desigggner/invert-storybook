@@ -1954,24 +1954,44 @@
     .search-demo-field {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
+      gap: 8px;
+      padding: 16px;
       border-radius: 999px;
       background: var(--bg-card);
-      border: 1px solid var(--spec-border);
-      min-width: 260px;
+      border: 1px solid transparent;
+      width: 200px;
+      height: 56px;
       box-sizing: border-box;
       transition: border-color 0.18s ease-out, box-shadow 0.18s ease-out, background 0.18s ease-out;
     }
 
+    .search-demo--size-s .search-demo-field {
+      height: 44px;
+      padding: 12px 16px;
+    }
+
+    .search-demo--size-xs .search-demo-field {
+      height: 36px;
+      padding: 8px 12px;
+    }
+
+    .search-demo--filled .search-demo-field {
+      background: #F8F8F8;
+    }
+
     .search-demo--focused .search-demo-field {
       border-color: #0DC267;
-      box-shadow: 0 0 0 1px rgba(13, 194, 103, 0.4);
+      box-shadow: none;
     }
 
     .search-demo--disabled {
-      opacity: 0.5;
+      opacity: 1;
       pointer-events: none;
+    }
+
+    .search-demo--disabled .search-demo-field {
+      background: #F1F1F1;
+      border-color: #E2E2E2;
     }
 
     .search-demo-icon {
@@ -2009,9 +2029,11 @@
       outline: none;
       background: transparent;
       font-size: 14px;
+      line-height: 20px;
       color: var(--text-primary);
       flex: 1;
       min-width: 0;
+      padding: 0;
     }
 
     .search-demo-input::placeholder {
@@ -2034,6 +2056,35 @@
     .search-demo-filter svg {
       width: 16px;
       height: 16px;
+    }
+
+    .search-demo--size-xs .search-demo-icon,
+    .search-demo--size-xs .search-demo-filter {
+      width: 16px;
+      height: 16px;
+    }
+
+    .search-demo--size-xs .search-demo-icon img,
+    .search-demo--size-xs .search-demo-filter img {
+      width: 16px;
+      height: 16px;
+    }
+
+    [data-theme="dark"] .search-demo--filled .search-demo-field,
+    [data-theme="dark"] .search-demo--focused .search-demo-field {
+      background: #F8F8F8;
+    }
+
+    [data-theme="dark"] .search-demo-input {
+      color: #111111;
+    }
+
+    [data-theme="dark"] .search-demo-input::placeholder {
+      color: #ABABAB;
+    }
+
+    [data-theme="dark"] .search-demo-filter {
+      color: #919191;
     }
 
     .date-input-demo-doc {
@@ -10285,10 +10336,25 @@
       </p>
       <div class="variant-controls">
         <div class="variant-row">
+          <label for="search-filled">filled</label>
+          <select id="search-filled">
+            <option value="no" selected>no</option>
+            <option value="yes">yes</option>
+          </select>
+        </div>
+        <div class="variant-row">
           <label for="search-icon-variant">icon</label>
           <select id="search-icon-variant">
             <option value="brand" selected>brand</option>
             <option value="loupe">loupe</option>
+          </select>
+        </div>
+        <div class="variant-row">
+          <label for="search-size">size</label>
+          <select id="search-size">
+            <option value="m" selected>m</option>
+            <option value="s">s</option>
+            <option value="xs">xs</option>
           </select>
         </div>
         <div class="variant-row">
@@ -10307,7 +10373,7 @@
               <img src="../logo.svg" alt="" width="20" height="21" class="search-icon-brand">
               <img src="../search.svg" alt="" width="20" height="20" class="search-icon-loupe">
             </div>
-            <input type="search" class="search-demo-input" id="search-input" placeholder="Поиск" autocomplete="off">
+            <input type="search" class="search-demo-input" id="search-input" placeholder="label" autocomplete="off">
             <button type="button" class="search-demo-filter" aria-label="Фильтры">
               <img src="../settings.svg" alt="" width="16" height="16">
             </button>

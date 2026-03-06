@@ -1582,6 +1582,13 @@
       display: block;
     }
 
+    .avatar-addremove-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .avatar-addremove-action {
       position: absolute;
       right: -4px;
@@ -1878,12 +1885,7 @@
     }
 
     .checkbox-demo-label {
-      color: #ffffff;
-    }
-
-    [data-theme="light"] .checkbox-demo,
-    [data-theme="light"] .checkbox-demo-label {
-      color: #ffffff;
+      color: var(--text-primary);
     }
 
     .checkbox-demo--disabled {
@@ -1966,8 +1968,8 @@
     }
 
     .radio-demo-dot {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       border-radius: 999px;
       background: transparent;
       transform: scale(0.75);
@@ -2007,7 +2009,10 @@
       background: #1B1B1B;
     }
 
-    [data-theme="dark"] .radio-demo--checked .radio-demo-control,
+    [data-theme="dark"] .radio-demo--checked .radio-demo-control {
+      background: #1B1B1B;
+    }
+
     [data-theme="dark"] .radio-demo--danger .radio-demo-control {
       background: #1B1B1B;
     }
@@ -2453,6 +2458,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #ABABAB;
+    }
+
+    .date-input-demo-icon svg {
+      width: 24px;
+      height: 24px;
+      display: block;
     }
 
     .date-input-demo--filled .date-input-demo-label {
@@ -2494,12 +2506,28 @@
       box-shadow: 0 0 0 1px rgba(255, 77, 58, 0.5);
     }
 
+    .date-input-demo--danger .date-input-demo-icon {
+      color: #FF4D3A;
+    }
+
     .date-input-demo--danger .date-input-demo-helper {
       color: #FF4D3A;
     }
 
     .date-input-demo--disabled {
       opacity: 0.5;
+    }
+
+    .date-input-demo--disabled .date-input-demo-icon {
+      color: #C6C6C6;
+    }
+
+    [data-theme="dark"] .date-input-demo-icon {
+      color: #ABABAB;
+    }
+
+    [data-theme="dark"] .date-input-demo--disabled .date-input-demo-icon {
+      color: #6E6E6E;
     }
 
     .select-demo-doc {
@@ -2953,8 +2981,23 @@
     }
 
     [data-theme="dark"] .tag-demo--gray {
-      --tag-bg: #F9F7FF;
-      --tag-text: #5E5E5E;
+      --tag-bg: #303030;
+      --tag-text: #C6C6C6;
+    }
+
+    [data-theme="dark"] .tag-demo--green {
+      --tag-bg: #003919;
+      --tag-text: #0DC267;
+    }
+
+    [data-theme="dark"] .tag-demo--yellow {
+      --tag-bg: #403407;
+      --tag-text: #F7D044;
+    }
+
+    [data-theme="dark"] .tag-demo--red {
+      --tag-bg: #5D170F;
+      --tag-text: #FF4D3A;
     }
 
     .tabs-doc {
@@ -3114,15 +3157,23 @@
       height: var(--tabbar-height, 62px);
       min-width: 0;
       border-radius: 999px;
-      padding: 8px 10px;
+      padding: 0 5px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 0;
       border: 1px solid rgba(255,255,255,0.55);
       background: linear-gradient(180deg, rgba(255,255,255,0.86) 0%, rgba(246,246,246,0.58) 100%);
       backdrop-filter: blur(18px) saturate(1.15);
       -webkit-backdrop-filter: blur(18px) saturate(1.15);
       box-shadow: 0 0 2px rgba(0,0,0,0.1), 0 1px 8px rgba(0,0,0,0.12);
+    }
+
+    .tabbar-liquid--hug .tabbar-liquid-item {
+      flex: 0 0 var(--tab-item-width, 102px);
+    }
+
+    .tabbar-liquid--fill .tabbar-liquid-item {
+      flex: 1 1 0;
     }
 
     .tabbar-liquid-item {
@@ -3132,8 +3183,9 @@
       border-radius: 999px;
       background: transparent;
       color: #5E5E5E;
-      padding: 6px 10px;
-      min-height: 44px;
+      padding: 6px 8px 7px;
+      margin-right: 0;
+      min-height: 50px;
       display: inline-flex;
       flex-direction: column;
       align-items: center;
@@ -3173,20 +3225,27 @@
     }
 
     .tabbar-liquid--minimized .tabbar-liquid-item {
-      min-height: 36px;
-      padding-top: 4px;
-      padding-bottom: 4px;
+      width: 40px;
+      height: 40px;
+      min-height: 40px;
+      margin-right: 0;
+      padding: 0;
+      border-radius: 100px;
+      gap: 0;
+      flex: 0 0 auto;
     }
 
-    .tabbar-liquid--minimized .tabbar-liquid-item:not(.tabbar-liquid-item--active) .tabbar-liquid-label {
-      opacity: 0;
-      max-height: 0;
-      transform: translateY(-2px);
+    .tabbar-liquid--hug .tabbar-liquid-item {
+      margin-right: -10px;
+    }
+
+    .tabbar-liquid--minimized .tabbar-liquid-label {
+      display: none;
     }
 
     .tabbar-liquid-search {
-      width: 44px;
-      height: 44px;
+      width: 54px;
+      height: 54px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.55);
       background: linear-gradient(180deg, rgba(255,255,255,0.86) 0%, rgba(246,246,246,0.58) 100%);
@@ -3198,6 +3257,11 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+    }
+
+    .tabbar-liquid-search--minimized {
+      width: 40px;
+      height: 40px;
     }
 
     [data-theme="dark"] .tabbar-liquid,
@@ -3583,14 +3647,16 @@
       width: 48px;
       height: 48px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.24);
-      background: linear-gradient(180deg, rgba(36,36,36,0.88) 0%, rgba(18,18,18,0.9) 100%);
+      border: 1px solid rgba(255,255,255,0.26);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 100%),
+        linear-gradient(180deg, rgba(15,15,15,0.92) 0%, rgba(10,10,10,0.92) 100%);
       color: #F8F8F8;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 4px 12px rgba(0,0,0,0.35);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
     }
 
     .message-input-plus svg {
@@ -3604,27 +3670,29 @@
       min-width: 0;
       min-height: 48px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.22);
       background:
-        radial-gradient(80% 120% at 20% 0%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 55%, rgba(0,0,0,0) 100%),
-        linear-gradient(180deg, rgba(16,16,16,0.82) 0%, rgba(9,9,9,0.82) 100%);
+        radial-gradient(120% 120% at 15% 0%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 64%),
+        linear-gradient(180deg, rgba(22,22,22,0.88) 0%, rgba(16,16,16,0.88) 100%);
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.13),
-        inset 0 -10px 24px rgba(0,0,0,0.24),
-        0 8px 24px rgba(0,0,0,0.22);
+        inset 0 -12px 28px rgba(0,0,0,0.24);
       display: flex;
       align-items: flex-end;
-      gap: 8px;
-      padding: 8px 8px 8px 11px;
+      gap: 4px;
+      padding: 8px 9px 8px 11px;
       box-sizing: border-box;
+      overflow: hidden;
       backdrop-filter: blur(20px) saturate(1.15);
       -webkit-backdrop-filter: blur(20px) saturate(1.15);
       transition: border-color 0.16s ease-out, min-height 0.16s ease-out, border-radius 0.16s ease-out;
     }
 
     .message-input-toolbar--multiline .message-input-field {
-      min-height: 62px;
-      border-radius: 12px;
+      min-height: 48px;
+      align-items: flex-end;
+      border-radius: 24px;
+      padding-right: 8px;
     }
 
     .message-input-main {
@@ -3633,7 +3701,7 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
-      padding-bottom: 2px;
+      justify-content: center;
     }
 
     .message-input-reply {
@@ -3703,12 +3771,29 @@
       padding: 0;
       margin: 0;
       min-height: 20px;
-      max-height: 64px;
+      max-height: 68px;
       overflow: hidden;
+      caret-color: #0DC267;
+    }
+
+    .message-input-cursor {
+      display: none !important;
+      width: 2px;
+      height: 22px;
+      border-radius: 10px;
+      background: #0DC267;
+      flex-shrink: 0;
+      margin-left: 2px;
     }
 
     .message-input-control::placeholder {
       color: #919191;
+    }
+
+    .message-input-toolbar:not(.message-input-toolbar--multiline) .message-input-control {
+      height: 32px;
+      min-height: 32px;
+      line-height: 32px;
     }
 
     .message-input-send {
@@ -3724,7 +3809,10 @@
       flex-shrink: 0;
       cursor: pointer;
       transition: transform 0.14s ease-out, filter 0.14s ease-out;
-      box-shadow: 0 2px 8px rgba(13,194,103,0.4);
+      box-shadow: none;
+      padding: 8px;
+      box-sizing: border-box;
+      align-self: flex-end;
     }
 
     .message-input-send:active {
@@ -3733,15 +3821,10 @@
     }
 
     .message-input-send svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .message-input-send img {
       width: 16px;
       height: 16px;
       display: block;
+      flex-shrink: 0;
     }
 
     .message-input-toolbar--input .message-input-send,
@@ -3754,10 +3837,6 @@
       display: inline-flex;
     }
 
-    .message-input-toolbar--default .message-input-control {
-      pointer-events: none;
-    }
-
     [data-theme="light"] .message-input-phone {
       background: transparent;
     }
@@ -3766,7 +3845,7 @@
       border-color: rgba(17,17,17,0.14);
       background: linear-gradient(180deg, rgba(247,247,247,0.98) 0%, rgba(242,242,242,0.98) 100%);
       color: #2D2D2D;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.92), 0 4px 12px rgba(0,0,0,0.07);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.92);
     }
 
     [data-theme="light"] .message-input-field {
@@ -3776,8 +3855,7 @@
         linear-gradient(180deg, rgba(247,247,247,0.96) 0%, rgba(243,243,243,0.96) 100%);
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.92),
-        inset 0 -6px 18px rgba(0,0,0,0.04),
-        0 4px 10px rgba(0,0,0,0.06);
+        inset 0 -6px 18px rgba(0,0,0,0.04);
     }
 
     [data-theme="light"] .message-input-control {
@@ -3853,6 +3931,14 @@
     }
 
     .phone-input-prefix {
+      font-size: 16px;
+      line-height: 22px;
+      color: var(--phone-input-prefix, #111111);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .phone-input-plus {
       font-size: 16px;
       line-height: 22px;
       color: var(--phone-input-prefix, #111111);
@@ -3943,6 +4029,10 @@
     }
 
     .phone-input-demo--unfilled .phone-input-prefix {
+      color: var(--phone-input-placeholder, #ABABAB);
+    }
+
+    .phone-input-demo--unfilled .phone-input-plus {
       color: var(--phone-input-placeholder, #ABABAB);
     }
 
@@ -4689,10 +4779,10 @@
     }
 
     [data-theme="dark"] .segmented-liquid {
-      --seg-bg: #F8F8F8;
-      --seg-selected-bg: #E2E2E2;
-      --seg-text: #5E5E5E;
-      --seg-selected-text: #111111;
+      --seg-bg: #1B1B1B;
+      --seg-selected-bg: #303030;
+      --seg-text: #ABABAB;
+      --seg-selected-text: #F8F8F8;
     }
 
     .sheet-topbar-doc {
@@ -5357,34 +5447,80 @@
       color: #6f6f6f;
       display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 10px;
+      justify-content: flex-start;
+      gap: 8px;
+      padding: 0 12px;
       font-size: 12px;
       line-height: 16px;
+      box-sizing: border-box;
     }
 
-    .mini-search::before {
-      content: "";
+    .mini-search-icon {
       width: 12px;
       height: 12px;
       border: 1.5px solid #ABABAB;
       border-radius: 999px;
-      margin-right: 6px;
       box-sizing: border-box;
-      display: inline-block;
+      display: inline-flex;
+      flex-shrink: 0;
       position: relative;
     }
 
-    .mini-search::after {
+    .mini-search-icon::after {
       content: "";
-      width: 6px;
+      width: 5px;
       height: 1.5px;
       background: #ABABAB;
-      transform: rotate(45deg) translate(-1px, 2px);
-      display: inline-block;
+      transform: rotate(45deg);
+      position: absolute;
+      right: -3px;
+      bottom: -1px;
       border-radius: 1px;
-      margin-left: -12px;
-      margin-right: 8px;
+    }
+
+    .mini-search-text {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 500;
+      color: inherit;
+    }
+
+    .mini-pincode {
+      width: 164px;
+      height: 30px;
+      border-radius: 12px;
+      border: 1px solid #E2E2E2;
+      background: #F8F8F8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 8px;
+      box-sizing: border-box;
+    }
+
+    .mini-pincode-cell {
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      background: #EAEAEA;
+      color: #6F6F6F;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      line-height: 14px;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .mini-pincode-cell.active::after {
+      content: "";
+      width: 1.5px;
+      height: 10px;
+      border-radius: 1px;
+      background: #0DC267;
+      position: absolute;
     }
 
     .mini-check,
@@ -5702,15 +5838,58 @@
 
     .mini-tabbar {
       width: 170px;
-      height: 36px;
-      border-radius: 14px;
+      height: 38px;
+      border-radius: 999px;
       border: 1px solid #D5D5D5;
-      background: rgba(248, 248, 248, 0.85);
+      background: linear-gradient(180deg, rgba(248,248,248,0.86) 0%, rgba(240,240,240,0.72) 100%);
       display: inline-flex;
       align-items: center;
-      justify-content: space-evenly;
-      padding: 0 8px;
+      gap: 2px;
+      padding: 3px;
       box-sizing: border-box;
+    }
+
+    .mini-tabbar-item {
+      flex: 1 1 0;
+      min-width: 0;
+      height: 30px;
+      border-radius: 999px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      color: #6A6A6A;
+      font-size: 8px;
+      line-height: 10px;
+      font-weight: 500;
+    }
+
+    .mini-tabbar-item.active {
+      background: rgba(13,194,103,0.2);
+      color: #0DC267;
+    }
+
+    .mini-tabbar-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: 1.3px solid currentColor;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .mini-tabbar-dot::after {
+      content: "";
+      width: 3px;
+      height: 1.3px;
+      border-radius: 1px;
+      background: currentColor;
+      position: absolute;
+      right: -1px;
+      bottom: -1px;
+      transform: rotate(45deg);
+      opacity: 0.75;
     }
 
     [data-theme="dark"] .mini-input,
@@ -5718,6 +5897,16 @@
     [data-theme="dark"] .mini-select {
       border-color: #3A3A3A;
       background: #1F1F1F;
+      color: #ABABAB;
+    }
+
+    [data-theme="dark"] .mini-pincode {
+      border-color: #3A3A3A;
+      background: #1F1F1F;
+    }
+
+    [data-theme="dark"] .mini-pincode-cell {
+      background: #2D2D2D;
       color: #ABABAB;
     }
 
@@ -5784,6 +5973,20 @@
       border-color: #3A3A3A;
       background: #171717;
       color: #F5F5F5;
+    }
+
+    [data-theme="dark"] .mini-tabbar {
+      border-color: rgba(255,255,255,0.2);
+      background: linear-gradient(180deg, rgba(56,56,56,0.62) 0%, rgba(30,30,30,0.62) 100%);
+    }
+
+    [data-theme="dark"] .mini-tabbar-item {
+      color: #ABABAB;
+    }
+
+    [data-theme="dark"] .mini-tabbar-item.active {
+      background: rgba(13,194,103,0.24);
+      color: #0DC267;
     }
 
     [data-theme="dark"] .mini-card-line,
@@ -6008,9 +6211,135 @@
         animation: none !important;
       }
     }
+
+    .auth-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-page-bg, #F5F5F5);
+      padding: 24px;
+    }
+
+    .auth-gate-card {
+      width: min(100%, 348px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .auth-gate-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .auth-gate-logo {
+      width: 78px;
+      height: 81px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .auth-gate-title {
+      margin: 0;
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .auth-gate-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .auth-gate-input {
+      width: 100%;
+      height: 48px;
+      border-radius: 12px;
+      border: 1px solid #E2E2E2;
+      background: #F8F8F8;
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 22px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.16s ease-out, box-shadow 0.16s ease-out;
+    }
+
+    .auth-gate-input::placeholder {
+      color: #ABABAB;
+    }
+
+    .auth-gate-input:focus {
+      border-color: #0DC267;
+      box-shadow: 0 0 0 1px rgba(13, 194, 103, 0.4);
+    }
+
+    .auth-gate-error {
+      min-height: 16px;
+      margin: 0;
+      font-size: 12px;
+      line-height: 16px;
+      color: #FF4D3A;
+      opacity: 0;
+      transition: opacity 0.16s ease-out;
+    }
+
+    .auth-gate-error--visible {
+      opacity: 1;
+    }
+
+    [data-theme="dark"] .auth-gate {
+      background: #111111;
+    }
+
+    [data-theme="dark"] .auth-gate-input {
+      border-color: #3A3A3A;
+      background: #1B1B1B;
+      color: #F8F8F8;
+    }
+
+    [data-theme="dark"] .auth-gate-input::placeholder {
+      color: #6E6E6E;
+    }
+
+    body.auth-locked .app-body {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    body.auth-locked .auth-gate {
+      display: flex;
+    }
   </style>
 </head>
-<body>
+<body class="auth-locked">
+  <div class="auth-gate" id="auth-gate" role="dialog" aria-modal="true" aria-labelledby="auth-gate-title">
+    <div class="auth-gate-card">
+      <div class="auth-gate-brand">
+        <img class="auth-gate-logo" id="auth-gate-logo" src="favicon.svg" alt="Invert StoryBook">
+        <p class="auth-gate-title" id="auth-gate-title">InvertStoryBook</p>
+      </div>
+      <form class="auth-gate-form" id="auth-gate-form" autocomplete="off">
+        <input
+          type="password"
+          class="auth-gate-input"
+          id="auth-gate-input"
+          placeholder="Введите пароль"
+          aria-label="Пароль для входа в StoryBook"
+        >
+        <p class="auth-gate-error" id="auth-gate-error">Неверный пароль</p>
+      </form>
+    </div>
+  </div>
   <div class="app-body">
   <main class="content" id="main-content">
     <div class="hub-header">
@@ -11281,10 +11610,7 @@
           <div class="avatar-addremove-wrap" id="avatar-ar-wrap">
             <div class="avatar-addremove-live" id="avatar-ar-live" aria-live="polite">
               <div class="avatar-addremove-placeholder" id="avatar-ar-placeholder">
-                <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                  <circle cx="48" cy="37" r="16" fill="currentColor"/>
-                  <path d="M20 88C22 72 33 62 48 62C63 62 74 72 76 88H20Z" fill="currentColor"/>
-                </svg>
+                <img src="avatar.svg" alt="" aria-hidden="true">
               </div>
               <img id="avatar-ar-img" alt="" hidden>
             </div>
@@ -12186,9 +12512,13 @@
                   </div>
                 </div>
                 <textarea class="message-input-control" id="message-input-control" rows="1" placeholder="Сообщение"></textarea>
+                <span class="message-input-cursor" id="message-input-cursor" aria-hidden="true"></span>
               </div>
               <button type="button" class="message-input-send" id="message-input-send" aria-label="Отправить сообщение">
-                <img src="send.svg" alt="" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                  <path d="M6.75 9.25L10 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M13.9806 2.63624C14.0047 2.55072 14.0056 2.46031 13.9832 2.37433C13.9607 2.28835 13.9158 2.20991 13.8529 2.14707C13.7901 2.08424 13.7116 2.03928 13.6257 2.01684C13.5397 1.99439 13.4493 1.99527 13.3638 2.01937L1.36375 5.65812C1.26578 5.68577 1.17858 5.74266 1.11382 5.8212C1.04905 5.89973 1.00979 5.99616 1.0013 6.09761C0.992808 6.19905 1.01548 6.30067 1.06629 6.38888C1.1171 6.47709 1.19362 6.54769 1.28563 6.59124L6.75 9.24999L9.40875 14.7137C9.45231 14.8058 9.52291 14.8823 9.61112 14.9331C9.69933 14.9839 9.80095 15.0066 9.90239 14.9981C10.0038 14.9896 10.1003 14.9503 10.1788 14.8856C10.2573 14.8208 10.3142 14.7336 10.3419 14.6356L13.9806 2.63624Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </button>
             </div>
           </div>
@@ -12356,7 +12686,12 @@
               <div class="date-input-demo-value" id="date-value">ДД.MM.ГГГГ</div>
             </div>
             <div class="date-input-demo-icon">
-              <img src="../icon swapper.svg" alt="" width="24" height="24">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M19.5 3.75H4.5C4.08579 3.75 3.75 4.08579 3.75 4.5V19.5C3.75 19.9142 4.08579 20.25 4.5 20.25H19.5C19.9142 20.25 20.25 19.9142 20.25 19.5V4.5C20.25 4.08579 19.9142 3.75 19.5 3.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.5 2.25V5.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7.5 2.25V5.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3.75 8.25H20.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
           </div>
           <div class="date-input-demo-helper" id="date-helper-text">helper text</div>
@@ -12419,7 +12754,8 @@
           <div class="phone-input-field">
             <div class="phone-input-main">
               <span class="phone-input-flag" id="phone-flag">🇷🇺</span>
-              <span class="phone-input-prefix" id="phone-prefix">+7</span>
+              <span class="phone-input-plus" id="phone-plus">+</span>
+              <span class="phone-input-prefix" id="phone-prefix">7</span>
               <span class="phone-input-caret" id="phone-caret"></span>
               <input
                 id="phone-number-input"
@@ -12527,7 +12863,6 @@
           <label for="progressbar-style">style</label>
           <select id="progressbar-style">
             <option value="accent" selected>accent</option>
-            <option value="positive">positive</option>
             <option value="special">special</option>
             <option value="warning">warning</option>
             <option value="negative">negative</option>
@@ -12988,6 +13323,87 @@
   <div class="copy-snackbar" id="copy-snackbar">HEX скопирован в буфер обмена</div>
   <script>
     (function () {
+      var AUTH_PASSWORD = "invertapp2026";
+      var AUTH_TTL_MS = 24 * 60 * 60 * 1000;
+      var AUTH_EXP_KEY = "storybook-auth-exp";
+
+      function getAuthExp() {
+        try {
+          var value = localStorage.getItem(AUTH_EXP_KEY);
+          var exp = value ? parseInt(value, 10) : 0;
+          return Number.isFinite(exp) ? exp : 0;
+        } catch (e) {
+          return 0;
+        }
+      }
+
+      function setAuthExp(exp) {
+        try {
+          localStorage.setItem(AUTH_EXP_KEY, String(exp));
+        } catch (e) {}
+      }
+
+      function clearAuthExp() {
+        try {
+          localStorage.removeItem(AUTH_EXP_KEY);
+        } catch (e) {}
+      }
+
+      function isAuthorized() {
+        var exp = getAuthExp();
+        return exp > Date.now();
+      }
+
+      function lockStorybook() {
+        document.body.classList.add("auth-locked");
+      }
+
+      function unlockStorybook() {
+        document.body.classList.remove("auth-locked");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var form = document.getElementById("auth-gate-form");
+        var input = document.getElementById("auth-gate-input");
+        var error = document.getElementById("auth-gate-error");
+
+        function showError(show) {
+          if (!error) return;
+          error.classList.toggle("auth-gate-error--visible", !!show);
+        }
+
+        if (isAuthorized()) {
+          unlockStorybook();
+        } else {
+          clearAuthExp();
+          lockStorybook();
+          if (input) {
+            setTimeout(function () { input.focus(); }, 0);
+          }
+        }
+
+        if (!form || !input) return;
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var value = input.value || "";
+          if (value === AUTH_PASSWORD) {
+            setAuthExp(Date.now() + AUTH_TTL_MS);
+            showError(false);
+            input.value = "";
+            unlockStorybook();
+            return;
+          }
+          showError(true);
+          input.select();
+        });
+
+        input.addEventListener("input", function () {
+          showError(false);
+        });
+      });
+    })();
+
+    (function () {
       var THEME_KEY = "storybook-theme";
       function getTheme() {
         try {
@@ -13003,6 +13419,8 @@
         if (label) label.textContent = "Темная тема";
         var logo = document.getElementById("header-logo");
         if (logo) logo.src = theme === "dark" ? "logo-dark.svg" : "logo-light.svg";
+        var gateLogo = document.getElementById("auth-gate-logo");
+        if (gateLogo) gateLogo.src = "favicon.svg";
       }
       document.addEventListener("DOMContentLoaded", function () {
         setTheme(getTheme());
@@ -13061,13 +13479,13 @@
             return '<div class="mini-preview"><div class="mini-bottomsheet"><span class="mini-bottomsheet-grabber"></span><div class="mini-row"><span class="mini-pill">×</span><span class="mini-preview-label">Title</span><span class="mini-pill green">•</span></div><span class="mini-btn" style="height:22px;min-width:100px;font-size:12px;">Button</span></div></div>';
           case "section-avatar":
           case "section-avatar-add-remove":
-            return '<div class="mini-preview"><span class="mini-pill green" style="width:34px;height:34px;">A</span><span class="mini-pill">+</span></div>';
+            return '<div class="mini-preview"><img src="avatar.svg" alt="" style="width:52px;height:52px;border-radius:12px;object-fit:cover;display:block"></div>';
           case "section-checkbox":
             return '<div class="mini-preview"><span class="mini-check"></span><span style="font-size:12px;color:var(--text-secondary)">Label</span></div>';
           case "section-radio":
             return '<div class="mini-preview"><span class="mini-radio"></span><span style="font-size:12px;color:var(--text-secondary)">Option</span></div>';
           case "section-search":
-            return '<div class="mini-preview"><span class="mini-search">Поиск</span></div>';
+            return '<div class="mini-preview"><span class="mini-search"><span class="mini-search-icon" aria-hidden="true"></span><span class="mini-search-text">Поиск</span></span></div>';
           case "section-select":
             return '<div class="mini-preview"><span class="mini-select">Select <span style="opacity:.65">⌄</span></span></div>';
           case "section-button":
@@ -13083,12 +13501,13 @@
           case "section-bubble-chat":
             return '<div class="mini-preview"><div class="mini-chat"><span class="mini-chat-bubble"></span><span class="mini-chat-bubble out"></span></div></div>';
           case "section-icon-swapper":
-            return '<div class="mini-preview"><div class="mini-icon-swapper"><span class="mini-pill">o</span><span style="font-size:12px;color:var(--text-secondary)">&lt;&gt;</span><span class="mini-pill green">o</span></div></div>';
+            return '<div class="mini-preview"><div class="mini-icon-swapper"><span style="font-size:16px;line-height:1;color:var(--text-secondary)">&lt;&gt;</span></div></div>';
           case "section-input":
           case "section-phone-input":
           case "section-date-input":
-          case "section-pincode-input":
             return '<div class="mini-preview"><span class="mini-input">Input</span></div>';
+          case "section-pincode-input":
+            return '<div class="mini-preview"><span class="mini-pincode"><span class="mini-pincode-cell">1</span><span class="mini-pincode-cell">2</span><span class="mini-pincode-cell">3</span><span class="mini-pincode-cell active"></span><span class="mini-pincode-cell"></span><span class="mini-pincode-cell"></span></span></div>';
           case "section-snackbar":
             return '<div class="mini-preview"><span class="mini-snackbar">Нейтральное</span></div>';
           case "section-tabs":
@@ -13107,7 +13526,7 @@
           case "section-sheet-topbar":
             return '<div class="mini-preview"><div class="mini-toolbar" style="border-radius:10px;height:34px;"><span class="mini-pill">×</span><span class="mini-toolbar-title">Title</span><span class="mini-pill green">•</span></div></div>';
           case "section-tabbar-liquid":
-            return '<div class="mini-preview"><div class="mini-tabbar"><span class="mini-pill">o</span><span class="mini-pill green">o</span><span class="mini-pill">o</span></div></div>';
+            return '<div class="mini-preview"><div class="mini-tabbar"><span class="mini-tabbar-item active"><span class="mini-tabbar-dot"></span><span>Label</span></span><span class="mini-tabbar-item"><span class="mini-tabbar-dot"></span><span>Label</span></span><span class="mini-tabbar-item"><span class="mini-tabbar-dot"></span><span>Label</span></span></div></div>';
           case "section-tags":
             return '<div class="mini-preview"><span class="mini-tab active">Tag</span><span class="mini-tab">Tag</span></div>';
           case "section-actionbar":
@@ -14052,9 +14471,14 @@
 
         if (filter) {
           color = "gray";
-          icon = true;
+          icon = false;
           if (tagColor) tagColor.value = "gray";
-          if (tagIcon) tagIcon.value = "yes";
+          if (tagIcon) {
+            tagIcon.value = "no";
+            tagIcon.disabled = true;
+          }
+        } else if (tagIcon) {
+          tagIcon.disabled = false;
         }
 
         tagDemo.className = "tag-demo";
@@ -14062,7 +14486,7 @@
         tagDemo.classList.toggle("tag-demo--filter", filter);
 
         if (tagLabel) tagLabel.textContent = label;
-        if (tagLeadingIcon) tagLeadingIcon.style.display = icon ? "block" : "none";
+        if (tagLeadingIcon) tagLeadingIcon.style.display = icon && !filter ? "block" : "none";
         if (tagCloseBtn) tagCloseBtn.style.display = filter ? "inline-flex" : "none";
 
         if (animate) {
@@ -14184,6 +14608,7 @@
       var tabbarWrap = document.getElementById("tabbar-liquid-wrap");
       var tabbar = document.getElementById("tabbar-liquid");
       var tabbarSearch = document.getElementById("tabbar-liquid-search");
+      var tabbarActiveIndex = 0;
 
       function acornIcon() {
         return '<svg class="tabbar-liquid-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
@@ -14193,12 +14618,16 @@
         '</svg>';
       }
 
-      function syncTabbarActiveOptions() {
-        if (!tabbarTabsCount || !tabbarActiveTab) return;
+      function getTabbarCount() {
+        if (!tabbarTabsCount) return 2;
         var count = parseInt(tabbarTabsCount.value || "5", 10);
         if (Number.isNaN(count) || count < 2) count = 2;
-        var current = parseInt(tabbarActiveTab.value || "1", 10);
-        if (Number.isNaN(current) || current < 1) current = 1;
+        return count;
+      }
+
+      function syncTabbarActiveOptions() {
+        if (!tabbarActiveTab) return;
+        var count = getTabbarCount();
         tabbarActiveTab.innerHTML = "";
         for (var i = 1; i <= count; i += 1) {
           var opt = document.createElement("option");
@@ -14206,28 +14635,54 @@
           opt.textContent = String(i);
           tabbarActiveTab.appendChild(opt);
         }
-        if (current > count) current = count;
-        tabbarActiveTab.value = String(current);
+        if (tabbarActiveIndex > count - 1) tabbarActiveIndex = count - 1;
+        if (tabbarActiveIndex < 0) tabbarActiveIndex = 0;
+        tabbarActiveTab.value = String(tabbarActiveIndex + 1);
+      }
+
+      function syncTabbarStateFromControls() {
+        if (!tabbarActiveTab) return;
+        var count = getTabbarCount();
+        var selected = parseInt(tabbarActiveTab.value || "1", 10);
+        if (Number.isNaN(selected) || selected < 1) selected = 1;
+        if (selected > count) selected = count;
+        tabbarActiveIndex = selected - 1;
       }
 
       function renderTabbar(animate) {
         if (!tabbar || !tabbarWrap || !tabbarTabsCount || !tabbarSeparateSearch || !tabbarMinimized || !tabbarActiveTab || !tabbarSearch) return;
-        var count = parseInt(tabbarTabsCount.value || "5", 10);
+        var count = getTabbarCount();
         var separateSearch = tabbarSeparateSearch.value === "yes";
         var minimized = tabbarMinimized.value === "yes";
-        var active = parseInt(tabbarActiveTab.value || "1", 10);
-        if (Number.isNaN(count) || count < 2) count = 2;
-        if (Number.isNaN(active) || active < 1) active = 1;
-        if (active > count) active = count;
+        if (tabbarActiveIndex > count - 1) tabbarActiveIndex = count - 1;
+        if (tabbarActiveIndex < 0) tabbarActiveIndex = 0;
+        var active = tabbarActiveIndex + 1;
+
+        var widthMapNoSearch = { 2: "194px", 3: "286px", 4: "352px", 5: "352px" };
+        var widthMapSearch = { 2: "210px", 3: "286px", 4: "334px", 5: "352px" };
+        var tabbarWidth = separateSearch ? (widthMapSearch[count] || "352px") : (widthMapNoSearch[count] || "352px");
+        var tabItemWidth = "102px";
+        if (separateSearch && count === 2) tabItemWidth = "110px";
+        if (count >= 4) tabItemWidth = "auto";
 
         tabbar.className = "tabbar-liquid";
         tabbar.classList.toggle("tabbar-liquid--minimized", minimized);
+        tabbar.classList.toggle("tabbar-liquid--fill", !minimized && count >= 4);
+        tabbar.classList.toggle("tabbar-liquid--hug", !minimized && count < 4);
+        tabbar.style.setProperty("--tabbar-count", String(count));
+        tabbar.style.setProperty("--tab-item-width", tabItemWidth);
         tabbar.style.setProperty("--tabbar-height", minimized ? "58px" : "62px");
-        tabbar.style.width = separateSearch ? "334px" : "402px";
+        tabbar.style.width = minimized ? "40px" : tabbarWidth;
+        tabbar.style.padding = minimized ? "0" : "0 5px";
         tabbarSearch.style.display = separateSearch ? "inline-flex" : "none";
+        tabbarSearch.classList.toggle("tabbar-liquid-search--minimized", minimized);
+        tabbarWrap.style.justifyContent = "center";
+        tabbarActiveTab.value = String(active);
 
         tabbar.innerHTML = "";
-        for (var i = 1; i <= count; i += 1) {
+        var start = minimized ? active : 1;
+        var end = minimized ? active : count;
+        for (var i = start; i <= end; i += 1) {
           var btn = document.createElement("button");
           btn.type = "button";
           btn.className = "tabbar-liquid-item" + (i === active ? " tabbar-liquid-item--active" : "");
@@ -14252,7 +14707,9 @@
           if (!(target instanceof Element) || !tabbarActiveTab) return;
           var item = target.closest(".tabbar-liquid-item");
           if (!item) return;
-          tabbarActiveTab.value = item.dataset.index || "1";
+          var next = parseInt(item.dataset.index || "1", 10);
+          if (!Number.isNaN(next) && next > 0) tabbarActiveIndex = next - 1;
+          tabbarActiveTab.value = String(tabbarActiveIndex + 1);
           renderTabbar(true);
         });
       }
@@ -14260,9 +14717,10 @@
       if (tabbarTabsCount) tabbarTabsCount.addEventListener("change", function () { syncTabbarActiveOptions(); renderTabbar(true); });
       if (tabbarSeparateSearch) tabbarSeparateSearch.addEventListener("change", function () { renderTabbar(true); });
       if (tabbarMinimized) tabbarMinimized.addEventListener("change", function () { renderTabbar(true); });
-      if (tabbarActiveTab) tabbarActiveTab.addEventListener("change", function () { renderTabbar(true); });
+      if (tabbarActiveTab) tabbarActiveTab.addEventListener("change", function () { syncTabbarStateFromControls(); renderTabbar(true); });
       document.addEventListener("storybook-theme-change", function () { renderTabbar(false); });
 
+      syncTabbarStateFromControls();
       syncTabbarActiveOptions();
       renderTabbar(false);
     });
@@ -14360,39 +14818,56 @@
       var messageControl = document.getElementById("message-input-control");
       var messageReply = document.getElementById("message-input-reply");
       var messageSend = document.getElementById("message-input-send");
+      var messageCursor = document.getElementById("message-input-cursor");
+      var messageLiveEditing = false;
 
       function resizeMessageControl() {
         if (!messageControl) return;
         messageControl.style.height = "auto";
-        var rows = Math.min(messageControl.scrollHeight, 64);
+        var rows = Math.min(messageControl.scrollHeight, 68);
         messageControl.style.height = rows + "px";
       }
 
       function renderMessageInput(animate) {
-        if (!messageProperty || !messageText || !messageToolbar || !messageControl || !messageReply || !messageSend) return;
+        if (!messageProperty || !messageText || !messageToolbar || !messageControl || !messageReply || !messageSend || !messageCursor) return;
         var property = messageProperty.value || "Default";
-        var text = (messageText.value || "").trim();
+        var panelText = (messageText.value || "").replace(/\r/g, "");
+        var liveText = (messageControl.value || "").replace(/\r/g, "");
+        var text = messageLiveEditing ? liveText : panelText;
+        if (property === "Default" && !messageLiveEditing) text = "";
+        var autoMultiline = text.indexOf("\n") !== -1 || text.length > 34;
+        var visualProperty = property;
+
+        if (property === "Default" && messageLiveEditing && text.length > 0) {
+          visualProperty = autoMultiline ? "more input" : "input";
+        } else if (property === "input" && autoMultiline) {
+          visualProperty = "more input";
+        }
 
         messageToolbar.className = "message-input-toolbar";
-        messageToolbar.classList.add("message-input-toolbar--" + property.replace(/\s+/g, "-").toLowerCase());
+        messageToolbar.classList.add("message-input-toolbar--" + visualProperty.replace(/\s+/g, "-").toLowerCase());
 
-        var isDefault = property === "Default";
-        var isInput = property === "input";
-        var isMore = property === "more input";
-        var isReply = property === "reply";
+        var isDefault = visualProperty === "Default";
+        var isInput = visualProperty === "input";
+        var isMore = visualProperty === "more input";
+        var isReply = visualProperty === "reply";
         var isMultiline = isMore || isReply;
 
         messageToolbar.classList.toggle("message-input-toolbar--multiline", isMultiline);
         messageReply.style.display = isReply ? "inline-flex" : "none";
         messageSend.style.display = isDefault ? "none" : "inline-flex";
-        messageSend.style.width = isInput ? "32px" : "22px";
+        messageSend.style.width = isInput ? "32px" : "32px";
         messageSend.style.height = isInput ? "32px" : "22px";
-        messageSend.style.padding = isInput ? "8px" : "3px";
+        messageSend.style.padding = isInput ? "8px" : "0 8px";
+        messageCursor.style.display = "none";
 
         messageControl.rows = isMultiline ? 2 : 1;
-        messageControl.value = isDefault ? "" : (text || (isInput ? "ввод" : "вводвводвводвводвводвводвводввод"));
-        messageControl.placeholder = isDefault ? "Сообщение" : "";
-        messageControl.readOnly = isDefault;
+        messageControl.value = text;
+        messageControl.placeholder = isDefault && !text ? "Сообщение" : "";
+        messageControl.readOnly = false;
+        messageControl.style.whiteSpace = "pre-wrap";
+        messageControl.style.overflowX = "hidden";
+        messageControl.style.overflowY = "hidden";
 
         resizeMessageControl();
 
@@ -14404,11 +14879,18 @@
         }
       }
 
-      if (messageProperty) messageProperty.addEventListener("change", function () { renderMessageInput(true); });
-      if (messageText) messageText.addEventListener("input", function () { renderMessageInput(false); });
+      if (messageProperty) messageProperty.addEventListener("change", function () {
+        messageLiveEditing = false;
+        if (messageProperty.value === "Default" && messageControl) messageControl.value = "";
+        renderMessageInput(true);
+      });
+      if (messageText) messageText.addEventListener("input", function () {
+        if (!messageLiveEditing) renderMessageInput(false);
+      });
       if (messageControl) messageControl.addEventListener("input", function () {
+        messageLiveEditing = true;
         messageText.value = messageControl.value;
-        resizeMessageControl();
+        renderMessageInput(false);
       });
       if (messageSend) messageSend.addEventListener("click", function () {
         if (!messageControl) return;
@@ -14424,6 +14906,7 @@
       var phoneDemo = document.getElementById("phone-input-demo");
       var phoneInput = document.getElementById("phone-number-input");
       var phoneFlag = document.getElementById("phone-flag");
+      var phonePlus = document.getElementById("phone-plus");
       var phonePrefix = document.getElementById("phone-prefix");
       var phoneCaret = document.getElementById("phone-caret");
 
@@ -14443,7 +14926,7 @@
         return null;
       }
 
-      function applyMask(digits, mask) {
+      function formatMaskPartial(digits, mask) {
         var out = "";
         var di = 0;
         for (var i = 0; i < mask.length; i += 1) {
@@ -14453,10 +14936,10 @@
               out += digits.charAt(di);
               di += 1;
             } else {
-              out += "-";
+              break;
             }
           } else {
-            out += ch;
+            if (di > 0 && di < digits.length) out += ch;
           }
         }
         return out;
@@ -14473,7 +14956,7 @@
       }
 
       function updatePhoneInputUI(syncMask) {
-        if (!phoneDemo || !phoneInput || !phoneCountry || !phoneFlag || !phonePrefix) return;
+        if (!phoneDemo || !phoneInput || !phoneCountry || !phoneFlag || !phonePrefix || !phonePlus) return;
         var state = phoneState ? phoneState.value : "default";
         var countryKey = countries[phoneCountry.value] ? phoneCountry.value : "ru";
         var rawDigits = (phoneInput.value || "").replace(/\D/g, "");
@@ -14500,9 +14983,10 @@
         var country = countries[countryKey];
         var maxDigits = (country.mask.match(/X/g) || []).length;
         nationalRaw = nationalRaw.slice(0, maxDigits);
+        var hasDialOrInput = rawDigits.length > 0;
 
         phoneFlag.textContent = country.flag;
-        phonePrefix.textContent = "+" + country.code;
+        phonePrefix.textContent = country.code;
 
         phoneDemo.className = "phone-input-demo";
         if (state === "input-focused") phoneDemo.classList.add("phone-input-demo--input-focused");
@@ -14511,8 +14995,9 @@
         if (filled) phoneDemo.classList.add("phone-input-demo--filled"); else phoneDemo.classList.add("phone-input-demo--unfilled");
         if (state === "default" && filled) phoneDemo.classList.add("phone-input-demo--show-action");
 
-        var hideCountryBlock = (state === "select-focused" && rawDigits.length === 0) || state === "frame-3" || state === "disabled";
+        var hideCountryBlock = !hasDialOrInput || state === "frame-3" || state === "disabled";
         phoneFlag.classList.toggle("phone-input-hidden", hideCountryBlock);
+        phonePlus.classList.toggle("phone-input-hidden", hideCountryBlock);
         phonePrefix.classList.toggle("phone-input-hidden", hideCountryBlock);
 
         if (state === "frame-3") {
@@ -14521,30 +15006,30 @@
           if (phoneCaret) phoneCaret.classList.add("phone-input-hidden");
         } else if (state === "select-focused") {
           phoneInput.placeholder = rawDigits.length === 0 ? "Телефон" : country.placeholder;
-          phoneInput.value = rawDigits.length === 0 ? "" : applyMask(nationalRaw, country.mask);
+          phoneInput.value = rawDigits.length === 0 ? "" : formatMaskPartial(nationalRaw, country.mask);
           if (phoneCaret) phoneCaret.classList.add("phone-input-hidden");
         } else if (state === "disabled") {
           phoneInput.placeholder = "";
-          phoneInput.value = applyMask(sampleDigits.slice(0, maxDigits), country.mask);
+          phoneInput.value = formatMaskPartial(sampleDigits.slice(0, maxDigits), country.mask);
           if (phoneCaret) phoneCaret.classList.add("phone-input-hidden");
         } else if (state === "input-focused") {
-          var focusedMasked = applyMask(nationalRaw, country.mask);
+          var focusedMasked = formatMaskPartial(nationalRaw, country.mask);
           phoneInput.value = focusedMasked;
-          phoneInput.placeholder = country.placeholder;
-          if (phoneCaret) phoneCaret.classList.remove("phone-input-hidden");
+          phoneInput.placeholder = hasDialOrInput ? country.placeholder : "Телефон";
+          if (phoneCaret) phoneCaret.classList.toggle("phone-input-hidden", hasDialOrInput);
         } else if (state === "default" && filled) {
-          var defaultFilledMasked = applyMask(nationalRaw || sampleDigits.slice(0, maxDigits), country.mask);
+          var defaultFilledMasked = formatMaskPartial(nationalRaw || sampleDigits.slice(0, maxDigits), country.mask);
           phoneInput.value = defaultFilledMasked;
           phoneInput.placeholder = "";
           if (phoneCaret) phoneCaret.classList.add("phone-input-hidden");
         } else if (state === "invalid") {
-          var invalidMasked = applyMask(nationalRaw || sampleDigits.slice(0, maxDigits), country.mask);
+          var invalidMasked = formatMaskPartial(nationalRaw || sampleDigits.slice(0, maxDigits), country.mask);
           phoneInput.value = invalidMasked;
           phoneInput.placeholder = "";
           if (phoneCaret) phoneCaret.classList.add("phone-input-hidden");
         } else {
           phoneInput.value = "";
-          phoneInput.placeholder = "";
+          phoneInput.placeholder = "Телефон";
           if (phoneCaret) phoneCaret.classList.add("phone-input-hidden");
         }
 
@@ -14670,10 +15155,9 @@
 
       var styleColors = {
         accent: "#0DC267",
-        positive: "#10B55F",
         special: "#883BE9",
         warning: "#F7A300",
-        negative: "#FF4D8D"
+        negative: "#FF4D3A"
       };
 
       function syncStepOptions() {
@@ -14693,6 +15177,7 @@
       function renderProgressbar(animate) {
         if (!progressType || !progressStyle || !progressDemo || !progressTrack || !progressFill || !progressSegmented || !progressPercentRow || !progressSegmentsRow || !progressStepRow) return;
         var type = progressType.value || "progress";
+        if (progressStyle.value === "positive") progressStyle.value = "accent";
         var color = styleColors[progressStyle.value] || styleColors.accent;
 
         if (type === "segmented") {

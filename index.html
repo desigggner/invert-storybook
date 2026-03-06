@@ -5695,11 +5695,17 @@
         width: 100%;
         min-width: 0;
         gap: 8px;
+        flex-direction: column;
+        align-items: stretch;
       }
 
       .hub-tools .search-wrap,
       .theme-toggle {
         width: 100%;
+      }
+
+      .hub-tools .search-wrap {
+        flex-shrink: 1;
       }
 
       .theme-toggle {

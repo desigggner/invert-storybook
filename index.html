@@ -950,6 +950,13 @@
       margin-top: 12px;
     }
 
+    #section-icons {
+      background: transparent !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+    }
+
     @media (max-width: 1080px) {
       #section-intro .a11y-highlights {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5606,50 +5613,28 @@
       padding: 0 !important;
     }
 
-    .icons-catalog {
-      margin-top: 12px;
-      background: var(--bg-card);
-      border-radius: 20px;
-      padding: 14px;
-    }
-
-    .icons-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .icons-count {
-      font-size: 14px;
-      line-height: 20px;
-      color: var(--text-secondary);
-    }
-
     .icons-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
     }
 
     .icon-item {
-      border-radius: 20px;
-      background: var(--bg-card);
+      border-radius: 24px;
+      background: var(--surface-card, #ffffff);
       border: 0;
-      padding: 16px;
-      height: 312px;
+      padding: 22px 20px 20px;
+      min-height: 220px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .icon-preview {
       border-radius: 16px;
       background: var(--demo-bg);
       border: 1px solid var(--spec-border);
-      min-height: 178px;
+      min-height: 126px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -5665,17 +5650,22 @@
       width: 32px;
       height: 32px;
       object-fit: contain;
+      filter: brightness(0) saturate(100%);
+    }
+
+    [data-theme="dark"] .icon-preview img {
+      filter: brightness(0) invert(1) saturate(100%);
     }
 
     .icon-name {
       margin: 0;
-      font-size: 16px;
-      line-height: 22px;
+      font-size: 14px;
+      line-height: 20px;
       font-weight: 500;
       color: var(--text-primary);
       text-align: center;
       word-break: break-word;
-      min-height: 44px;
+      min-height: 40px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -5692,13 +5682,13 @@
 
     .icon-size-select {
       width: 100%;
-      height: 48px;
-      border-radius: 16px;
+      height: 44px;
+      border-radius: 14px;
       border: 1px solid var(--spec-border);
       background-color: var(--bg-card);
       color: var(--text-primary);
-      font-size: 18px;
-      line-height: 24px;
+      font-size: 14px;
+      line-height: 20px;
       padding: 0 40px 0 16px;
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='12' viewBox='0 0 18 12' fill='none'%3E%3Cpath d='M2 2L9 9L16 2' stroke='%23ABABAB' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -5708,9 +5698,9 @@
     }
 
     .icon-download {
-      width: 56px;
-      height: 48px;
-      border-radius: 16px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       border: none;
       background: #0DC267;
       color: #ffffff;
@@ -5722,8 +5712,8 @@
     }
 
     .icon-download img {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       display: block;
     }
 
@@ -6353,6 +6343,14 @@
       gap: 8px;
     }
 
+    .mini-icon-swapper img {
+      filter: brightness(0) saturate(100%);
+    }
+
+    [data-theme="dark"] .mini-icon-swapper img {
+      filter: brightness(0) invert(1) saturate(100%);
+    }
+
     .mini-icon-swapper .mini-pill {
       width: 30px;
       height: 30px;
@@ -6615,6 +6613,11 @@
       margin-left: auto;
     }
 
+    .detail-root-mode .hub-tools {
+      width: 100%;
+      margin-left: 0;
+    }
+
     .content-scroll {
       overflow: visible;
       padding: 0;
@@ -6649,7 +6652,7 @@
       }
 
       .icons-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       }
     }
 
@@ -6718,11 +6721,8 @@
       }
 
       .icons-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .icons-catalog {
-        padding: 12px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
       }
 
       .theme-toggle {
@@ -6843,6 +6843,40 @@
       box-shadow: 0 0 0 1px rgba(13, 194, 103, 0.4);
     }
 
+    .auth-gate-input--invalid {
+      border-color: #FF4D3A;
+      box-shadow: 0 0 0 1px rgba(255, 77, 58, 0.22);
+    }
+
+    .auth-gate-submit {
+      width: 100%;
+      height: 44px;
+      border: none;
+      border-radius: 12px;
+      background: #0DC267;
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: filter 0.16s ease-out, transform 0.1s ease-out, opacity 0.16s ease-out;
+    }
+
+    .auth-gate-submit:hover {
+      filter: brightness(1.04);
+    }
+
+    .auth-gate-submit:active {
+      transform: translateY(1px);
+    }
+
+    .auth-gate-submit:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      filter: none;
+      transform: none;
+    }
+
     .auth-gate-error {
       min-height: 16px;
       margin: 0;
@@ -6871,6 +6905,11 @@
       color: #6E6E6E;
     }
 
+    [data-theme="dark"] .auth-gate-submit {
+      background: #0DC267;
+      color: #ffffff;
+    }
+
     body.auth-locked .app-body {
       visibility: hidden;
       pointer-events: none;
@@ -6897,6 +6936,7 @@
           aria-label="Пароль для входа в StoryBook"
         >
         <p class="auth-gate-error" id="auth-gate-error">Неверный пароль</p>
+        <button type="submit" class="auth-gate-submit" id="auth-gate-submit">Войти</button>
       </form>
     </div>
   </div>
@@ -6906,7 +6946,6 @@
       <div class="hub-brand">
         <img src="logo-light.svg" alt="Invert StoryBook" class="hub-brand-img" id="header-logo">
       </div>
-      <div class="hub-avatar"><img src="avatar-image.svg" alt=""></div>
     </div>
     <div class="content-top-bar">
       <div class="hub-tabs" id="hub-tabs">
@@ -7281,15 +7320,7 @@
     </section>
     <section id="section-icons">
       <h2>Icons</h2>
-      <p class="note">
-        Полная библиотека иконок Invert. Названия соответствуют файлам. Используй поиск сверху, чтобы быстро находить нужную иконку.
-      </p>
-      <div class="icons-catalog">
-        <div class="icons-toolbar">
-          <span class="icons-count" id="icons-count">0 иконок</span>
-        </div>
-        <div class="icons-grid" id="icons-grid"></div>
-      </div>
+      <div class="icons-grid" id="icons-grid"></div>
     </section>
     <section id="section-palette">
       <h2>Palette page</h2>
@@ -14253,10 +14284,22 @@
         var form = document.getElementById("auth-gate-form");
         var input = document.getElementById("auth-gate-input");
         var error = document.getElementById("auth-gate-error");
+        var submit = document.getElementById("auth-gate-submit");
 
-        function showError(show) {
+        function showError(show, message) {
           if (!error) return;
+          if (typeof message === "string") {
+            error.textContent = message;
+          }
           error.classList.toggle("auth-gate-error--visible", !!show);
+          if (input) {
+            input.classList.toggle("auth-gate-input--invalid", !!show);
+          }
+        }
+
+        function syncSubmitState() {
+          if (!submit || !input) return;
+          submit.disabled = !input.value.trim();
         }
 
         if (isAuthorized()) {
@@ -14272,21 +14315,30 @@
         if (!form || !input) return;
         form.addEventListener("submit", function (event) {
           event.preventDefault();
-          var value = input.value || "";
+          var value = (input.value || "").trim();
+          if (!value) {
+            showError(true, "Введите пароль");
+            syncSubmitState();
+            input.focus();
+            return;
+          }
           if (value === AUTH_PASSWORD) {
             setAuthExp(Date.now() + AUTH_TTL_MS);
-            showError(false);
+            showError(false, "");
             input.value = "";
+            syncSubmitState();
             unlockStorybook();
             return;
           }
-          showError(true);
+          showError(true, "Неверный пароль");
           input.select();
         });
 
         input.addEventListener("input", function () {
-          showError(false);
+          showError(false, "");
+          syncSubmitState();
         });
+        syncSubmitState();
       });
     })();
 
@@ -14331,7 +14383,6 @@
       var detailTitle = document.getElementById("detail-title");
       var detailBackBtn = document.getElementById("detail-back-btn");
       var iconsGrid = document.getElementById("icons-grid");
-      var iconsCount = document.getElementById("icons-count");
       var activeHubTab = "intro";
       var hubItems = [];
       var allIcons = Array.isArray(window.INVERT_ICONS) ? window.INVERT_ICONS.slice() : [];
@@ -14403,9 +14454,6 @@
         }).join("");
         if (!renderedIcons.length) {
           iconsGrid.innerHTML = '<article class="icon-item"><p class="icon-name">Иконки не найдены</p></article>';
-        }
-        if (iconsCount) {
-          iconsCount.textContent = renderedIcons.length + " иконок";
         }
       }
 
@@ -14546,6 +14594,9 @@
         hubOverview.classList.add("search-hidden");
         detailScroll.classList.remove("search-hidden");
         detailHeader.classList.remove("search-hidden");
+        if (sectionId === "section-icons") {
+          detailHeader.classList.add("search-hidden");
+        }
         if (detailBackBtn) {
           var isRootSection = sectionId === "section-intro" || sectionId === "section-accessibility" || sectionId === "section-icons";
           detailBackBtn.classList.toggle("search-hidden", isRootSection);
@@ -14641,6 +14692,32 @@
           var size = target.value || "32";
           icon.style.width = size + "px";
           icon.style.height = size + "px";
+        });
+
+        iconsGrid.addEventListener("click", function (event) {
+          var target = event.target;
+          if (!(target instanceof Element)) return;
+          var link = target.closest(".icon-download");
+          if (!(link instanceof HTMLAnchorElement)) return;
+          event.preventDefault();
+          var href = link.getAttribute("href");
+          if (!href) return;
+          var filename = link.getAttribute("download") || (href.split("/").pop() || "icon.svg");
+          fetch(href).then(function (res) {
+            if (!res.ok) throw new Error("download-failed");
+            return res.blob();
+          }).then(function (blob) {
+            var blobUrl = URL.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.href = blobUrl;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(function () { URL.revokeObjectURL(blobUrl); }, 1500);
+          }).catch(function () {
+            // Не открываем SVG во вкладке, если загрузка не удалась.
+          });
         });
       }
 

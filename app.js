@@ -1658,18 +1658,14 @@
         if (tabbarActiveIndex < 0) tabbarActiveIndex = 0;
         var active = tabbarActiveIndex + 1;
 
-        var widthMapNoSearch = { 2: "194px", 3: "286px", 4: "352px", 5: "352px" };
-        var widthMapSearch = { 2: "210px", 3: "286px", 4: "334px", 5: "352px" };
+        var widthMapNoSearch = { 2: "200px", 3: "300px", 4: "352px", 5: "352px" };
+        var widthMapSearch = { 2: "200px", 3: "300px", 4: "334px", 5: "352px" };
         var tabbarWidth = separateSearch ? (widthMapSearch[count] || "352px") : (widthMapNoSearch[count] || "352px");
-        var tabItemWidth = "102px";
-        if (separateSearch && count === 2) tabItemWidth = "110px";
-        if (count >= 4) tabItemWidth = "auto";
 
         tabbar.className = "tabbar-liquid";
         tabbar.classList.toggle("tabbar-liquid--fill", count >= 4);
         tabbar.classList.toggle("tabbar-liquid--hug", count < 4);
         tabbar.style.setProperty("--tabbar-count", String(count));
-        tabbar.style.setProperty("--tab-item-width", tabItemWidth);
         tabbar.style.setProperty("--tabbar-height", "62px");
         tabbar.style.width = tabbarWidth;
         tabbar.style.padding = "0 5px";

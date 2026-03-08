@@ -3609,7 +3609,7 @@
     }
 
     .tabbar-liquid--hug .tabbar-liquid-item {
-      flex: 0 0 var(--tab-item-width, 102px);
+      flex: 1 1 0;
     }
 
     .tabbar-liquid--fill .tabbar-liquid-item {
